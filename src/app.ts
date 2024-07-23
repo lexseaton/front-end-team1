@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import { getHomepage } from "./controllers/HomeController";
 
-
 const app = express();
 
 nunjucks.configure('views', {
