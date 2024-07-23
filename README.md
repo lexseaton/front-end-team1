@@ -9,5 +9,5 @@
 1. Follow the steps to run the backend for this application <a href="https://github.com/dylanlaffin/team1-api" target="_blank">here</a>
 
 ## Credits
-Developers: Gerard, Hannah, Brigid, Rachael, Jakub
-Testers: Lex, Dylan
+Developers: Gerard McLean, Hannah Morgan, Brigid Monaghan, Rachael McKeown, Jakub Rutkowski
+Testers: Lex Seaton, Dylan Laffin
