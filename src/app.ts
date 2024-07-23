@@ -1,7 +1,8 @@
 import express from "express";
-import nunjucks from "nunjucks";
+import nunjucks, { render } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
+import { getHomepage } from "./controllers/HomeController";
 
 
 const app = express();
@@ -27,3 +28,5 @@ declare module "express-session" {
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
+
+app.get('/homepage', getHomepage);
