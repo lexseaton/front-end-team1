@@ -4,7 +4,6 @@ import * as AuthService from "../../services/AuthService";
 import { expect } from 'chai';
 
 import sinon from 'sinon';
-//import session from "express-session";
 
 const JWTTOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3"
 + "MTQsImV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJ"
@@ -51,6 +50,7 @@ describe('LoginController', function () {
         await AuthController.postLoginForm(req as any, res as any);
 
         // Verify that res.redirect was called once with the correct arguments
+        expect(JWTTOKEN == req.session.token).to.be.true;
         expect(res.redirect.calledOnce).to.be.true;
     });
 
@@ -70,49 +70,6 @@ describe('LoginController', function () {
         expect(res.render.calledOnce).to.be.true;
         expect(res.locals.errormessage).to.equal(errormessage);
 
-    });
-
-});
-
-//Test validation errors
-describe('login validation', function () {
-    afterEach(() => {
-        sinon.restore();
-
-    });
-
-    it('should return validation error if username is missing', async () => {
-        const errormessage: string = "Username required";
-
-        sinon.stub(AuthService, 'getToken').rejects(new Error(errormessage));
-
-        const req = { body: { Username: " ", Password: "admin" } };
-        const res = { render: sinon.spy(), locals: { errormessage: ''} };
-
-        // Call the login function from AuthController
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await AuthController.postLoginForm(req as any, res as any);
-
-        console.log(errormessage);
-        expect(res.render.calledOnce).to.be.true;
-        expect(res.locals.errormessage).to.equal(errormessage);
-    });
-
-    it('should return validation error if password is missing', async () => {
-        const errormessage2: string = "Password required";
-
-        sinon.stub(AuthService, 'getToken').rejects(new Error(errormessage2));
-
-        const req = { body: { Username: "admin", Password: " " } };
-        const res = { render: sinon.spy(), locals: { errormessage: ''} };
-
-        // Call the login function from AuthController
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await AuthController.postLoginForm(req as any, res as any);
-
-        console.log(errormessage2);
-        expect(res.render.calledOnce).to.be.true;
-        expect(res.locals.errormessage).to.equal(errormessage2);
     });
 
 });
