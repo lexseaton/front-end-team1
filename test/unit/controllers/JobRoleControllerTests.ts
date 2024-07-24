@@ -1,7 +1,7 @@
 import * as JobRoleController from "../../../src/controllers/JobRoleController";
 import * as JobRoleService from "../../../src/services/JobRoleService";
 import { expect } from 'chai';
-import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
+import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
 import sinon from 'sinon';
 import { describe, it } from "node:test";
 import { Band } from "../../../src/models/Band";
@@ -10,7 +10,7 @@ import { Capability } from "../../../src/models/Capability";
 
 const dt = new Date(2024, 11, 29);
 
-const jobRoleResponse: JobRoleResponse = {
+const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: Capability.Delivery,
@@ -22,7 +22,7 @@ describe('JobRoleController', function () {
 describe('getAllJobRoles', function () {
   it('should render view with job roles when job roles returned', async () => {
     
-    const jobRoleList = [jobRoleResponse];
+    const jobRoleList = [openJobRoleResponse];
 
     // Stub the JobRoleService.getJobRoles method
     const stub = sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
@@ -36,7 +36,7 @@ describe('getAllJobRoles', function () {
 
     // Assertions
     expect(res.render.calledOnce).to.be.true;
-    expect(res.render.calledWith('jobRoleList.html', { jobRoles: jobRoleList })).to.be.true;
+    expect(res.render.calledWith('jobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
 
     // Restore the stub
     stub.restore();

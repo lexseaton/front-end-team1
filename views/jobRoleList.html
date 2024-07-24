@@ -15,13 +15,13 @@
             <th>Job Role Band</th>
             <th>Job Role Closing Date</th>
         </tr>
-        {% for jobRole in jobRoles | sort(attribute='jobRoleID') %}
+        {% for openJobRole in openJobRoles | sort(attribute='jobRoleID') %}
             <tr>
-                <td>{{ jobRole.jobRoleName }}</td>
-                <td>{{ jobRole.jobRoleLocation }}</td>
-                <td>{{ jobRole.jobRoleCapability }}</td>
-                <td>{{ jobRole.jobRoleBand }}</td>
-                <td>{{ jobRole.jobRoleClosingDate | date }}</td>
+                <td>{{ openJobRole.jobRoleName }}</td>
+                <td>{{ openJobRole.jobRoleLocation }}</td>
+                <td>{{ openJobRole.jobRoleCapability }}</td>
+                <td>{{ openJobRole.jobRoleBand }}</td>
+                <td>{{ openJobRole.jobRoleClosingDate | date }}</td>
             </tr>
         {% endfor %}
     </table>

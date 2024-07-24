@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from "axios";
-import { JobRoleResponse } from "../models/JobRoleResponse";
+import { OpenJobRoleResponse } from "../models/OpenJobRoleResponse";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
-export const URL: string = "/api/jobRoles";
+export const URL: string = "/api/openJobRoles";
 
-export const getJobRoles = async (): Promise<JobRoleResponse[]> => {
+export const getJobRoles = async (): Promise<OpenJobRoleResponse[]> => {
     try {
-        const response: AxiosResponse = await axios.get("http://localhost:8080/api/jobRoles");
+        const response: AxiosResponse = await axios.get("http://localhost:8080/api/openJobRoles");
 
         return response.data;
     } catch (e) {
