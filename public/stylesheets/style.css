@@ -1,0 +1,122 @@
+div.nav {
+    margin-bottom: 0;
+    border-radius: 0;
+
+}
+
+div.nav {
+    background-color: rgb(40, 53, 131);
+    font-family: "Galano Grotesque";
+    color: rgb(255,255,255);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+   
+}
+
+body {
+    font-family: "Galano Grotesque";
+    font-size: 1.6rem;
+    letter-spacing: 0;
+    line-height: 2.4rem;
+    margin: 0;
+    color: rgb(87,87,86);
+}
+
+footer {
+    background-color: rgb(40, 53, 131);
+    font-family: "Galano Grotesque";
+    font-size: 1.3rem;
+    color: rgb(255,255,255);
+    padding-top: 10px;
+    height: 160px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+
+.Belfast-contact {
+    float: left;
+    padding-left: 100px;
+}
+
+.Gdansk-contact {
+    float: right;
+    padding-right: 100px;
+
+}
+.Birmingham-contact {
+    float: right;
+    padding-right: 50px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 90px;
+    background-color: rgb(255,255,255);
+    font-family: "Galano Grotesque";
+    color: rgb(87,87,86);
+    border: 2px solid rgb(40, 53, 131);
+
+}
+
+.navbar a:hover {
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+}
+
+.navbar .menu a {
+    margin-left:20px;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+
+.footer a {
+    color: white;
+    text-decoration:  none;
+    padding: 0 10 px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* responsive styles*/
+@media (max-width: 768px) {
+    .navbar .menu {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.logo {
+    margin-left: left;
+    float: left;
+    width: 100px;
+
+}
+
+h3 {
+    font-family: "Galano Grotesque";
+    background-image: url('./images/kainos-Teams-3.jpg');
+
+}
+
+a {
+    font-family: "Galano Grotesque";
+    color: rgb(40, 53, 131);
+    font-size: 1.6rem;
+}

@@ -11,6 +11,9 @@ nunjucks.configure('views', {
     express: app
 });
 
+app.use(express.static('public'));
+app.set('view engine', 'html');
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
