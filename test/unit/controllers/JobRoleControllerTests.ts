@@ -38,6 +38,7 @@ describe('getAllJobRoles', function () {
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('jobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
 
+    
     // Restore the stub
     stub.restore();
 
