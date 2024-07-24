@@ -10,6 +10,7 @@ import { Capability } from "../../../src/models/Capability";
 
 const dt = new Date(2024, 3, 3);
 
+// Create JobRoleResponse object
 const jobRoleResponse: JobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
@@ -30,7 +31,7 @@ describe('JobRoleService', function () {
         const data = [jobRoleResponse];
 
         mock.onGet(URL).reply(200, data);
-
+        // Assertions
         const results = await getJobRoles();
         expect(results[0].jobRoleBand).to.deep.equal(jobRoleResponse.jobRoleBand);
         expect(results[0].jobRoleCapability).to.deep.equal(jobRoleResponse.jobRoleCapability);
