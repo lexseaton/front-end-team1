@@ -14,10 +14,10 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
     const { Username, Password } = req.body;
 
     if (!Username) {
-        return res.render('loginForm.html', { error: 'Username required'});
+        return res.render('loginForm.html', { errormessage: 'Username required'});
     }
     if (!Password){
-        return res.render('loginForm.html', { error: 'Password required'});
+        return res.render('loginForm.html', { errormessage: 'Password required'});
     }
     try {
         req.body = await getToken(req.body);
