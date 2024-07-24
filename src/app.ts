@@ -2,8 +2,8 @@ import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getLoginForm, postLoginForm, getHomePage } from "./controllers/AuthController";
-
+import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { getHomePage } from "./controllers/HomeController";
 
 const app = express();
 

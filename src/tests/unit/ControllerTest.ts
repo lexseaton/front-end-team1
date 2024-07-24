@@ -4,16 +4,22 @@ import * as AuthService from "../../services/AuthService";
 import { expect } from 'chai';
 
 import sinon from 'sinon';
+//import session from "express-session";
 
 const JWTTOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3"
 + "MTQsImV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJ"
 + "pc3MiOiJ0ZWFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU";
 
+declare module "express-session" {
+    interface SessionData {
+      token: string;
+    }
+  }
 
 describe('LoginController', function () {
+
     afterEach(() => {
         sinon.restore();
-
     });
 
     //Tests if login for appears
@@ -22,7 +28,7 @@ describe('LoginController', function () {
 
             sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
 
-            const req = {};
+            const req = { session: { token: "" } };
             const res = { render: sinon.spy() };
 
             //eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,7 +43,7 @@ describe('LoginController', function () {
         // Mock the getToken function to return a resolved promise with loginResponse
         sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
 
-        const req = { body: { Username: "admin", Password: "admin" } };
+        const req = { body: { Username: "admin", Password: "admin" }, session: { token: "" } };
         const res = { redirect: sinon.spy(), render: sinon.spy() };
 
         // Call the login function from AuthController
@@ -61,6 +67,7 @@ describe('LoginController', function () {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await AuthController.postLoginForm(req as any, res as any);
 
+        expect(res.render.calledOnce).to.be.true;
         expect(res.locals.errormessage).to.equal(errormessage);
 
     });
@@ -87,6 +94,7 @@ describe('login validation', function () {
         await AuthController.postLoginForm(req as any, res as any);
 
         console.log(errormessage);
+        expect(res.render.calledOnce).to.be.true;
         expect(res.locals.errormessage).to.equal(errormessage);
     });
 
@@ -103,6 +111,7 @@ describe('login validation', function () {
         await AuthController.postLoginForm(req as any, res as any);
 
         console.log(errormessage2);
+        expect(res.render.calledOnce).to.be.true;
         expect(res.locals.errormessage).to.equal(errormessage2);
     });
 

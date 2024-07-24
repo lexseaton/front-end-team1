@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { LoginRequest } from "../models/LoginRequest";
-//import { LoginResponse } from "../models/LoginResponse";
 
 export const getToken = async (loginRequest: LoginRequest): Promise<string> =>  {
 try {
