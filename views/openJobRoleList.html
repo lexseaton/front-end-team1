@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Role List</title>
+    <title>Open Job Role List</title>
 </head>
 <body>
     <h1>Job Roles</h1>
@@ -15,7 +15,7 @@
             <th>Job Role Band</th>
             <th>Job Role Closing Date</th>
         </tr>
-        {% for openJobRole in openJobRoles | sort(attribute='jobRoleID') %}
+        {% for openJobRole in openJobRoles %}
             <tr>
                 <td>{{ openJobRole.jobRoleName }}</td>
                 <td>{{ openJobRole.jobRoleLocation }}</td>

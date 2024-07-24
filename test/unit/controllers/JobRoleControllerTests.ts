@@ -4,17 +4,15 @@ import { expect } from 'chai';
 import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
 import sinon from 'sinon';
 import { describe, it } from "node:test";
-import { Band } from "../../../src/models/Band";
 import { Locations } from "../../../src/models/Locations";
-import { Capability } from "../../../src/models/Capability";
 
 const dt = new Date(2024, 11, 29);
 
 const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
-  jobRoleCapability: Capability.Delivery,
-  jobRoleBand: Band.BAND1,
+  jobRoleCapability: "HR",
+  jobRoleBand: "trainee",
   jobRoleClosingDate: dt
 }
 
@@ -36,12 +34,28 @@ describe('getAllJobRoles', function () {
 
     // Assertions
     expect(res.render.calledOnce).to.be.true;
-    expect(res.render.calledWith('jobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
+    expect(res.render.calledWith('openJobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
 
     
     // Restore the stub
     stub.restore();
 
   });
+
+
+  it('should render view with error message when error thrown', async () => {
+    const errorMessage: string = 'Failed to get Job Roles';
+    sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
+
+    const req = { };
+    const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+    await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+
+    expect(res.render.calledOnce).to.be.true;
+    expect(res.render.calledWith('openJobRoleList.html')).to.be.true;
+    expect(res.locals.errormessage).to.equal(errorMessage);
+  });
+
 });
 })
