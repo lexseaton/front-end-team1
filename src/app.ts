@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, postLoginForm, getHomePage } from "./controllers/AuthController";
 
-import { getAllDatabases } from "./controllers/TestController";
 
 const app = express();
 
@@ -30,7 +29,6 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
-app.get('/', getAllDatabases);
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.get('/home', getHomePage);
