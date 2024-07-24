@@ -1,5 +1,5 @@
 import express from "express";
-import nunjucks, { render } from "nunjucks";
+import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 import { getHomepage } from "./controllers/HomeController";
