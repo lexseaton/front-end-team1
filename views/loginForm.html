@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    {% if errormessage %}
+        <h3> {{ errormessage }}</h3>
+    {% endif %}
+
+    <form class="form" action="/loginForm" method="post">
+        <h3 class="usernameHeader"><label for="Username">
+            Username:
+        </label></h3>
+        <input id="Username" name="Username" value="{{Username}}" type="text">
+
+        <h3 class="passwordHeader"><label for="Password">
+            Password:
+        </label></h3>
+        <input id="Password" name="Password" value="{{Password}}" type="text">
+
+        <br><br>
+
+        <button class="loginButton" id="login">Login</button>
+    </form>
+
+</body>
+
+</html>

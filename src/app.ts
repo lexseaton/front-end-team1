@@ -2,6 +2,7 @@ import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
+import { getLoginForm, postLoginForm, getHomePage } from "./controllers/AuthController";
 
 import { getAllDatabases } from "./controllers/TestController";
 
@@ -30,3 +31,6 @@ app.listen(3000, () => {
 });
 
 app.get('/', getAllDatabases);
+app.get('/loginForm', getLoginForm);
+app.post('/loginForm', postLoginForm);
+app.get('/home', getHomePage);
