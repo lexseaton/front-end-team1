@@ -23,7 +23,7 @@ jobs:
           node-version: 20.14.0
  
       - name: Run npm install
-        run: npm install
+        run: npm install --force
  
       - name: Run linter
         run: npm run linter
