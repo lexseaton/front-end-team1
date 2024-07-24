@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Role List</title>
+</head>
+<body>
+    <h1>Job Roles</h1>
+    <table>
+        <tr>
+            <th>Job Role Name</th>
+            <th>Job Role Location</th>
+            <th>Job Role Capability</th>
+            <th>Job Role Band</th>
+            <th>Job Role Closing Date</th>
+        </tr>
+        {% for jobRole in jobRoles | sort(attribute='jobRoleID') %}
+            <tr>
+                <td>{{ jobRole.jobRoleName }}</td>
+                <td>{{ jobRole.jobRoleLocation }}</td>
+                <td>{{ jobRole.jobRoleCapability }}</td>
+                <td>{{ jobRole.jobRoleBand }}</td>
+                <td>{{ jobRole.jobRoleClosingDate | date }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
