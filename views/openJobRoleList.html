@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "links.html" %}
     <title>Open Job Role List</title>
 </head>
 <body>
+    {% include "heading.html" %}
     <h1>Job Roles</h1>
-    <table>
+    <table class="table">
         <tr>
             <th>Job Role Name</th>
             <th>Job Role Location</th>
@@ -25,5 +27,6 @@
             </tr>
         {% endfor %}
     </table>
+    {% include "footer.html" %}
 </body>
 </html>
