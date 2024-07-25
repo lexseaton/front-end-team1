@@ -45,7 +45,8 @@ describe('getAllJobRoles', function () {
 
   it('should render view with error message when error thrown', async () => {
     const errorMessage: string = 'Failed to get Job Roles';
-    sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
+
+    const stub = sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
     const req = { };
     const res = { render: sinon.spy(), locals: { errormessage: '' } };
@@ -55,6 +56,9 @@ describe('getAllJobRoles', function () {
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleList.html')).to.be.true;
     expect(res.locals.errormessage).to.equal(errorMessage);
+
+    // Restore the stub
+    stub.restore();
   });
 
 });
