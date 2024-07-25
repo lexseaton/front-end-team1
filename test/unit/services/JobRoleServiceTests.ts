@@ -5,13 +5,13 @@ import { getJobRoles, URL } from '../../../src/services/JobRoleService';
 import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
 import { Locations } from "../../../src/models/Locations";
 
-const dt = new Date(1721718000000);
+const dt = new Date(2024, 11, 29);
 
 const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
-  jobRoleBand: "BAND1",
+  jobRoleBand: "Trainee",
   jobRoleClosingDate: dt
 }
 const mock = new MockAdapter(axios);
@@ -21,16 +21,15 @@ describe('getJobRoles', function () {
   it('should return job roles from response', async () => {
       const data = [openJobRoleResponse];
 
-       mock.onGet("http://localhost:8080/api/openJobRoles").reply(200, data);
-  try {
-      const results = await getJobRoles();
-      console.log('Results:', results);
-      console.log('Expected:', openJobRoleResponse);  
+       mock.onGet(URL).reply(200, data);
 
-      expect(results[0]).to.deep.equal(openJobRoleResponse);
-  } catch (error) {
-    console.error('Test failed', error);
-  }
+      const results = await getJobRoles();
+
+      expect(results[0].jobRoleBand).to.deep.equal(openJobRoleResponse.jobRoleBand);
+      expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation);
+      expect(results[0].jobRoleName).to.deep.equal(openJobRoleResponse.jobRoleName);
+      expect(results[0].jobRoleCapability).to.deep.equal(openJobRoleResponse.jobRoleCapability);
+      expect(results[0].jobRoleClosingDate).to.deep.equal(openJobRoleResponse.jobRoleClosingDate.toISOString);
     })
 
   it('should throw exception when 500 error returned from axios', async () => {
