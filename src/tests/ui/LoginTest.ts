@@ -3,9 +3,7 @@ import { Builder, Capabilities, WebDriver } from 'selenium-webdriver';
 import { expect } from 'chai';
 import { LoginTestPage } from './LoginTestPage';
 import * as chrome from 'selenium-webdriver/chrome';
-//import * as chromedriver from 'chromedriver';
 
-//chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
 
 describe('Login Test', function () {
     let driver: WebDriver;
@@ -39,4 +37,17 @@ describe('Login Test', function () {
         const actualText = await loginPage.getSuccessMessageText();
         expect(actualText).to.equal('Together we write our story...');
     });
+    it('login should fail', async function () {
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
+        await loginPage.open(url);
+
+        await loginPage.enterInvalidUsername('abcdefghijklmnopqurstuvwxyz');
+        await loginPage.enterInvalidPassword('abcdefghijklmnopqurstuvwxyz');
+        await loginPage.clickLogin();
+
+        const errormessage = await loginPage.getErrorMessageText();
+        expect(errormessage).to.equal('Username or Password Incorrect');
+    });
+
+
 });
