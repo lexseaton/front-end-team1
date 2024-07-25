@@ -1,10 +1,11 @@
 import express from "express";
-import nunjucks from "nunjucks";
+import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
+import { getHomepage } from "./controllers/HomeController";
 
 const app = express();
 
@@ -14,6 +15,8 @@ const env = nunjucks.configure('views', {
 });
 
 env.addFilter('date', dateFilter);
+app.use(express.static('public'));
+app.set('view engine', 'html');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -33,3 +36,4 @@ app.listen(3000, () => {
 });
 
 app.get('/jobRoles', getAllJobRoles);
+app.get('/homepage', getHomepage);
