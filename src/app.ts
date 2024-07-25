@@ -1,9 +1,10 @@
 import express from "express";
-import nunjucks from "nunjucks";
+import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, postLoginForm } from "./controllers/AuthController";
 import { getHomePage } from "./controllers/HomeController";
+import { getHomepage } from "./controllers/HomeController";
 
 const app = express();
 
@@ -11,6 +12,9 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+
+app.use(express.static('public'));
+app.set('view engine', 'html');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -31,4 +35,6 @@ app.listen(3000, () => {
 
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
-app.get('/home', getHomePage);
+app.get('/homepage', getHomepage);
+
+app.get('/homepage', getHomepage);
