@@ -1,27 +1,42 @@
-import webdriver from 'selenium-webdriver';
-
+// src/tests/ui/LoginTest.ts
+import { Builder, Capabilities, WebDriver } from 'selenium-webdriver';
 import { expect } from 'chai';
+import { LoginTestPage } from './LoginTestPage';
+import * as chrome from 'selenium-webdriver/chrome';
+//import * as chromedriver from 'chromedriver';
 
-describe('Login Test', async () => {
-    it('Should login successfully', async () => {
-        const driver = new webdriver.Builder().
-            withCapabilities(webdriver.Capabilities.chrome()).
-            build();
+//chrome.setDefaultService(new chrome.ServiceBuilder(chromedriver.path).build());
 
+describe('Login Test', function () {
+    let driver: WebDriver;
+    let loginPage: LoginTestPage;
+
+    before(async function () {
+        driver = new Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(new chrome.Options())
+            .build();
+
+        loginPage = new LoginTestPage(driver);
+    });
+
+    after(async function () {
+        try {
+            await driver.quit(); // Ensure this is awaited
+        } catch (error) {
+            console.error('Error quitting the driver:', error);
+        }
+    });
+
+    it('Should login successfully', async function () {
         const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-        await driver.get(url);
+        await loginPage.open(url);
 
-        await driver.findElement(webdriver.By.id('Username')).sendKeys('admin');
-        await driver.findElement(webdriver.By.id('Password')).sendKeys('admin');
+        await loginPage.enterUsername('admin');
+        await loginPage.enterPassword('admin');
+        await loginPage.clickLogin();
 
-        await driver.findElement(webdriver.By.id('login')).click();
-
-        const text = await driver.findElement(webdriver.By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h3[1]"));
-
-        expect(text).to.equal('Together we write our story...');
-
-        //await driver.quit(); // Always ensure you close the driver
+        const actualText = await loginPage.getSuccessMessageText();
+        expect(actualText).to.equal('Together we write our story...');
     });
 });
-
-
