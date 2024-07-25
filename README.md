@@ -19,10 +19,6 @@ Read more about pa11y <a href="https://github.com/pa11y/pa11y/blob/main/README.m
 ## Backend
 1. Follow the steps to run the backend for this application <a href="https://github.com/dylanlaffin/team1-api" target="_blank">here</a>
 
-## Styling Frontend
-1. To add reference links for styling to html script, in the <head> section insert {% include "links.html" %}. 
-2. To add the navigation bar to your html script, inside the <body> insert {% include "heading.html" %}. 
-3. To add footer to your html script, place footer before </body> closing tag by inserting {% include "footer.html" %}
 
 ## Tech Stack
 Front-end: HTML, CSS, JavaScript, SwaggerUI, Docker
