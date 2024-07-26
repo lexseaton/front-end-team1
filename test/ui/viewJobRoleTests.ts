@@ -26,7 +26,7 @@ describe('Job Roles Test', function () {
     it('Page should load and title text should display', async function () {
         const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/openJobRoles';
         await driver.get(url);
-       // await driver.findElement(By.)
+        //await driver.findElement(webdriver.By.id(''))
 
         expect("asda").to.equal('Together we write our story...');
     });
