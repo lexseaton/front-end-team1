@@ -5,7 +5,7 @@ import { getJobRoles, URL } from '../../../src/services/JobRoleService';
 import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
 import { Locations } from "../../../src/models/Locations";
 
-const dt = new Date(2024, 11, 29);
+const dt = new Date(1722380400000);
 
 const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
@@ -25,11 +25,12 @@ describe('getJobRoles', function () {
 
       const results = await getJobRoles();
 
+
       expect(results[0].jobRoleBand).to.deep.equal(openJobRoleResponse.jobRoleBand);
-      expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation);
+      expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation.toUpperCase());
       expect(results[0].jobRoleName).to.deep.equal(openJobRoleResponse.jobRoleName);
       expect(results[0].jobRoleCapability).to.deep.equal(openJobRoleResponse.jobRoleCapability);
-      expect(results[0].jobRoleClosingDate).to.deep.equal(openJobRoleResponse.jobRoleClosingDate.toISOString());
+      expect(results[0].jobRoleClosingDate).to.deep.equal(openJobRoleResponse.jobRoleClosingDate.valueOf());
     })
 
   it('should throw exception when 500 error returned from axios', async () => {
@@ -42,6 +43,7 @@ describe('getJobRoles', function () {
         return;
       }
     })
+    mock.reset();
   })
 })
 
