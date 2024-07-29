@@ -1,4 +1,4 @@
-{
+{ 
     "compilerOptions": {
         "module": "commonjs",
         "esModuleInterop": true,
@@ -10,7 +10,8 @@
         "outDir": "./dist"
     },
     "include": [
-        "src/**/*"
+        "src/**/*", 
+        "test/**/*"
     ],
     "exclude": [
         "./node_modules/**/*",
