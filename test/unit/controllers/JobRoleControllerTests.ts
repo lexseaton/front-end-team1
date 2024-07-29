@@ -19,6 +19,7 @@ const openJobRoleResponse: OpenJobRoleResponse = {
 }
 
 const jobRoleResponse: JobRoleResponse = {
+  jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
