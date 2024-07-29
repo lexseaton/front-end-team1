@@ -9,11 +9,12 @@ import { Locations } from "../../../src/models/Locations";
 const dt = new Date(2024, 11, 29);
 
 const openJobRoleResponse: OpenJobRoleResponse = {
+  jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
-  jobRoleClosingDate: dt
+  jobRoleClosingDate: dt,
 }
 
 describe('JobRoleController', function () {
