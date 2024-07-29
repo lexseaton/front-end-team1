@@ -18,3 +18,12 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
         res.render('loginForm.html', req.body);
     }
 }
+
+    export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).send('Failed to log out');
+            }
+            res.redirect('/loginForm.html');
+        });
+    }
