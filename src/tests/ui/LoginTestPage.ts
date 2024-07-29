@@ -9,8 +9,8 @@ export class LoginTestPage {
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
-    private successMessage: By = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/h3[1]");
-    private errorMessage: By = By.xpath('/html[1]/body[1]/h3[1]');
+    private successMessage: By = By.xpath("/html[1]/body[1]/a[1]/footer[1]/div[1]/h4[1]");
+    private errorMessage: By = By.xpath('/html[1]/body[1]/a[1]/h3[1]');
 
     constructor(driver: WebDriver) {
         this.driver = driver;

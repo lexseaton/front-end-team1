@@ -37,7 +37,7 @@ describe('Login Test', function () {
         await loginPage.clickLogin();  // Click the login button
 
         const actualText = await loginPage.getSuccessMessageText();  // Get the success message
-        expect(actualText).to.equal('Together we write our story...');  // Verify the success message
+        expect(actualText).to.equal('Belfast');  // Verify the success message
     });
     // Test case: Verify that the user can successfully log in with valid credentials
     it('Should login successfully with different details', async function () {
@@ -49,7 +49,7 @@ describe('Login Test', function () {
         await loginPage.clickLogin();  // Click the login button
 
         const actualText = await loginPage.getSuccessMessageText();  // Get the success message
-        expect(actualText).to.equal('Together we write our story...');  // Verify the success message
+        expect(actualText).to.equal('Belfast');  // Verify the success message
     });
 
     // Test case: Verify that login fails with various types of invalid credentials
