@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "links.html" %}
+    <title>Job Role: {{ openJobRole.jobRoleName }}</title>
+</head>
+<body>
+    {% include "heading.html" %}
+    <h1>Job Role: {{ openJobRole.jobRoleName }}</h1>
+    <h3>Job Role: {{ openJobRole.jobRoleDescription }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleResponsibilities }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleSpecUrl }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleLocation }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleCapability }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleBand }}</h3>
+    <h3>Job Role: {{ openJobRole.jobRoleClosingDate }}</h3>
+    {% include "footer.html" %}
+</body>
+</html>

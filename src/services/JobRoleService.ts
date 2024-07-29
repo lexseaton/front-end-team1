@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { OpenJobRoleResponse } from "../models/OpenJobRoleResponse";
+import { JobRoleResponse } from "../models/JobRoleResponse";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
@@ -16,7 +17,7 @@ export const getJobRoles = async function (): Promise<OpenJobRoleResponse[]> {
 }
 
 // new method to get jobRoleById (need to create a new model to pass into Promise?)
-export const getJobRoleById = async function (id: String): Promise<OpenJobRole[]> {
+export const getJobRoleById = async function (id: String): Promise<JobRoleResponse[]> {
     try {
         const response: AxiosResponse = await axios.get(URL + id);
 
