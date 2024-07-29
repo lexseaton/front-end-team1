@@ -1,5 +1,6 @@
 // src/pages/LoginTestPage.ts
-import { By, WebDriver } from 'selenium-webdriver';
+import { By, WebDriver, until } from 'selenium-webdriver';
+import {strict as assert}from 'assert';
 
 export class LoginTestPage {
     private driver: WebDriver;
@@ -29,7 +30,6 @@ export class LoginTestPage {
         const element = await this.driver.findElement(this.passwordField);
         await element.sendKeys(password);
     }
-    
 
     async clickLogin(): Promise<void> {
         const element = await this.driver.findElement(this.loginButton);
@@ -57,7 +57,4 @@ export class LoginTestPage {
     const element = await this.driver.findElement(this.passwordField);
     await element.sendKeys(password);
 }
-
-
-
 }
