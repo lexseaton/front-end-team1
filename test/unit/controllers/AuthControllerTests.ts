@@ -1,4 +1,4 @@
-import { afterEach, describe, it } from "node:test";
+import { describe, it } from "node:test";
 import * as AuthController from "../../../src/controllers/AuthController";
 import * as AuthService from "../../../src/services/AuthService";
 import { expect } from 'chai';
@@ -16,13 +16,11 @@ declare module "express-session" {
   }
 
 describe('LoginController', function () {
-
-    afterEach(() => {
-        sinon.restore();
-    });
-
     //Tests if login for appears
     describe('getLoginForm', function () {
+        after (() => {
+            sinon.reset();
+        });
         it('should render the login form', async () => {
 
             const stub = sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
