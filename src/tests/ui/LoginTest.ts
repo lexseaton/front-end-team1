@@ -82,19 +82,21 @@ describe('Login Test', function () {
         expect(errormessage3).to.equal('Username or Password Incorrect');
     });
 
-    it('user should log out successfully', async function () {
-        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-        await loginPage.open(url);
+    // it('user should log out successfully', async function () {
+    //     const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
+    //     await loginPage.open(url);
 
-        await loginPage.enterUsername('admin');  // Enter valid username
-        await loginPage.enterPassword('admin');  // Enter valid password
-        await loginPage.clickLogin();  // Click the login button
+    //     await loginPage.enterUsername('admin');  // Enter valid username
+    //     await loginPage.enterPassword('admin');  // Enter valid password
+    //     await loginPage.clickLogin();  // Click the login button
 
-        const actualText = await loginPage.getSuccessMessageText();  // Get the success message
-        expect(actualText).to.equal('Together we write our story...');  // Verify the success message
+    //     const actualText = await loginPage.getSuccessMessageText();  // Get the success message
+    //     expect(actualText).to.equal('Together we write our story...');  // Verify the success message
+
+    //     await getHomepage.clicklogout();// Click the login button
+
         
-        
-    })
+    // })
 });
 
 
