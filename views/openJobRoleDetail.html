@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "links.html" %}
-    <title>Job Role: {{ openJobRole.jobRoleName }}</title>
+    <title id="title">Job Role: {{ openJobRole.jobRoleName }}</title>
 </head>
 <body>
     {% include "heading.html" %}
-    <h1>Job Role: {{ openJobRole.jobRoleName }}</h1>
-    <h3>Job Role: {{ openJobRole.jobRoleDescription }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleResponsibilities }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleSpecUrl }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleLocation }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleCapability }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleBand }}</h3>
-    <h3>Job Role: {{ openJobRole.jobRoleClosingDate }}</h3>
+    <h1 id="heading1">{{ openJobRole.jobRoleName }}</h1>
+
+    <ul>
+        <li id="name">Job Role Name: {{ openJobRole.jobRoleName }}</li>
+        <li id="desc">Job Description: {{ openJobRole.jobRoleDescription }}</li>
+        <li id="resp">Job Responsibilities: {{ openJobRole.jobRoleResponsibilities }}</li>
+        <li id="url"><a href="{{ openJobRole.jobRoleSpecUrl }}">Job Specification</a></li>
+        <li id="location">Job Location: {{ openJobRole.jobRoleLocation }}</li>
+        <li id="cap">Job Capability: {{ openJobRole.jobRoleCapability }}</li>
+        <li id="band">Job Band: {{ openJobRole.jobRoleBand }}</li>
+        <li id="dt">Job Closing Date: {{ openJobRole.jobRoleClosingDate }}</li>
+    </ul>
     {% include "footer.html" %}
 </body>
 </html>

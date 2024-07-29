@@ -36,6 +36,6 @@ app.listen(3000, () => {
 });
 
 app.get('/openJobRoles', getAllJobRoles);
-app.get('openJobRoles/:id', getSingleJobRole);
+app.get('/openJobRoles/:id', getSingleJobRole);
 app.get('/homepage', getHomepage);
 

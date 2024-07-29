@@ -1,5 +1,6 @@
 import express from "express";
 import { getJobRoleById, getJobRoles } from "../services/JobRoleService";
+import { error } from "node:console";
 
 // method to get all job roles for openJobRoleList.html
 export const getAllJobRoles = async (req: express.Request, res: express.Response): Promise<void> => {
