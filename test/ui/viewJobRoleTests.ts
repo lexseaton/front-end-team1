@@ -17,7 +17,7 @@ describe('Job Roles Test', function () {
 
     after(async function () {
         try {
-            await driver.quit(); // Ensure this is awaited
+            await driver.quit(); 
         } catch (error) {
             console.error('Error quitting the driver:', error);
         }
