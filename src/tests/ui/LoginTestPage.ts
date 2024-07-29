@@ -1,22 +1,19 @@
-// src/pages/LoginTestPage.ts
 import { By, WebDriver, until } from 'selenium-webdriver';
 import {strict as assert}from 'assert';
 
 export class LoginTestPage {
     private driver: WebDriver;
     
-    // Locators
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
-    private successMessage: By = By.xpath("/html[1]/body[1]/a[1]/footer[1]/div[1]/h4[1]");
-    private errorMessage: By = By.xpath('/html[1]/body[1]/a[1]/h3[1]');
+    private loggedToHomepageSuccessfully: By = By.id("home-page-title");
+    private errorMessage: By = By.id('error-message');
 
     constructor(driver: WebDriver) {
         this.driver = driver;
     }
 
-    // Actions
     async open(url: string): Promise<void> {
         await this.driver.get(url);
     }
@@ -36,18 +33,14 @@ export class LoginTestPage {
         await element.click();
     }
 
-    async getSuccessMessageText(): Promise<string> {
-        const element = await this.driver.findElement(this.successMessage);
+    async getLoggedToHomepageSuccessfully(): Promise<string> {
+        const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
         return await element.getText();
     }
     async getErrorMessageText(): Promise<string> {
         const element = await this.driver.findElement(this.errorMessage);
         return await element.getText();
     }
-
-//async = Wait for an operation to complete, it will execute the rest of the code while waiting
-//await = Execution is paused when an await keyword is encountered until a Promise is completed
-    
     async enterInvalidUsername(username: string): Promise<void> {
     const element = await this.driver.findElement(this.usernameField);
     await element.sendKeys(username);
