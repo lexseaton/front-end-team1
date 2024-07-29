@@ -120,3 +120,17 @@ a {
     color: rgb(40, 53, 131);
     font-size: 1.6rem;
 }
+
+table {
+
+    border: 2px solid rgb(0, 70, 49);
+    font-family: "Galano Grotesque";
+    background-color: #f2f2f2;
+    padding: 20px 10px;
+   
+}
+
+table tr:hover {
+    background-color: #ffff;
+}
+
