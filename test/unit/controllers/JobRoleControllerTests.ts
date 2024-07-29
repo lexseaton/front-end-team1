@@ -77,20 +77,42 @@ describe('getAllJobRoles', function () {
     // Restore the stub
     stub.restore();
   });
+});
 
+describe('getSingleJobRole', function () {
   it('should render view with job role details when job role returned', async () => {
     const jobRoleDetails = [jobRoleResponse];
+    const stub = sinon.stub(JobRoleService, 'getJobRoleById').resolves(jobRoleDetails);
 
-    sinon.stub(JobRoleService, 'getJobRoleById').resolves(jobRoleDetails);
+    const req = { params: { id: '1' } };
+    const res = { render: sinon.spy(), locals: {} };
 
-    const req = { };
-    const res = { render: sinon.spy() };
-
-    await JobRoleController.getSingleJobRole(req as any, res as any);
+    await JobRoleController.getSingleJobRole(req as any, res as any);  // eslint-disable-line @typescript-eslint/no-explicit-any
 
     expect(res.render.calledOnce).to.be.true;
-    expect(res.render.calledWith('openJobRoleDetail.html', { jobRole: jobRoleDetails })).to.be.true;
+    expect(res.render.calledWith('openJobRoleDetail.html', { openJobRole: jobRoleDetails })).to.be.true;
+
+    stub.restore();
   });
 
+
+it('should render view with error message when error thrown', async () => {
+  const errorMessage: string = 'Failed to get Job Role';
+
+  const stub = sinon.stub(JobRoleService, 'getJobRoleById').rejects(new Error(errorMessage));
+
+  const req = { params: { id: '100' } };
+  const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+  await JobRoleController.getSingleJobRole(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+
+  expect(res.render.calledOnce).to.be.true;
+  expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
+  expect(res.locals.errormessage).to.equal(errorMessage);
+
+  // Restore the stub
+  stub.restore();
 });
+
+})
 })
