@@ -1,17 +1,27 @@
-div.nav {
-    margin-bottom: 0;
-    border-radius: 0;
 
-}
-
-div.nav {
-    background-color: rgb(40, 53, 131);
-    font-family: "Galano Grotesque";
-    color: rgb(255,255,255);
+.navbar {
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-   
+    height: 90px;
+    background-color: rgb(255,255,255);
+    font-family: "Galano Grotesque";
+    color: rgb(87,87,86);
+    border: 2px solid rgb(40, 53, 131);
+}
+
+.navbar a:hover {
+    text-decoration: none;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+}
+
+.navbar .menu a {
+    margin-left:20px;
 }
 
 body {
@@ -51,46 +61,17 @@ footer {
     padding-right: 50px;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    height: 90px;
-    background-color: rgb(255,255,255);
-    font-family: "Galano Grotesque";
-    color: rgb(87,87,86);
-    border: 2px solid rgb(40, 53, 131);
-
-}
-
-.navbar a:hover {
-    background-color: aliceblue;
-    border-radius: 5px;
-}
-
-.navbar .logo {
-    font-size: 1.5em;
-}
-
-.navbar .menu a {
-    margin-left:20px;
-}
-
 .menu-toggle {
     display: none;
     cursor: pointer;
 }
 
 
-.footer a {
+/* .footer a {
     color: white;
     text-decoration:  none;
     padding: 0 10 px;
-}
-
-.footer a:hover {
-    
-}
+} */
 
 /* responsive styles*/
 @media (max-width: 768px) {
@@ -115,14 +96,13 @@ h3 {
 
 }
 
-a {
+/* a {
     font-family: "Galano Grotesque";
     color: rgb(40, 53, 131);
     font-size: 1.6rem;
-}
+} */
 
-table {
-
+.table{
     border: 2px solid rgb(0, 70, 49);
     font-family: "Galano Grotesque";
     background-color: #f2f2f2;
@@ -130,7 +110,9 @@ table {
    
 }
 
-table tr:hover {
-    background-color: #ffff;
+.table a :hover{
+   text-decoration: none;
+   
 }
+
 
