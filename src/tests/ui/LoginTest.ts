@@ -8,20 +8,12 @@ describe('Login Test', function () {
     let loginPage: LoginTestPage;
 
     before(async function () {
-        driver = new Builder()
-            .forBrowser('chrome')  
-            .setChromeOptions(new chrome.Options())  
-            .build();  
-
-        loginPage = new LoginTestPage(driver); 
+        loginPage = await LoginTestPage.initialize();
+        driver = loginPage['driver']; // Access the driver instance
     });
 
     after(async function () {
-        try {
-            await driver.quit();  
-        } catch (error) {
-            console.error('Error quitting the driver:', error); 
-        }
+        await LoginTestPage.closeDriver(driver);
     });
 
     it('Should login successfully', async function () {
