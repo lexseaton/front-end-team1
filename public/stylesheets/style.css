@@ -1,12 +1,13 @@
-
+/* Main navbar styling */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 20px;
     height: 90px;
-    background-color: rgb(255,255,255);
+    background-color: rgb(255, 255, 255);
     font-family: "Galano Grotesque";
-    color: rgb(87,87,86);
+    color: rgb(87, 87, 86);
     border: 2px solid rgb(40, 53, 131);
 }
 
@@ -20,8 +21,20 @@
     font-size: 1.5em;
 }
 
-.navbar .menu a {
-    margin-left:20px;
+.container-fluid {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 50vw;
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-header a {
+    margin-left: 1rem;
 }
 
 body {
@@ -30,14 +43,18 @@ body {
     letter-spacing: 0;
     line-height: 2.4rem;
     margin: 0;
-    color: rgb(87,87,86);
+    color: rgb(80, 93, 164);
+}
+
+body :hover {
+    text-decoration: none;
 }
 
 footer {
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
     padding-top: 10px;
     height: 160px;
     width: 100%;
@@ -46,40 +63,54 @@ footer {
     text-align: center;
 }
 
+.Belfast-contact,
+.Gdansk-contact,
+.Birmingham-contact,
+.Derry-contact {
+    display: inline-block;
+    padding: 0 50px;
+}
+
 .Belfast-contact {
+    padding-left: 50px;
+    padding-right: 150px;
     float: left;
-    padding-left: 100px;
+}
+
+.Derry-contact {
+    padding-right: 150px;
+    float: left;
+}
+
+.Birmingham-contact {
+    padding-left: 150px;
+    float: right;
 }
 
 .Gdansk-contact {
-    float: right;
-    padding-right: 100px;
-
-}
-.Birmingham-contact {
-    float: right;
+    padding-left: 150px;
     padding-right: 50px;
+    float: right;
 }
 
-.menu-toggle {
-    display: none;
-    cursor: pointer;
+.footer-title {
+   padding-top: 40px;
 }
 
-
-/* .footer a {
-    color: white;
-    text-decoration:  none;
-    padding: 0 10 px;
-} */
-
-/* responsive styles*/
+/* Responsive styles */
 @media (max-width: 768px) {
-    .navbar .menu {
-        display: none;
+    .navbar-header {
+        flex-direction: column;
     }
-    .menu-toggle {
-        display: block;
+
+    .navbar-header a {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .container-fluid {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -87,32 +118,27 @@ footer {
     margin-left: left;
     float: left;
     width: 100px;
-
 }
 
 h3 {
     font-family: "Galano Grotesque";
     background-image: url('./images/kainos-Teams-3.jpg');
-
 }
 
-/* a {
+a {
     font-family: "Galano Grotesque";
     color: rgb(40, 53, 131);
-    font-size: 1.6rem;
-} */
+    font-size: 1.5rem;
+}
 
-.table{
+.table {
     border: 2px solid rgb(0, 70, 49);
     font-family: "Galano Grotesque";
     background-color: #f2f2f2;
     padding: 20px 10px;
-   
 }
 
-.table a :hover{
-   text-decoration: none;
-   
+.table :hover {
+    background-color: #ffffff;
+    color: rgb(40, 53, 131);
 }
-
-
