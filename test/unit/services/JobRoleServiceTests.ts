@@ -58,15 +58,12 @@ describe('getJobRoles', function () {
       }
     })
   })
-})
 
-describe('JobRoleService', function () {
   describe('getJobRoleById', function () {
     it('should return single job role from response', async () => {
         const data = [jobRoleResponse];
         mock.onGet(URL + "1").reply(200, data);
         const results = await getJobRoleById("1");
-        console.log('Results:' + results);
         expect(results[0].jobRoleClosingDate).to.deep.equal(jobRoleResponse.jobRoleClosingDate.toISOString());
         expect(results[0].jobRoleBand).to.deep.equal(jobRoleResponse.jobRoleBand);
         expect(results[0].jobRoleLocation).to.deep.equal(jobRoleResponse.jobRoleLocation);
