@@ -1,15 +1,15 @@
 import * as JobRoleController from "../../../src/controllers/JobRoleController";
 import * as JobRoleService from "../../../src/services/JobRoleService";
 import { expect } from 'chai';
-import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
 import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
+import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
 import sinon from 'sinon';
 import { describe, it } from "node:test";
 import { Locations } from "../../../src/models/Locations";
 
 const dt = new Date(2024, 11, 29);
 
-const openJobRoleResponse: OpenJobRoleResponse = {
+const openJobRoleResponse: JobRoleResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
@@ -18,7 +18,7 @@ const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleClosingDate: dt,
 }
 
-const jobRoleResponse: JobRoleResponse = {
+const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,

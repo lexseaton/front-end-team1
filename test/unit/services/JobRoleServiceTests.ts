@@ -2,13 +2,13 @@ import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
 import { getJobRoleById, getJobRoles, URL } from '../../../src/services/JobRoleService';
-import { OpenJobRoleResponse } from "../../../src/models/OpenJobRoleResponse";
-import { Locations } from "../../../src/models/Locations";
 import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
+import { Locations } from "../../../src/models/Locations";
+import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
 
 const dt = new Date(2024, 11, 29);
 
-const openJobRoleResponse: OpenJobRoleResponse = {
+const openJobRoleResponse: JobRoleResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
@@ -17,7 +17,7 @@ const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleClosingDate: dt,
 }
 
-const jobRoleResponse: JobRoleResponse = {
+const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,

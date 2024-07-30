@@ -18,7 +18,7 @@
         <li id="location">Job Location: {{ openJobRole.jobRoleLocation }}</li>
         <li id="cap">Job Capability: {{ openJobRole.jobRoleCapability }}</li>
         <li id="band">Job Band: {{ openJobRole.jobRoleBand }}</li>
-        <li id="dt">Job Closing Date: {{ openJobRole.jobRoleClosingDate }}</li>
+        <li id="dt">Job Closing Date: {{ openJobRole.jobRoleClosingDate | date }}</li>
     </ul>
     {% include "footer.html" %}
 </body>

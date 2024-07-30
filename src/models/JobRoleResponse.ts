@@ -7,7 +7,4 @@ export type JobRoleResponse = {
     jobRoleCapability: string,
     jobRoleBand: string,
     jobRoleClosingDate: Date
-    jobRoleSpecUrl: string,
-    jobRoleResponsibilities: string,
-    jobRoleDescription: string
 }
