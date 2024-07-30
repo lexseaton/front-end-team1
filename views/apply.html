@@ -8,14 +8,20 @@
 </head>
 <body class="body">
     {% include "heading.html" %}
-    <form action="/upload">
-        <h1>{{ openJobRole.jobRoleName }}</h1>
-        <h2>{{ openJobRole.jobRoleLocation }}</h2>
-        <h2>{{ openJobRole.jobRoleCapability }}</h2>
-        <h2>{{ openJobRole.jobRoleBand }}</h2>
-        <h2>{{ openJobRole.jobRoleClosingDate | date }}</h2>
-        <input type="file" id="upload" name="upload" accept="application/pdf, application/msword" />
-    </form>
+    <div class="container">
+        <div class="card" style="width: 50rem;" >
+            <div class="card-body">
+                <form class="form" action="/upload">
+                    <h1>{{ openJobRole.jobRoleName }}</h1>
+                    <h2>{{ openJobRole.jobRoleLocation }}</h2>
+                    <h2>{{ openJobRole.jobRoleCapability }}</h2>
+                    <h2>{{ openJobRole.jobRoleBand }}</h2>
+                    <h2>{{ openJobRole.jobRoleClosingDate | date }}</h2>
+                    <input type="file" id="upload" name="upload" accept="application/pdf, application/msword" /> 
+                </form>
+            </div>
+        </div>
+    </div>
     {% include "footer.html" %}
 </body>
 </html>
