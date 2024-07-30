@@ -23,7 +23,7 @@ export class viewJobRolePage {
     }
 
     async getRows(): Promise<WebElement[]> {
-        const tableElement = await this.driver.findElement(By.css('table'));
+        const tableElement = await this.driver.findElement(By.id('role-table'));
         return await tableElement.findElements(By.css('tr'));
     }
 

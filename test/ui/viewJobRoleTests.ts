@@ -1,27 +1,22 @@
-import { Builder, WebDriver } from 'selenium-webdriver';
-import 'chromedriver'; // Ensure you have the correct driver installed and available
+import { WebDriver } from 'selenium-webdriver';
+import 'chromedriver'; 
 import { expect } from 'chai';
 import 'mocha';
-import { viewJobRolePage } from './viewJobRolePage'; // Import the Page Object
+import { viewJobRolePage } from './viewJobRolePage'; 
+import { driverBuilder } from './driverBuilder';
 
 describe('Job Roles Test', function () {
     let driver: WebDriver;
     let jobRolePage: viewJobRolePage;
 
     before(async function () {
-        driver = new Builder()
-            .forBrowser('chrome')
-            .build();
+        driver = await driverBuilder.before();
         jobRolePage = new viewJobRolePage(driver);
         await jobRolePage.navigateTo();
     });
 
     after(async function () {
-        try {
-            await driver.quit();
-        } catch (error) {
-            console.error('Error quitting the driver:', error);
-        }
+        await driverBuilder.after();
     });
 
     it('Page should load and title text should display', async function () {
