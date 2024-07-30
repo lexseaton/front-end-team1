@@ -11,7 +11,7 @@
     {% if errormessage %}
     <h3> {{ errormessage }}</h3>
     {% endif %}
-
+{% include "heading.html" %}
     <form class="form" action="/loginForm" method="post">
         <h3 class="usernameHeader"><label for="Username">
             Username:
@@ -27,6 +27,7 @@
 
         <button class="loginButton" id="login">Login</button>
     </form>
+    {% include "footer.html" %}
 
 </body>
 
