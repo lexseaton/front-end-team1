@@ -10,13 +10,13 @@ describe('Job Roles Test', function () {
     let jobRolePage: viewJobRolePage;
 
     before(async function () {
-        driver = await driverBuilder.before();
+        driver = await driverBuilder.driverBefore();
         jobRolePage = new viewJobRolePage(driver);
         await jobRolePage.navigateTo();
     });
 
     after(async function () {
-        await driverBuilder.after();
+        await driverBuilder.driverAfter();
     });
 
     it('Page should load and title text should display', async function () {
