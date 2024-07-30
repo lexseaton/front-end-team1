@@ -50,6 +50,7 @@ body :hover {
 }
 
 .login-container-fluid {
+    position: relative;
     flex-wrap: nowrap;
     display: flex;
     justify-content: center;
