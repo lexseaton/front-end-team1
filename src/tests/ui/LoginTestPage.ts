@@ -9,6 +9,7 @@ export class LoginTestPage {
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
     private loggedToHomepageSuccessfully: By = By.id("home-page-title");
+    private loggedOutSuccessfully: By = By.id("")
     private errorMessage: By = By.id('error-message');
     
     constructor(driver: WebDriver) {
@@ -54,6 +55,10 @@ export class LoginTestPage {
         const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
         return await element.getText();
     }
+    // async getLoggedOutSuccessfully(): Promise<string> {
+    //     const element = await this.driver.findElement(this.loggedOutSuccessfully);
+    //     return await element.getText();
+    // }
     async getErrorMessageText(): Promise<string> {
         const element = await this.driver.findElement(this.errorMessage);
         return await element.getText();
