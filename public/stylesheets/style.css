@@ -30,12 +30,7 @@
 
 .navbar-header {
     display: flex;
-    align-items: center;
-}
 
-.navbar-header a {
-    margin-left: 1rem;
-}
 
 body {
     font-family: "Galano Grotesque";
@@ -138,6 +133,11 @@ a {
     padding: 20px 10px;
 }
 
-table tr:hover {
+.table tr:hover {
     background-color: #ffff;
+  }
+  
+.table :hover {
+    background-color: #ffffff;
+    color: rgb(40, 53, 131);
 }

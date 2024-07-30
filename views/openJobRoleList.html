@@ -7,23 +7,23 @@
     <title>Open Job Role List</title>
 </head>
 <body>
-    {% include "heading.html" %}
-    <h1>Open Job Roles</h1>
-    <table class="table">
-        <tr>
-            <th>Job Role Name</th>
-            <th>Job Role Location</th>
-            <th>Job Role Capability</th>
-            <th>Job Role Band</th>
-            <th>Job Role Closing Date</th>
+    <div id="heading-link-div"> {% include "heading.html" %} </div>
+    <h1 id="open-job-roles-header">Open Job Roles</h1>
+    <table id="role-table" class="table">
+        <tr id="table-rows">
+            <th id="job-role-name">Job Role Name</th>
+            <th id="job-role-location">Job Role Location</th>
+            <th id="job-role-capability">Job Role Capability</th>
+            <th id="job-role-band">Job Role Band</th>
+            <th id="job-role-closing-date">Job Role Closing Date</th>
         </tr>
         {% for openJobRole in openJobRoles %}
-            <tr>
-                <td>{{ openJobRole.jobRoleName }}</td>
-                <td>{{ openJobRole.jobRoleLocation }}</td>
-                <td>{{ openJobRole.jobRoleCapability }}</td>
-                <td>{{ openJobRole.jobRoleBand }}</td>
-                <td>{{ openJobRole.jobRoleClosingDate | date }}</td>
+            <tr id="table-rows-2">
+                <td id="td-role-name">{{ openJobRole.jobRoleName }}</td>
+                <td id="td-role-loction">{{ openJobRole.jobRoleLocation }}</td>
+                <td id="td-role-capability">{{ openJobRole.jobRoleCapability }}</td>
+                <td id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
+                <td id="td-role-closing-date">{{ openJobRole.jobRoleClosingDate | date }}</td>
             </tr>
         {% endfor %}
     </table>
