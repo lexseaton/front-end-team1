@@ -12,9 +12,9 @@
 
     <ul id="jr-list" class="li">
         <li id="jr-name"><b>Job Role Name:</b> {{ openJobRole.jobRoleName }}</li>
-        <li id="jr-desc"><b>Job Description:</b> {{ openJobRole.jobRoleDescription }}</li>
-        <li id="jr-resp"><b>Job Responsibilities:</b> {{ openJobRole.jobRoleResponsibilities }}</li>
-        <li id="jr-url"><a href="{{ openJobRole.jobRoleSpecUrl }}" target="_blank"><b>Job Specification Link</b> </a></li>
+        <li id="jr-desc"><b>Job Description:</b> {{ openJobRole.jobRoleSpecification.jobRoleDescription }}</li>
+        <li id="jr-resp"><b>Job Responsibilities:</b> {{ openJobRole.jobRoleSpecification.jobRoleResponsibilities }}</li>
+        <li id="jr-url"><a href="{{ openJobRole.jobRoleSpecification.jobRoleSpecUrl }}" target="_blank"><b>Job Specification Link</b> </a></li>
         <li id="jr-location"><b>Job Location:</b> {{ openJobRole.jobRoleLocation }}</li>
         <li id="jr-cap"><b>Job Capability:</b> {{ openJobRole.jobRoleCapability }}</li>
         <li id="jr-band"><b>Job Band:</b> {{ openJobRole.jobRoleBand }}</li>

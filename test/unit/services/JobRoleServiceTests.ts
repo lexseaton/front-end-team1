@@ -5,8 +5,15 @@ import { getJobRoleById, getJobRoles, URL } from '../../../src/services/JobRoleS
 import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
 import { Locations } from "../../../src/models/Locations";
 import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
+import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
 
 const dt = new Date(2024, 11, 29);
+
+const jobRoleSpecification: JobRoleSpecification = {
+  jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details/Product-Manager_JR_14352",
+  jobRoleResponsibilities: "test responsibilities for pm",
+  jobRoleDescription: "test description for PM job role"
+}
 
 const openJobRoleResponse: JobRoleResponse = {
   jobRoleID: 1,
@@ -24,9 +31,7 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
-  jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details",
-  jobRoleResponsibilities: "responsibilities",
-  jobRoleDescription: "desc"
+  jobRoleSpecification: jobRoleSpecification
 }
 
 const mock = new MockAdapter(axios);
@@ -69,9 +74,7 @@ describe('getJobRoles', function () {
         expect(results[0].jobRoleLocation).to.deep.equal(jobRoleResponse.jobRoleLocation);
         expect(results[0].jobRoleName).to.deep.equal(jobRoleResponse.jobRoleName);
         expect(results[0].jobRoleCapability).to.deep.equal(jobRoleResponse.jobRoleCapability);
-        expect(results[0].jobRoleSpecUrl).to.deep.equal(jobRoleResponse.jobRoleSpecUrl);
-        expect(results[0].jobRoleResponsibilities).to.deep.equal(jobRoleResponse.jobRoleResponsibilities);
-        expect(results[0].jobRoleDescription).to.deep.equal(jobRoleResponse.jobRoleDescription);
+        expect(results[0].jobRoleSpecification).to.deep.equal(jobRoleResponse.jobRoleSpecification);
       })
 
     it('should throw Failed to get Job Role error when 500 error returned from axios', async () => {

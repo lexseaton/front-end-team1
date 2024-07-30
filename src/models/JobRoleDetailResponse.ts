@@ -1,3 +1,4 @@
+import { JobRoleSpecification } from "./JobRoleSpecification"
 import { Locations } from "./Locations"
 
 export type JobRoleDetailResponse = {
@@ -7,7 +8,5 @@ export type JobRoleDetailResponse = {
     jobRoleCapability: string,
     jobRoleBand: string,
     jobRoleClosingDate: Date
-    jobRoleSpecUrl: string,
-    jobRoleResponsibilities: string,
-    jobRoleDescription: string
+    jobRoleSpecification: JobRoleSpecification
 }

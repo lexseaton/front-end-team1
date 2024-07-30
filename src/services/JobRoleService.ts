@@ -20,7 +20,6 @@ export const getJobRoles = async function (): Promise<JobRoleResponse[]> {
 export const getJobRoleById = async function (id: string): Promise<JobRoleDetailResponse[]> {
     try {
         const response: AxiosResponse = await axios.get("http://localhost:8080/api/openJobRoles/" + id);
-
         return response.data;
     } catch (e) {
         throw new Error('Failed to get Job Role');

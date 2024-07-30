@@ -6,8 +6,15 @@ import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse
 import sinon from 'sinon';
 import { describe, it } from "node:test";
 import { Locations } from "../../../src/models/Locations";
+import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
 
 const dt = new Date(2024, 11, 29);
+
+const jobRoleSpecification: JobRoleSpecification = {
+  jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details/Product-Manager_JR_14352",
+  jobRoleResponsibilities: "test responsibilities for pm",
+  jobRoleDescription: "test description for PM job role"
+}
 
 const openJobRoleResponse: JobRoleResponse = {
   jobRoleID: 1,
@@ -15,7 +22,7 @@ const openJobRoleResponse: JobRoleResponse = {
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
-  jobRoleClosingDate: dt,
+  jobRoleClosingDate: dt
 }
 
 const jobRoleResponse: JobRoleDetailResponse = {
@@ -25,9 +32,7 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
-  jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details",
-  jobRoleResponsibilities: "responsibilities",
-  jobRoleDescription: "desc"
+  jobRoleSpecification: jobRoleSpecification
 }
 
 describe('JobRoleController', function () {
@@ -40,22 +45,15 @@ describe('getAllJobRoles', function () {
     
     const jobRoleList = [openJobRoleResponse];
 
-    // Stub the JobRoleService.getJobRoles method
     const stub = sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
-    // Mock req and res objects
     const req = {};
     const res = { render: sinon.spy() };
 
-    // Call the controller method
     await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-
-    // Assertions
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
 
-    
-    // Restore the stub
     stub.restore();
 
   });
@@ -75,7 +73,6 @@ describe('getAllJobRoles', function () {
     expect(res.render.calledWith('openJobRoleList.html')).to.be.true;
     expect(res.locals.errormessage).to.equal(errorMessage);
 
-    // Restore the stub
     stub.restore();
   });
 });
@@ -111,7 +108,6 @@ it('should render view with error message when error thrown', async () => {
   expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
   expect(res.locals.errormessage).to.equal(errorMessage);
 
-  // Restore the stub
   stub.restore();
 });
 
