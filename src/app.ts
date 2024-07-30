@@ -9,7 +9,6 @@ import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 
 const app = express();
-
 const env = nunjucks.configure('views', {
     autoescape: true,
     express: app
@@ -35,8 +34,6 @@ declare module "express-session" {
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
-
-sessionStorage.setItem("logged-in", "false");
 
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
