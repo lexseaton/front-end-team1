@@ -12,7 +12,7 @@ export const getLoginForm = async (req: express.Request, res: express.Response):
 export const postLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
         req.session.token = await getToken(req.body);
-        sessionStorage.setItem("logged-in", "true");
+        res.cookie("loggedIn", true);
         res.redirect('/homepage');
     } catch (error) {
         res.locals.errormessage = error.message;
@@ -24,10 +24,11 @@ export const logout = async (req: express.Request, res: express.Response): Promi
     console.log(req.session);
     try {
         req.session.destroy(() => {
+            res.cookie("loggedIn", false);
             res.redirect("/homepage");
         });
         req.session = null;
-        sessionStorage.setItem("logged-in", "false");
+        
     } catch (error) {
         res.locals.errormessage = error.message;
         res.redirect("/homepage");
