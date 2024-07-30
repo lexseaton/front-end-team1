@@ -1,20 +1,19 @@
 import { Builder, WebDriver } from 'selenium-webdriver';
-import webdriver from 'selenium-webdriver';
+import 'chromedriver'; // Ensure you have the correct driver installed and available
 import { expect } from 'chai';
-import * as chrome from 'selenium-webdriver/chrome';
+import 'mocha';
+import { viewJobRolePage } from './viewJobRolePage'; // Import the Page Object
 
 describe('Job Roles Test', function () {
-
     let driver: WebDriver;
+    let jobRolePage: viewJobRolePage;
 
     before(async function () {
         driver = new Builder()
             .forBrowser('chrome')
-            .setChromeOptions(new chrome.Options())
             .build();
-        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-        await driver.get(url);
-
+        jobRolePage = new viewJobRolePage(driver);
+        await jobRolePage.navigateTo();
     });
 
     after(async function () {
@@ -26,62 +25,36 @@ describe('Job Roles Test', function () {
     });
 
     it('Page should load and title text should display', async function () {
-        const title = await driver.findElement(webdriver.By.css('h1')).getText();
+        const title = await jobRolePage.getTitleText();
         expect(title).to.equal('Open Job Roles');
     });
 
     it('Job role table should populate', async function () {
-        const data = await driver.findElement(webdriver.By.css('td')).getText();
-
+        const data = await jobRolePage.getTableData();
         expect(data).to.not.equal(null);
     });
 
     it('Location data should only show valid locations', async function () {
         const names: string[] = ["BELFAST", "LONDON", "TORONTO", "BIRMINGHAM", "GDANSK"];
-
-        const table = await driver.findElement(webdriver.By.css('table'));
-
-        const rows = await table.findElements(webdriver.By.css('tr'));
+        const rows = await jobRolePage.getRows();
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
-            const cells = await row.findElements(webdriver.By.css('td'));
-            
-            if (cells.length > 1) {
-                const cell = cells[1];
-                const text = await cell.getText();
-                console.log(text);
-                expect(names.indexOf(text)).to.be.greaterThan(-1);
-            } else {
-                console.warn(`Row ${i} does not have enough cells:`, await row.getText());
-            }
+            const text = await jobRolePage.getCellText(row, 1);
+            console.log(text);
+            expect(names.indexOf(text)).to.be.greaterThan(-1);
         }
-      
     });
 
     it('Date fields should only hold data in a correct date format', async function () {
-        const table = await driver.findElement(webdriver.By.css('table'));
-
-        const rows = await table.findElements(webdriver.By.css('tr'));
-
-        //Regular expression to validate the format of the dates in the closing date field
+        const rows = await jobRolePage.getRows();
         const dateFormat = /^[A-Z][a-z]{2} [A-Z][a-z]{2} \d{2} \d{4}$/;
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
-            const cells = await row.findElements(webdriver.By.css('td'));
-            
-            if (cells.length > 4) {
-                const cell = cells[4];
-                const text = await cell.getText();
-                console.log(text);
-                expect(dateFormat.test(text)).to.be.true;
-            } else {
-                console.warn(`Row ${i} does not have enough cells:`, await row.getText());
-            }
+            const text = await jobRolePage.getCellText(row, 4);
+            console.log(text);
+            expect(dateFormat.test(text)).to.be.true;
         }
-
     });
-
-})
-
+});
