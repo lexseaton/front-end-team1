@@ -3,7 +3,6 @@ import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, postLoginForm } from "./controllers/AuthController";
-//import { getHomePage } from "./controllers/HomeController";
 
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
@@ -43,4 +42,7 @@ app.get('/homepage', getHomepage);
 
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
+app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
+
+>>>>>>>>> Temporary merge branch 2

@@ -8,35 +8,27 @@
 </head>
 
 <body>
-    {% include "heading.html" %}
-    <!-- <div><h1 class="login-header" id="login-header">Login</h1></div> -->
-
 
     {% if errormessage %}
     <h3> {{ errormessage }}</h3>
     {% endif %}
 
-    <div class="login-container-fluid">
-        <div id="bg-div" class="background-div">
-            <form class="form" action="/loginForm" method="post">
-                <h3 class="usernameHeader"><label for="Username">
-                        Username:
-                    </label></h3>
-                <input id="Username" name="Username" value="{{Username}}" type="text" required>
+    <form class="form" action="/loginForm" method="post">
+        <h3 class="usernameHeader"><label for="Username">
+            Username:
+        </label></h3>
+        <input id="Username" name="Username" value="{{Username}}" type="text" required>
 
-                <h3 class="passwordHeader"><label for="Password">
-                        Password:
-                    </label></h3>
-                <input id="Password" name="Password" value="{{Password}}" type="text" required>
+        <h3 class="passwordHeader"><label for="Password">
+            Password:
+        </label></h3>
+        <input id="Password" name="Password" value="{{Password}}" type="text" required>
 
-                <br><br>
+        <br><br>
 
-                <button class="loginButton" id="login">Login</button>
-            </form>
-        </div>
-    </div>
-    {% include "footer.html" %}
+        <button class="loginButton" id="login">Login</button>
+    </form>
+
 </body>
-
 
 </html>

@@ -1,6 +1,6 @@
-import { afterEach, describe, it } from "node:test";
+import { describe, it } from "node:test";
 import * as AuthController from "../../../src/controllers/AuthController";
-import * as AuthService from "../../services/AuthService";
+import * as AuthService from "../../../src/services/AuthService";
 import { expect } from 'chai';
 
 import sinon from 'sinon';
@@ -16,16 +16,14 @@ declare module "express-session" {
   }
 
 describe('LoginController', function () {
-
-    afterEach(() => {
-        sinon.restore();
-    });
-
     //Tests if login for appears
     describe('getLoginForm', function () {
+        after (() => {
+            sinon.reset();
+        });
         it('should render the login form', async () => {
 
-            sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
+            const stub = sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
 
             const req = { session: { token: "" } };
             const res = { render: sinon.spy() };
@@ -34,13 +32,15 @@ describe('LoginController', function () {
             await AuthController.getLoginForm(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
+            
+            stub.restore();
         })
     })
 
     // Test successful login
     it('should login successfully with correct credentials', async () => {
         // Mock the getToken function to return a resolved promise with loginResponse
-        sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
+        const stub = sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
 
         const req = { body: { Username: "admin", Password: "admin" }, session: { token: "" } };
         const res = { redirect: sinon.spy(), render: sinon.spy() };
@@ -52,12 +52,14 @@ describe('LoginController', function () {
         // Verify that res.redirect was called once with the correct arguments
         expect(JWTTOKEN == req.session.token).to.be.true;
         expect(res.redirect.calledOnce).to.be.true;
+
+        stub.restore();
     });
 
     it('should fail login with incorrect credentials', async () => {
-        const errormessage: string = "Invlid Credentials";
+        const errormessage: string = "Invalid Credentials";
         // Mock the getToken function to return a rejected promise
-        sinon.stub(AuthService, 'getToken').rejects(new Error(errormessage));
+        const stub = sinon.stub(AuthService, 'getToken').rejects(new Error(errormessage));
 
         const req = { body: { Username: "admin", Password: "wrongpassword" } };
         const res = { render: sinon.spy(), locals: { errormessage: ''} };
@@ -69,7 +71,7 @@ describe('LoginController', function () {
 
         expect(res.render.calledOnce).to.be.true;
         expect(res.locals.errormessage).to.equal(errormessage);
-
+        stub.restore();
     });
 
 });
