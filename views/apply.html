@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "links.html" %}
+    <title>Job Role Application</title>
+</head>
+<body class="body">
+    {% include "heading.html" %}
+    <form action="/upload">
+        <h1>{{ openJobRole.jobRoleName }}</h1>
+        <h2>{{ openJobRole.jobRoleLocation }}</h2>
+        <h2>{{ openJobRole.jobRoleCapability }}</h2>
+        <h2>{{ openJobRole.jobRoleBand }}</h2>
+        <h2>{{ openJobRole.jobRoleClosingDate | date }}</h2>
+        <input type="file" id="upload" name="upload" accept="application/pdf, application/msword" />
+    </form>
+    {% include "footer.html" %}
+</body>
+</html>

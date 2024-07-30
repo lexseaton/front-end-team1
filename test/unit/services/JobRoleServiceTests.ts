@@ -12,7 +12,8 @@ const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
   jobRoleBand: "Trainee",
-  jobRoleClosingDate: dt
+  jobRoleClosingDate: dt,
+  numOpenPos: 0
 }
 const mock = new MockAdapter(axios);
 

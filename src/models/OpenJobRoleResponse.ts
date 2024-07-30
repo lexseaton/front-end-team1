@@ -5,5 +5,6 @@ export type OpenJobRoleResponse = {
     jobRoleLocation: Locations,
     jobRoleCapability: string,
     jobRoleBand: string,
-    jobRoleClosingDate: Date
+    jobRoleClosingDate: Date,
+    numOpenPos: number
 }

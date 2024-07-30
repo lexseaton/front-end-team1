@@ -6,6 +6,7 @@ import session from "express-session";
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
+import { getApplicationPage } from "./controllers/ApplicationsController";
 
 const app = express();
 
@@ -37,4 +38,5 @@ app.listen(3000, () => {
 
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
+app.get('/openJobRoles/apply/:jobRoleName', getApplicationPage);
 
