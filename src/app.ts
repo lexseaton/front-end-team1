@@ -2,7 +2,7 @@ import express from "express";
 import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
@@ -36,8 +36,11 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
+sessionStorage.setItem("logged-in", "false");
+
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
+app.get('/logout', logout);
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
 

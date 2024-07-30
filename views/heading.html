@@ -1,3 +1,6 @@
+<script>
+    var loggedIn = sessionStorage.getItem("logged-in");
+</script>
 <nav class="navbar">
     <a href="#home">
         <img src="./images/kainosLogo2.png" alt="kainosLogo" class="logo" >
@@ -12,7 +15,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="http://localhost:3000/homepage"><span class= "glyphicon glyphicon-home"></span>Home</a>
+            {% if loggedIn == "false" %}
             <a class="navbar-brand" href="http://localhost:3000/LoginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+            {% endif %}
             <a class="navbar-brand" href="http://localhost:3000/openJobRoles"><span class="glyphicon glyphicon-list-alt"></span> Open Job Roles<a>
 
         </div>
