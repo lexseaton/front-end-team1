@@ -12,6 +12,8 @@ describe('Job Roles Test', function () {
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options())
             .build();
+        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
+        await driver.get(url);
 
     });
 
@@ -24,25 +26,17 @@ describe('Job Roles Test', function () {
     });
 
     it('Page should load and title text should display', async function () {
-        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-        await driver.get(url);
         const title = await driver.findElement(webdriver.By.css('h1')).getText();
-
         expect(title).to.equal('Open Job Roles');
     });
 
     it('Job role table should populate', async function () {
-        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-        await driver.get(url);
         const data = await driver.findElement(webdriver.By.css('td')).getText();
 
         expect(data).to.not.equal(null);
     });
 
     it('Location data should only show valid locations', async function () {
-        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-        await driver.get(url);
-
         const names: string[] = ["BELFAST", "LONDON", "TORONTO", "BIRMINGHAM", "GDANSK"];
 
         const table = await driver.findElement(webdriver.By.css('table'));
@@ -53,7 +47,6 @@ describe('Job Roles Test', function () {
             const row = rows[i];
             const cells = await row.findElements(webdriver.By.css('td'));
             
-            // Ensure the row has enough cells
             if (cells.length > 1) {
                 const cell = cells[1];
                 const text = await cell.getText();
@@ -67,9 +60,6 @@ describe('Job Roles Test', function () {
     });
 
     it('Date fields should only hold data in a correct date format', async function () {
-        const url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-        await driver.get(url);
-
         const table = await driver.findElement(webdriver.By.css('table'));
 
         const rows = await table.findElements(webdriver.By.css('tr'));
@@ -81,7 +71,6 @@ describe('Job Roles Test', function () {
             const row = rows[i];
             const cells = await row.findElements(webdriver.By.css('td'));
             
-            // Ensure the row has enough cells
             if (cells.length > 4) {
                 const cell = cells[4];
                 const text = await cell.getText();
