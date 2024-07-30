@@ -1,7 +1,7 @@
 import { Locations } from "./Locations"
 
 export type JobRoleResponse = {
-    jobRoleID: Number,
+    jobRoleID: number,
     jobRoleName: string,
     jobRoleLocation: Locations,
     jobRoleCapability: string,

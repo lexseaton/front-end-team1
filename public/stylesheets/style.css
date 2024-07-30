@@ -134,3 +134,9 @@ table tr:hover {
     background-color: #ffff;
 }
 
+li {
+    display: list-item;
+    background-color: #f2f2f2;
+    padding: 20px 10px;
+    margin: 5px;
+}

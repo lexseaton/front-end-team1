@@ -17,7 +17,7 @@ export const getJobRoles = async function (): Promise<OpenJobRoleResponse[]> {
 }
 
 // new method to get jobRoleById (need to create a new model to pass into Promise?)
-export const getJobRoleById = async function (id: String): Promise<JobRoleResponse[]> {
+export const getJobRoleById = async function (id: string): Promise<JobRoleResponse[]> {
     try {
         const response: AxiosResponse = await axios.get("http://localhost:8080/api/openJobRoles/" + id);
 
