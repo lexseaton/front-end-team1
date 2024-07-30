@@ -11,14 +11,14 @@
     <h1 id="heading1">{{ openJobRole.jobRoleName }}</h1>
 
     <ul id="list" class="li">
-        <li id="name">Job Role Name: {{ openJobRole.jobRoleName }}</li>
-        <li id="desc">Job Description: {{ openJobRole.jobRoleDescription }}</li>
-        <li id="resp">Job Responsibilities: {{ openJobRole.jobRoleResponsibilities }}</li>
-        <li id="url"><a href="{{ openJobRole.jobRoleSpecUrl }}">Job Specification</a></li>
-        <li id="location">Job Location: {{ openJobRole.jobRoleLocation }}</li>
-        <li id="cap">Job Capability: {{ openJobRole.jobRoleCapability }}</li>
-        <li id="band">Job Band: {{ openJobRole.jobRoleBand }}</li>
-        <li id="dt">Job Closing Date: {{ openJobRole.jobRoleClosingDate | date }}</li>
+        <li id="name"><b>Job Role Name:</b> {{ openJobRole.jobRoleName }}</li>
+        <li id="desc"><b>Job Description:</b> {{ openJobRole.jobRoleDescription }}</li>
+        <li id="resp"><b>Job Responsibilities:</b> {{ openJobRole.jobRoleResponsibilities }}</li>
+        <li id="url"><a href="{{ openJobRole.jobRoleSpecUrl }}"><b>Job Specification Link</b> </a></li>
+        <li id="location"><b>Job Location:</b> {{ openJobRole.jobRoleLocation }}</li>
+        <li id="cap"><b>Job Capability:</b> {{ openJobRole.jobRoleCapability }}</li>
+        <li id="band"><b>Job Band:</b> {{ openJobRole.jobRoleBand }}</li>
+        <li id="dt"><b>Job Closing Date:</b> {{ openJobRole.jobRoleClosingDate | date }}</li>
     </ul>
     {% include "footer.html" %}
 </body>
