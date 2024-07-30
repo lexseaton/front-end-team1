@@ -45,4 +45,3 @@ app.post('/loginForm', postLoginForm);
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
 
->>>>>>>>> Temporary merge branch 2

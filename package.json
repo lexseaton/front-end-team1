@@ -31,7 +31,6 @@
     "@types/express-serve-static-core": "^4.19.5",
     "@types/express-session": "^1.18.0",
     "@types/mocha": "^10.0.6",
-<<<<<<<<< Temporary merge branch 1
     "@types/node": "^20.12.7",
     "@types/nunjucks": "^3.2.6",
     "@types/selenium-webdriver": "^4.1.22",
@@ -42,7 +41,6 @@
     "mocha": "^10.2.0",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
-=========
     "@types/node": "^20.11.30",
     "@types/nunjucks": "^3.2.6",
     "@types/sinon": "^17.0.3",
@@ -52,7 +50,6 @@
     "eslint": "^8.57.0",
     "mocha": "^10.7.0",
     "nodemon": "^3.1.0",
->>>>>>>>> Temporary merge branch 2
     "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
