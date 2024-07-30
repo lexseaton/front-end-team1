@@ -3,6 +3,8 @@ import { expect } from 'chai';
 import { LoginTestPage } from './LoginTestPage';
 import * as chrome from 'selenium-webdriver/chrome';
 
+const URL: string = process.env.URL || 'http://localhost:3000/loginForm';
+
 describe('Login Test', function () {
     let driver: WebDriver;
     let loginPage: LoginTestPage;
@@ -17,8 +19,7 @@ describe('Login Test', function () {
     });
 
     it('Should login successfully', async function () {
-        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-        await loginPage.open(url);  
+        await loginPage.open(URL);  
 
         await loginPage.enterUsername('admin'); 
         await loginPage.enterPassword('admin');  
@@ -29,8 +30,7 @@ describe('Login Test', function () {
     });
   
     it('Should login successfully with different details', async function () {
-        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-        await loginPage.open(url); 
+        await loginPage.open(URL); 
 
         await loginPage.enterUsername('user');  
         await loginPage.enterPassword('user');  
@@ -41,8 +41,7 @@ describe('Login Test', function () {
     });
 
     it('Login should fail', async function () {
-        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-        await loginPage.open(url);  
+        await loginPage.open(URL);  
 
         await loginPage.enterInvalidUsername('abcdefghijklmnopqurstuvwxyz');
         await loginPage.enterInvalidPassword('abcdefghijklmnopqurstuvwxyz');
@@ -65,9 +64,9 @@ describe('Login Test', function () {
         const errormessage3 = await loginPage.getErrorMessageText();
         expect(errormessage3).to.equal('Username or Password Incorrect');
     });
+});    
     // it('user should log out successfully', async function () {
-    //     const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/loginForm';
-    //     await loginPage.open(url);
+    //     await loginPage.open(URL);
 
     //     await loginPage.enterUsername('admin');  // Enter valid username
     //     await loginPage.enterPassword('admin');  // Enter valid password
@@ -79,6 +78,5 @@ describe('Login Test', function () {
         
     // });
 
-});
 
 

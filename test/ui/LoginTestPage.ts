@@ -2,9 +2,11 @@ import { By, WebDriver, until, Builder } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import {strict as assert}from 'assert';
 
+
+
 export class LoginTestPage {
     private driver: WebDriver;
-    
+
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
@@ -48,6 +50,7 @@ export class LoginTestPage {
 
     async clickLogin(): Promise<void> {
         const element = await this.driver.findElement(this.loginButton);
+        
         await element.click();
     }
 
