@@ -11,22 +11,27 @@
     {% if errormessage %}
     <h3> {{ errormessage }}</h3>
     {% endif %}
-{% include "heading.html" %}
-    <form class="form" action="/loginForm" method="post">
-        <h3 class="usernameHeader"><label for="Username">
-            Username:
-        </label></h3>
-        <input id="Username" name="Username" value="{{Username}}" type="text" required>
 
-        <h3 class="passwordHeader"><label for="Password">
-            Password:
-        </label></h3>
-        <input id="Password" name="Password" value="{{Password}}" type="text" required>
+    <div id="heading-link-id">{% include "heading.html" %}</div>
+    <div class="login-div">
+        <div class="background-div">
+            <form class="form" action="/loginForm" method="post">
+                <h3 class="usernameHeader"><label for="Username">
+                        Username:
+                    </label></h3>
+                <input id="Username" name="Username" value="{{Username}}" type="text" required>
 
-        <br><br>
+                <h3 class="passwordHeader"><label for="Password">
+                        Password:
+                    </label></h3>
+                <input id="Password" name="Password" value="{{Password}}" type="text" required>
 
-        <button class="loginButton" id="login">Login</button>
-    </form>
+                <br><br>
+
+                <button class="loginButton" id="login">Login</button>
+            </form>
+        </div>
+    </div>
     {% include "footer.html" %}
 
 </body>
