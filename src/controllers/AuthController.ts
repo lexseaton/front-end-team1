@@ -20,18 +20,11 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
     }
 }
 
-export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
-    console.log(req.session);
-    try {
-        req.session.destroy(() => {
-            res.cookie("loggedIn", false);
-            res.redirect("/homepage");
+    export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).send('Failed to log out');
+            }
+            res.redirect('/loginForm.html');
         });
-        req.session = null;
-        
-    } catch (error) {
-        res.locals.errormessage = error.message;
-        res.redirect("/homepage");
     }
-    console.log(req.session);
-}
