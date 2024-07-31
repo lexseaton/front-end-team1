@@ -7,7 +7,7 @@ import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 import { allowRoles } from "./middleware/AuthMiddleware";
-import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { UserRole } from "./models/JwtToken";
 
 const app = express();
@@ -39,9 +39,9 @@ app.listen(3000, () => {
 });
 
 app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
-app.get('/homepage',getHomepage);
+app.get('/homepage',allowRoles([UserRole.Admin, UserRole.User]), getHomepage);
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
-//app.get('/logout', logout);
+app.get('/logout', logout);
 
 
