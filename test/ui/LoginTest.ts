@@ -34,10 +34,10 @@ describe('Login Test', function () {
     // });
     
     it('Should logout successfully via admin', async function () {
-        await loginPage.testLogoutSuccess('admin', 'admin', 'Home Page', '');
+        await loginPage.testLogoutSuccess('admin', 'admin', 'Home Page', 'login-div');
     });
 
     it('Should logout successfully via user', async function () {
-        await loginPage.testLogoutSuccess('user', 'user', 'Home Page', '');
+        await loginPage.testLogoutSuccess('user', 'user', 'Home Page', 'login-div');
     });
 });

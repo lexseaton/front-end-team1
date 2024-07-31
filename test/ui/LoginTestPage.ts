@@ -12,7 +12,7 @@ export class LoginTestPage {
     private loginButton: By = By.id('login');
     private logoutButton: By = By.id('logoutButton');
     private loggedToHomepageSuccessfully: By = By.id("home-page-title");
-    private loggedOutSuccessfully: By = By.id("login page");
+    private loggedOutSuccessfully: By = By.className("login-div");
     private errorMessage: By = By.id('error-message');
 
     constructor(driver: WebDriver) {
