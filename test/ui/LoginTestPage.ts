@@ -1,10 +1,9 @@
 import { By, WebDriver } from 'selenium-webdriver';
 import { expect } from 'chai';
-import { driverBuilder } from './driverBuilder'; // Adjust the path as necessary
+import { driverBuilder } from './driverBuilder';
 
 export class LoginTestPage {
     private driver: WebDriver;
-
     static URL: string = 'http://localhost:3000/loginForm';
 
     private usernameField: By = By.id('Username');
@@ -23,6 +22,7 @@ export class LoginTestPage {
         const driver = await driverBuilder.driverBefore();
         return new LoginTestPage(driver);
     }
+
     async open(url: string): Promise<void> {
         await this.driver.get(url);
     }
@@ -41,6 +41,7 @@ export class LoginTestPage {
         const element = await this.driver.findElement(this.loginButton);
         await element.click();
     }
+
     async clickLogout(): Promise<void> {
         const element = await this.driver.findElement(this.logoutButton);
         await element.click();
@@ -50,6 +51,7 @@ export class LoginTestPage {
         const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
         return await element.getText();
     }
+
     async getloggedOutSuccessfully(): Promise<string> {
         const element = await this.driver.findElement(this.loggedOutSuccessfully);
         return await element.getText();
@@ -60,41 +62,22 @@ export class LoginTestPage {
         return await element.getText();
     }
 
-    async enterInvalidUsername(username: string): Promise<void> {
-        const element = await this.driver.findElement(this.usernameField);
-        await element.sendKeys(username);
-    }
-
-    async enterInvalidPassword(password: string): Promise<void> {
-        const element = await this.driver.findElement(this.passwordField);
-        await element.sendKeys(password);
-    }
-
-    async testLoginSuccess(username: string, password: string, expectedText: string): Promise<void> {
+    async testLoginLogoutFailPass(username: string, password: string, expectedText: string, testType: 'success' | 'failure' | 'logout'): Promise<void> {
         await this.open(LoginTestPage.URL);
         await this.enterUsername(username);
         await this.enterPassword(password);
         await this.clickLogin();
-        const actualText = await this.getLoggedToHomepageSuccessfully();
-        expect(actualText).to.equal(expectedText);
-    }
 
-    async testLoginFailure(username: string, password: string, expectedError: string): Promise<void> {
-        await this.open(LoginTestPage.URL);
-        await this.enterInvalidUsername(username);
-        await this.enterInvalidPassword(password);
-        await this.clickLogin();
-        const errorMessage = await this.getErrorMessageText();
-        expect(errorMessage).to.equal(expectedError);
-    }
-    async testLogoutSuccess(username: string, password: string, expectedText: string): Promise<void> {
-        await this.open(LoginTestPage.URL);
-        await this.enterInvalidUsername(username);
-        await this.enterPassword(password);
-        await this.clickLogin();
-        await this.clickLogout();
-        const actualText = await this.getloggedOutSuccessfully();
-        expect(actualText).to.equal(expectedText);
+        if (testType === 'success') {
+            const actualText = await this.getLoggedToHomepageSuccessfully();
+            expect(actualText).to.equal(expectedText);
+        } else if (testType === 'failure') {
+            const errorMessage = await this.getErrorMessageText();
+            expect(errorMessage).to.equal(expectedText);
+        } else if (testType === 'logout') {
+            await this.clickLogout();
+            const actualText = await this.getloggedOutSuccessfully();
+            expect(actualText).to.equal(expectedText);
+        }
     }
 }
-
