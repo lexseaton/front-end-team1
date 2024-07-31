@@ -18,6 +18,10 @@ const openJobRoleResponse: OpenJobRoleResponse = {
 
 describe('JobRoleController', function () {
 describe('getAllJobRoles', function () {
+  after (() => {
+    sinon.reset();
+  });
+
   it('should render view with job roles when job roles returned', async () => {
     
     const jobRoleList = [openJobRoleResponse];
