@@ -12,7 +12,6 @@ export const getLoginForm = async (req: express.Request, res: express.Response):
 export const postLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
         req.session.token = await getToken(req.body);
-        res.cookie("loggedIn", true);
         res.redirect('/homepage');
     } catch (error) {
         res.locals.errormessage = error.message;
@@ -25,7 +24,6 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
             if (err) {
                 return res.status(500).send('Failed to log out');
             }
-            res.cookie("loggedIn", false);
             res.redirect('/loginForm');
         });
     }
