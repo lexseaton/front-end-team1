@@ -39,7 +39,7 @@ app.listen(3000, () => {
 });
 
 app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
-app.get('/homepage',allowRoles([UserRole.Admin, UserRole.User]), getHomepage);
+app.get('/homepage', allowRoles([UserRole.Admin, UserRole.User]), getHomepage);
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
