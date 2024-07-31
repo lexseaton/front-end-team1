@@ -12,7 +12,7 @@ export class LoginTestPage {
     private loginButton: By = By.id('login');
     private logoutButton: By = By.id('logoutButton');
     private loggedToHomepageSuccessfully: By = By.id("home-page-title");
-    private loggedOutSuccessfully: By = By.className("login-div");
+    private loggedOutSuccessfully: By = By.id("loginFrom");
     private errorMessage: By = By.id('error-message');
 
     constructor(driver: WebDriver) {
@@ -75,7 +75,6 @@ export class LoginTestPage {
         await element.sendKeys(password);
     }
 
-    // Test methods
     async testLoginSuccess(username: string, password: string, expectedText: string): Promise<void> {
         await this.open(LoginTestPage.URL);
         await this.enterUsername(username);
@@ -93,9 +92,9 @@ export class LoginTestPage {
         const errorMessage = await this.getErrorMessageText();
         expect(errorMessage).to.equal(expectedError);
     }
-    async testLogoutSuccess(url: string, username: string, password: string, expectedText: string): Promise<void> {
-        await this.open(url);
-        await this.enterUsername(username);
+    async testLogoutSuccess(username: string, password: string, expectedText: string): Promise<void> {
+        await this.open(LoginTestPage.URL);
+        await this.enterInvalidUsername(username);
         await this.enterPassword(password);
         await this.clickLogin();
         await this.clickLogout();
