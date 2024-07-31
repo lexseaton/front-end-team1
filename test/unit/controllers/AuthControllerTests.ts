@@ -74,5 +74,16 @@ describe('LoginController', function () {
         stub.restore();
     });
 
+    it('should log user out when logout called', async () => {
+        const req = {session: { token: JWTTOKEN }};
+        const res = { redirect: sinon.spy() };
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await AuthController.logout(req as any, res as any);
+
+        expect(res.redirect.calledOnce).to.be.true;
+        expect(req.session == null).to.be.true;
+    });
+
 });
 
