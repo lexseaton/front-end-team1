@@ -13,8 +13,7 @@
             </button>
             <a class="navbar-brand" href="http://localhost:3000/homepage"><span
                     class="glyphicon glyphicon-home"></span>Home</a>
-            <a class="navbar-brand" href="http://localhost:3000/LoginForm"><span
-                    class="glyphicon glyphicon-log-in"></span> Login</a>
+            <a class="navbar-brand" id="loginButton"></a>
             <a class="navbar-brand" href="http://localhost:3000/openJobRoles"><span
                     class="glyphicon glyphicon-list-alt"></span> Open Job Roles<a>
 
@@ -24,3 +23,16 @@
         </div>
     </div>
 </nav>
+
+<script>
+    function setButton() {
+        const isLoggedIn = document.cookie.split("=")[1];
+        console.log(isLoggedIn);
+        if (isLoggedIn == "false"){
+            document.getElementById("loginButton").outerHTML = '<a class="navbar-brand" id="loginButton" href="http://localhost:3000/LoginForm"><span class="glyphicon glyphicon-log-in"></span>Login</a>'
+        }else {
+            document.getElementById("loginButton").outerHTML = '<a class="navbar-brand" id="logoutButton" href="http://localhost:3000/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a>'
+        }
+    }
+    setButton();
+</script>
