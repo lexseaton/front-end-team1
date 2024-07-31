@@ -20,12 +20,12 @@ export class LoginTestPage {
     }
 
     static async initialize(): Promise<LoginTestPage> {
-        const driver = await driverBuilder.before();
+        const driver = await driverBuilder.driverBefore();
         return new LoginTestPage(driver);
     }
 
     static async closeDriver(driver: WebDriver): Promise<void> {
-        await driverBuilder.after();
+        await driverBuilder.driverAfter();
     }
 
     async open(url: string): Promise<void> {
