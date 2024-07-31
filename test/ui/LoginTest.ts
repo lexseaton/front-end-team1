@@ -1,5 +1,6 @@
 import { WebDriver } from 'selenium-webdriver';
 import {LoginTestPage} from './LoginTestPage'; 
+import { driverBuilder } from './driverBuilder';
 
 describe('Login Test', function () {
     let driver: WebDriver;
@@ -11,7 +12,7 @@ describe('Login Test', function () {
     });
 
     after(async function () {
-        await LoginTestPage.closeDriver(driver);
+        await driverBuilder.driverAfter();
     });
 
     it('Should login successfully via admin', async function () {

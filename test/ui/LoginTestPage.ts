@@ -23,11 +23,6 @@ export class LoginTestPage {
         const driver = await driverBuilder.driverBefore();
         return new LoginTestPage(driver);
     }
-
-    static async closeDriver(driver: WebDriver): Promise<void> {
-        await driverBuilder.driverAfter();
-    }
-
     async open(url: string): Promise<void> {
         await this.driver.get(url);
     }
