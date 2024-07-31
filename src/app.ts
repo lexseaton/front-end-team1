@@ -13,11 +13,9 @@ const env = nunjucks.configure('views', {
     express: app
 });
 
-
 env.addFilter('date', dateFilter);
 app.use(express.static('public'));
 app.set('view engine', 'html');
-
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
