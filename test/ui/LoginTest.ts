@@ -1,14 +1,11 @@
-import { WebDriver } from 'selenium-webdriver';
 import {LoginTestPage} from './LoginTestPage'; 
 import { driverBuilder } from './driverBuilder';
 
 describe('Login Test', function () {
-    let driver: WebDriver;
     let loginPage: LoginTestPage;
 
     before(async function () {
         loginPage = await LoginTestPage.initialize();
-        driver = loginPage['driver'];
     });
 
     after(async function () {
