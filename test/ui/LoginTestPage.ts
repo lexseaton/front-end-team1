@@ -5,6 +5,8 @@ import { driverBuilder } from './driverBuilder'; // Adjust the path as necessary
 export class LoginTestPage {
     private driver: WebDriver;
 
+    static URL: string = 'http://localhost:3000/loginForm';
+
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
@@ -68,8 +70,8 @@ export class LoginTestPage {
     }
 
     // Test methods
-    async testLoginSuccess(url: string, username: string, password: string, expectedText: string): Promise<void> {
-        await this.open(url);
+    async testLoginSuccess(username: string, password: string, expectedText: string): Promise<void> {
+        await this.open(LoginTestPage.URL);
         await this.enterUsername(username);
         await this.enterPassword(password);
         await this.clickLogin();
@@ -77,8 +79,8 @@ export class LoginTestPage {
         expect(actualText).to.equal(expectedText);
     }
 
-    async testLoginFailure(url: string, username: string, password: string, expectedError: string): Promise<void> {
-        await this.open(url);
+    async testLoginFailure(username: string, password: string, expectedError: string): Promise<void> {
+        await this.open(LoginTestPage.URL);
         await this.enterInvalidUsername(username);
         await this.enterInvalidPassword(password);
         await this.clickLogin();
