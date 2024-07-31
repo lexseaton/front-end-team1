@@ -6,6 +6,9 @@ import session from "express-session";
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
+import { allowRoles } from "./middleware/AuthMiddleware";
+import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { UserRole } from "./models/JwtToken";
 
 const app = express();
 
@@ -35,6 +38,8 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
-app.get('/openJobRoles', getAllJobRoles);
-app.get('/homepage', getHomepage);
+app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
+app.get('/homepage',getHomepage);
+app.get('loginForm',getLoginForm);
+app.post('/loginForm',postLoginForm);
 
