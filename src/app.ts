@@ -38,8 +38,10 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
-app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
+app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
 app.get('/homepage',getHomepage);
-app.get('loginForm',getLoginForm);
-app.post('/loginForm',postLoginForm);
+app.get('/loginForm', getLoginForm);
+app.post('/loginForm', postLoginForm);
+//app.get('/logout', logout);
+
 
