@@ -9,7 +9,6 @@ export const URL: string = "/api/openJobRoles/";
 export const getJobRoles = async function (): Promise<OpenJobRoleResponse[]> {
     try {
         const response: AxiosResponse = await axios.get(URL);
-        console.log("base url JobService= " + axios.defaults.baseURL);
         return response.data;
     } catch (e) {
         throw new Error('Failed to get Job Roles');
