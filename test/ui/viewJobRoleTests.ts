@@ -8,11 +8,11 @@ import { driverBuilder } from './driverBuilder';
 describe('Job Roles Test', function () {
     let driver: WebDriver;
     let jobRolePage: viewJobRolePage;
-
+    
     before(async function () {
-        driver = await driverBuilder.driverBefore();
-        jobRolePage = new viewJobRolePage(driver);
-        await jobRolePage.navigateTo();
+         driver = await driverBuilder.driverBefore();
+         jobRolePage = new viewJobRolePage(driver);
+         await jobRolePage.navigateTo();
     });
 
     after(async function () {
@@ -36,7 +36,6 @@ describe('Job Roles Test', function () {
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             const text = await jobRolePage.getCellText(row, 1);
-            console.log(text);
             expect(names.indexOf(text)).to.be.greaterThan(-1);
         }
     });
@@ -48,7 +47,6 @@ describe('Job Roles Test', function () {
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             const text = await jobRolePage.getCellText(row, 4);
-            console.log(text);
             expect(dateFormat.test(text)).to.be.true;
         }
     });
