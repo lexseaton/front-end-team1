@@ -10,7 +10,9 @@ export class LoginTestPage {
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
+    private logoutButton: By = By.id('logoutButton');
     private loggedToHomepageSuccessfully: By = By.id("home-page-title");
+    private loggedOutSuccessfully: By = By.id("login page");
     private errorMessage: By = By.id('error-message');
 
     constructor(driver: WebDriver) {
@@ -44,13 +46,17 @@ export class LoginTestPage {
         const element = await this.driver.findElement(this.loginButton);
         await element.click();
     }
-    // async clickLogout(): Promise<void> {
-    //     const element = await this.driver.findElement(this.logoutButton);
-    //     await element.click();
-    // }
+    async clickLogout(): Promise<void> {
+        const element = await this.driver.findElement(this.logoutButton);
+        await element.click();
+    }
 
     async getLoggedToHomepageSuccessfully(): Promise<string> {
         const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
+        return await element.getText();
+    }
+    async getloggedOutSuccessfully(): Promise<string> {
+        const element = await this.driver.findElement(this.loggedOutSuccessfully);
         return await element.getText();
     }
 
@@ -87,14 +93,14 @@ export class LoginTestPage {
         const errorMessage = await this.getErrorMessageText();
         expect(errorMessage).to.equal(expectedError);
     }
-    // async testLogoutSuccess(url: string, username: string, password: string, expectedText: string): Promise<void> {
-    //     await this.open(url);
-    //     await this.enterUsername(username);
-    //     await this.enterPassword(password);
-    //     await this.clickLogin();
-    //     await this.clickLogout();
-    //     const actualText = await this.getSuccessMessageText();
-    //     expect(actualText).to.equal(expectedText);
-    // }
+    async testLogoutSuccess(url: string, username: string, password: string, expectedText: string): Promise<void> {
+        await this.open(url);
+        await this.enterUsername(username);
+        await this.enterPassword(password);
+        await this.clickLogin();
+        await this.clickLogout();
+        const actualText = await this.getloggedOutSuccessfully();
+        expect(actualText).to.equal(expectedText);
+    }
 }
 
