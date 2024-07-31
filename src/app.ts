@@ -38,6 +38,9 @@ app.listen(3000, () => {
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
 
+app.get('/', (req: express.Request, res: express.Response) => {
+  res.redirect("/loginForm");
+});
 
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
