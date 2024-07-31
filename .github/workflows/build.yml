@@ -23,7 +23,7 @@ jobs:
           node-version: 20.14.0
 
       - name: Run build
-        run: npm install
+        run: npm ci
 
       - name: Run test
         run: npm test
