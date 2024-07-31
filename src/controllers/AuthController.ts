@@ -26,6 +26,6 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
                 return res.status(500).send('Failed to log out');
             }
             res.cookie("loggedIn", false);
-            res.redirect('/homepage');
+            res.redirect('/loginForm');
         });
     }
