@@ -2,40 +2,37 @@
 <html lang="en">
 
 <head>
-    {% include "links.html" %}
+    {% include "loginLinks.html" %}
     <title class="'title" id="title">Login</title>
- 
+
 </head>
 
 <body>
-    {% include "heading.html" %}
-    <h1>Login</h1>
-
     {% if errormessage %}
         <h3 id="error-message"> {{ errormessage }}</h3>
     {% endif %}
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-8 text-center">
-                <div class="col-md-8">
-                    <div class="card" >
-                        <div class="card-body">
-                            <form class="form" action="/loginForm" method="post">
-                                <h3 class="usernameHeader"><label for="Username">
-                                    Username:
-                                    </label></h3>
-                                <input id="Username" name="Username" value="{{Username}}" type="text" required>
+    <!-- <div id="heading-link-id">{% include "heading.html" %}</div> -->
+    <div class="login-div">
+        <div class="background-div">
+            <form class="form" action="/loginForm" method="post">
+                <h3 class="usernameHeader"><label for="Username">
+                        Username:
+                    </label></h3>
+                <input id="Username" name="Username" value="{{Username}}" type="text" required>
 
-                                <h3 class="passwordHeader"><label for="Password">
-                                    Password:
-                                    </label></h3>
-                                <input id="Password" name="Password" value="{{Password}}" type="text" required>
+                <h3 class="passwordHeader"><label for="Password">
+                        Password:
+                    </label></h3>
+                <input id="Password" name="Password" value="{{Password}}" type="text" required>
 
-                                <br><br>
+                <br><br>
 
-                                <button class="loginButton" id="login">Login</button>
-                            </form>
+                <button class="loginButton" id="login">Login</button>
+            </form>
+        </div>
+    </div>
+    {% include "footer.html" %}
 
                         </div>
                     </div>
