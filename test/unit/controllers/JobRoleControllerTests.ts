@@ -64,6 +64,6 @@ describe('getAllJobRoles', function () {
     // Restore the stub
     stub.restore();
   });
-
+  
 });
 })
