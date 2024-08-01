@@ -7,7 +7,6 @@ try {
     const response: AxiosResponse = await requestInstance.post("/api/auth/login", loginRequest);
     return response.data;
 } catch (e) {
-    console.log(e);
     throw new Error(e.response.data);
 }
 }
