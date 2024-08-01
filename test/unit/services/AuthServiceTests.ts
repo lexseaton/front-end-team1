@@ -22,10 +22,8 @@ describe("getToken", function () {
         mock.onPost("/api/auth/login", data).reply(200, JWTTOKEN);
 
         const result = await getToken(data);
-
         const decodedToken = jwtDecode(result);
-
-
+        
         expect(result == JWTTOKEN).to.be.true;
         expect(decodedToken.iss == 'team1-api').to.be.true;
         expect(decodedToken.sub == 'admin').to.be.true;
