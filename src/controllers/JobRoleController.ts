@@ -1,7 +1,5 @@
 import express from "express";
 import { getSingleJobRole, getJobRoles } from "../services/JobRoleService";
-import { JwtToken } from "../models/JwtToken";
-
 
 export const getAllJobRoles = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
