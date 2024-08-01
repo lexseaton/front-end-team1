@@ -41,6 +41,7 @@ body {
     padding: 0;
     min-height: 100vh;
     color: rgb(80, 93, 164);
+    padding-bottom: 160px;
     display: flex;
     flex-direction: column;
     
@@ -152,7 +153,7 @@ body :hover {
 a {
     font-family: "Galano Grotesque";
     color: rgb(40, 53, 131);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .table {
@@ -165,4 +166,11 @@ a {
 .table :hover {
     background-color: #ffffff;
     color: rgb(40, 53, 131);
+}
+
+li {
+    display: list-item;
+    background-color: #f2f2f2;
+    padding: 15px 5px;
+    margin: 5px;
 }

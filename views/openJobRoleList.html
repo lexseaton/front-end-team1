@@ -22,7 +22,7 @@
             </tr>
             {% for openJobRole in openJobRoles %}
             <tr id="table-rows-2">
-                <td id="td-role-name">{{ openJobRole.jobRoleName }}</td>
+                <td id="td-role-name"><a href="/openJobRoles/{{openJobRole.jobRoleID}}" target="_blank">{{ openJobRole.jobRoleName }}</a></td>
                 <td id="td-role-loction">{{ openJobRole.jobRoleLocation }}</td>
                 <td id="td-role-capability">{{ openJobRole.jobRoleCapability }}</td>
                 <td id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
