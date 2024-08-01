@@ -23,6 +23,10 @@ body {
     color: rgb(87,87,86);
 }
 
+body :hover{
+    text-decoration: none;
+}
+
 footer {
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
