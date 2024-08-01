@@ -13,8 +13,8 @@ describe("getToken", function () {
         mock.reset();
     });
     it("should return jwttoken when valid credentials are passed", async () => {
-        const data: LoginRequest = {username: 'admin',
-                                    password: 'admin'};
+        const data: LoginRequest = {Username: 'admin',
+                                    Password: 'admin'};
         const JWTTOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3"
         + "MTQsImV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJ"
         + "pc3MiOiJ0ZWFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU";
@@ -22,14 +22,11 @@ describe("getToken", function () {
         mock.onPost("/api/auth/login", data).reply(200, JWTTOKEN);
 
         const result = await getToken(data);
-
         const decodedToken = jwtDecode(result);
-
-
+        
         expect(result == JWTTOKEN).to.be.true;
         expect(decodedToken.iss == 'team1-api').to.be.true;
         expect(decodedToken.sub == 'admin').to.be.true;
     })
-  
 })
 });

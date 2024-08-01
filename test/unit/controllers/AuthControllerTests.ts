@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it } from "node:test";
 import * as AuthController from "../../../src/controllers/AuthController";
 import * as AuthService from "../../../src/services/AuthService";
@@ -15,12 +16,13 @@ declare module "express-session" {
     }
   }
 
-  describe('LoginController', function () {
+describe('LoginController', function () {
     //Tests if login form appears
     describe('getLoginForm', function () {
         after (() => {
             sinon.reset();
         });
+
         it('should render the login form', async () => {
 
             const stub = sinon.stub(AuthService, 'getToken').resolves(JWTTOKEN);
@@ -44,8 +46,6 @@ declare module "express-session" {
         const req = { body: { Username: "admin", Password: "admin" }, session: { token: "" } };
         const res = { redirect: sinon.spy(), render: sinon.spy() };
 
-        // Call the login function from AuthController
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await AuthController.postLoginForm(req as any, res as any);
 
         // Verify that res.redirect was called once with the correct arguments
@@ -57,15 +57,14 @@ declare module "express-session" {
 
     it('should fail login with incorrect credentials', async () => {
         const errormessage: string = "Invalid Credentials";
+        
         // Mock the getToken function to return a rejected promise
         const stub = sinon.stub(AuthService, 'getToken').rejects(new Error(errormessage));
 
         const req = { body: { Username: "admin", Password: "wrongpassword" } };
         const res = { render: sinon.spy(), locals: { errormessage: ''} };
         
-        
         // Call the login function from AuthController
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await AuthController.postLoginForm(req as any, res as any);
 
         expect(res.render.calledOnce).to.be.true;
@@ -77,11 +76,11 @@ declare module "express-session" {
         const req = {session: { token: JWTTOKEN }};
         const res = { redirect: sinon.spy() };
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         await AuthController.logout(req as any, res as any);
 
         expect(res.redirect.calledOnce).to.be.true;
-        expect(req.session.token == null).to.be.true;
+        expect(req.session.token == undefined).to.be.true;
     });
 
 });
+

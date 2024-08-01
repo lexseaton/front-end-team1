@@ -1,6 +1,7 @@
 import { Locations } from "./Locations"
 
-export type OpenJobRoleResponse = {
+export type JobRoleResponse = {
+    jobRoleID: number,
     jobRoleName: string,
     jobRoleLocation: Locations,
     jobRoleCapability: string,
