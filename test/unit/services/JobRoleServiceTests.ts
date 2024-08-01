@@ -23,7 +23,12 @@ describe('getJobRoles', function () {
 
       mock.onGet(URL).reply(200, data);
 
-      const results = await getJobRoles();
+      const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
+        
+
+      const results = await getJobRoles(JWTTOKEN);
 
       expect(results[0].jobRoleBand).to.deep.equal(openJobRoleResponse.jobRoleBand);
       expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation);
@@ -34,9 +39,12 @@ describe('getJobRoles', function () {
 
   it('should throw exception when 500 error returned from axios', async () => {
       mock.onGet(URL).reply(500);
-
+      const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
+        
       try {
-          await getJobRoles();
+          await getJobRoles(JWTTOKEN);
       } catch (e) {
         expect(e.message).to.equal('Failed to get Job Roles');
         return;
