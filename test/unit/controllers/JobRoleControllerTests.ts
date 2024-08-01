@@ -8,6 +8,10 @@ import { Locations } from "../../../src/models/Locations";
 
 const dt = new Date(2024, 11, 29);
 
+const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
+
 const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
@@ -26,7 +30,7 @@ describe('getAllJobRoles', function () {
     const stub = sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
     // Mock req and res objects
-    const req = {};
+    const req = {session: {token: JWTTOKEN}};
     const res = { render: sinon.spy() };
 
     // Call the controller method
@@ -48,7 +52,7 @@ describe('getAllJobRoles', function () {
 
     const stub = sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
-    const req = { };
+    const req = { session: {token: JWTTOKEN} };
     const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
     await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any

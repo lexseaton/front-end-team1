@@ -11,7 +11,7 @@ const openJobRoleResponse: OpenJobRoleResponse = {
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
-  jobRoleBand: "Trainee",
+  jobRoleBand: "trainee",
   jobRoleClosingDate: dt
 }
 const mock = new MockAdapter(axios);
@@ -34,7 +34,7 @@ describe('getJobRoles', function () {
       expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation);
       expect(results[0].jobRoleName).to.deep.equal(openJobRoleResponse.jobRoleName);
       expect(results[0].jobRoleCapability).to.deep.equal(openJobRoleResponse.jobRoleCapability);
-      expect(results[0].jobRoleClosingDate).to.deep.equal(openJobRoleResponse.jobRoleClosingDate.toISOString());
+      expect(results[0].jobRoleClosingDate.toString() == openJobRoleResponse.jobRoleClosingDate.toISOString()).to.be.true;
     })
 
   it('should throw exception when 500 error returned from axios', async () => {

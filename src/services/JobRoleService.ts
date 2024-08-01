@@ -11,7 +11,6 @@ export const getJobRoles = async (token: string ): Promise<OpenJobRoleResponse[]
         const response: AxiosResponse = await axios.get(URL, getHeader(token));
         return response.data;
     } catch (e) {
-        console.log(e);
         throw new Error('Failed to get Job Roles');
     }
 }
