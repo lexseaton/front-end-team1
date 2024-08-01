@@ -4,7 +4,11 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
+<<<<<<< HEAD
 // import { getAllJobRoles } from "./controllers/JobRoleController";
+=======
+import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
+>>>>>>> fe2b9011b50d7c04facf23d203730311c85f8f01
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 
@@ -35,6 +39,7 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
+<<<<<<< HEAD
 // app.get('/openJobRoles', getAllJobRoles);
 // app.get('/homepage', getHomepage);
 
@@ -46,5 +51,9 @@ app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
 // app.get('/openJobRoles', getAllJobRoles);
+=======
+app.get('/openJobRoles', getAllJobRoles);
+app.get('/openJobRoles/:id', getJobRoleById);
+>>>>>>> fe2b9011b50d7c04facf23d203730311c85f8f01
 app.get('/homepage', getHomepage);
 
