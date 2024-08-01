@@ -11,7 +11,7 @@ axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
             const response: AxiosResponse = await requestInstance.post("/api/auth/login", loginRequest);
             return response.data;
         } catch (e) {
-            console.log(e);
+            console.log("data: " + e.response.data + "response code " + e.response.status);
             throw new Error(e.response.data);
         }
         }

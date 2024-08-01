@@ -16,7 +16,7 @@ declare module "express-session" {
   }
 
   describe('LoginController', function () {
-    //Tests if login for appears
+    //Tests if login form appears
     describe('getLoginForm', function () {
         after (() => {
             sinon.reset();
@@ -28,7 +28,6 @@ declare module "express-session" {
             const req = { session: { token: "" } };
             const res = { render: sinon.spy() };
 
-            //eslint-disable-next-line @typescript-eslint/no-explicit-any
             await AuthController.getLoginForm(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
@@ -82,7 +81,7 @@ declare module "express-session" {
         await AuthController.logout(req as any, res as any);
 
         expect(res.redirect.calledOnce).to.be.true;
-        expect(req.session == null).to.be.true;
+        expect(req.session.token == null).to.be.true;
     });
 
 });
