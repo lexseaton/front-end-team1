@@ -47,37 +47,35 @@ export class LoginTestPage {
         await element.click();
     }
 
-    async getLoggedToHomepageSuccessfully(): Promise<string> {
-        const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
-        return await element.getText();
+    async getStatusMessage(testType: 'success' | 'failure' | 'logout'): Promise<string> {
+        try {
+            if (testType === 'success') {
+                const element = await this.driver.findElement(this.loggedToHomepageSuccessfully);
+                return await element.getText();
+            } else if (testType === 'logout') {
+                const element = await this.driver.findElement(this.loggedOutSuccessfully);
+                return await element.getText();
+            } else if (testType === 'failure') {
+                const element = await this.driver.findElement(this.errorMessage);
+                return await element.getText();
+            }
+        } catch (error) {
+            throw new Error('Element not found or unexpected error occurred');
+        }
     }
-
-    async getloggedOutSuccessfully(): Promise<string> {
-        const element = await this.driver.findElement(this.loggedOutSuccessfully);
-        return await element.getText();
-    }
-
-    async getErrorMessageText(): Promise<string> {
-        const element = await this.driver.findElement(this.errorMessage);
-        return await element.getText();
-    }
-
+    
     async testLoginLogoutFailPass(username: string, password: string, expectedText: string, testType: 'success' | 'failure' | 'logout'): Promise<void> {
         await this.open(LoginTestPage.URL);
         await this.enterUsername(username);
         await this.enterPassword(password);
         await this.clickLogin();
-
-        if (testType === 'success') {
-            const actualText = await this.getLoggedToHomepageSuccessfully();
-            expect(actualText).to.equal(expectedText);
-        } else if (testType === 'failure') {
-            const errorMessage = await this.getErrorMessageText();
-            expect(errorMessage).to.equal(expectedText);
-        } else if (testType === 'logout') {
+    
+        if (testType === 'logout') {
             await this.clickLogout();
-            const actualText = await this.getloggedOutSuccessfully();
-            expect(actualText).to.equal(expectedText);
         }
+    
+        const actualText = await this.getStatusMessage(testType);
+        expect(actualText).to.equal(expectedText);
     }
+    
 }
