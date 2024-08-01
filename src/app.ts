@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
-import { getAllJobRoles } from "./controllers/JobRoleController";
+import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 
@@ -36,6 +36,7 @@ app.listen(3000, () => {
 });
 
 app.get('/openJobRoles', getAllJobRoles);
+app.get('/openJobRoles/:id', getJobRoleById);
 app.get('/homepage', getHomepage);
 
 app.get('/', (req: express.Request, res: express.Response) => {
