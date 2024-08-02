@@ -4,7 +4,7 @@ import { driverBuilder } from './driverBuilder';
 
 export class LoginTestPage {
     private driver: WebDriver;
-    static URL: string = 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/loginForm';
+    static URL: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/loginForm';
 
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
