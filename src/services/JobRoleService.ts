@@ -3,8 +3,7 @@ import { JobRoleResponse } from "../models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 import { getHeader } from "./AuthUtil";
 
-axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
-
+axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
 export const URL: string = "/api/openJobRoles/";
 
 export const getJobRoles = async (token: string ): Promise<JobRoleResponse[]> => {
