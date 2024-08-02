@@ -87,13 +87,13 @@ describe('getSingleJobRole', function () {
     const jobRoleDetails = [jobRoleResponse];
     const stub = sinon.stub(JobRoleService, 'getSingleJobRole').resolves(jobRoleDetails);
 
-    const req = { params: { id: '1' } };
-    const res = { render: sinon.spy(), locals: {} };
+    const req = { params: { id: '1' , session: {token: JWTTOKEN} } };
+    const res = { render: sinon.spy() };
 
     await JobRoleController.getJobRoleById(req as any, res as any);  // eslint-disable-line @typescript-eslint/no-explicit-any
 
     expect(res.render.calledOnce).to.be.true;
-    expect(res.render.calledWith('openJobRoleDetail.html', { openJobRole: jobRoleDetails })).to.be.true;
+    expect(res.render.calledWith('openJobRoleDetail.html', { openJobRoles: jobRoleDetails })).to.be.true;
 
     stub.restore();
   });
@@ -104,7 +104,7 @@ it('should render view with error message when error thrown', async () => {
 
   const stub = sinon.stub(JobRoleService, 'getSingleJobRole').rejects(new Error(errorMessage));
 
-  const req = { params: { id: '100' } };
+  const req = { params: { id: '100', session: {token: JWTTOKEN} } };
   const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
   await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
