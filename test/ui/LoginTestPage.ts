@@ -9,9 +9,9 @@ export class LoginTestPage {
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
-    private logoutButton: By = By.id('Logout');
+    private logoutButton: By = By.id('logout-button');
     private loggedToHomepageSuccessfully: By = By.id('homepage');
-    private loggedOutSuccessfully: By = By.id("loginFrom");
+    private loggedOutSuccessfully: By = By.id("loginForm");
     private errorMessage: By = By.id('errorMessage');
 
     constructor(driver: WebDriver) {
