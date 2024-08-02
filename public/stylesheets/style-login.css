@@ -35,6 +35,11 @@
     flex-shrink: 0;
 }
 
+.loginForm{
+    font-family: "Galano Grotesque";
+    text-align: center;
+}
+
 body {
     font-family: "Galano Grotesque";
     height: 100%;
@@ -59,9 +64,16 @@ body :hover {
     z-index: 1;
 }
 
-.background-div form {
-    /* position: relative; */
-    z-index: 1;
+.background-div {
+    width: 350px;
+    height: 450px;
+    background-image: url(/images/loginFormImg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* position: relative;  */
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 
@@ -70,7 +82,7 @@ body :hover {
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    margin-top: 50px;
+    padding-top: 10px;
     height: 160px;
     width: 100%;
     position: fixed;

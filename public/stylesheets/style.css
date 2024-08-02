@@ -28,6 +28,23 @@
     margin-left: 50vw;
 }
 
+.home-container-fluid {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-img-top {
+    width: 100%;
+}
+
+.we-write-our-story{
+    font-family: "Galano Grotesque";
+    margin-top: 20px;
+    margin-bottom: 400px;
+    margin-left: 20px;
+}
+
 .navbar-header {
     display: flex;
     align-items: center;
