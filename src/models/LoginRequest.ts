@@ -1,6 +1,4 @@
 export type LoginRequest = {
-
-    username: String,
-    password: String
-
-}
+    Username: string,
+    Password: string
+};

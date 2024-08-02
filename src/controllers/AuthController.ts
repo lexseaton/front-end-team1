@@ -2,6 +2,7 @@ import express from "express";
 import { getToken } from "../services/AuthService";
 
 export class AuthController {
+
 }
 
 export const getLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
@@ -14,14 +15,11 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
         res.redirect('/homepage');
     } catch (error) {
         res.locals.errormessage = error.message;
-        res.render('loginForm.html', req.body)
+        res.render('loginForm.html', req.body);
     }
 }
 
 export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
-    req.session.token = null;
+    req.session.token = undefined;
     res.redirect('/loginForm');
 }
-
-
-
