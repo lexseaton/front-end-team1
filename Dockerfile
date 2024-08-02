@@ -8,6 +8,10 @@ ARG API_URL
 
 ENV API_URL ${API_URL}
 
+ARG AWS_URL
+
+ENV AWS_URL ${AWS_URL}
+
 RUN npm install
 
 COPY . .
