@@ -53,7 +53,7 @@ body :hover {
 
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
@@ -72,39 +72,11 @@ footer {
     padding: 0 20px;
     text-align: left;
 }
-/* 
-.Belfast-contact,
-.Gdansk-contact,
-.Birmingham-contact,
-.Derry-contact {
-    display: inline-block;
-    padding: 0 50px;
-}
-
-.Belfast-contact {
-    padding-left: 50px;
-    padding-right: 150px;
-    float: left;
-}
-
-.Derry-contact {
-    padding-right: 150px;
-    float: left;
-}
-
-.Birmingham-contact {
-    padding-left: 150px;
-    float: right;
-}
-
-.Gdansk-contact {
-    padding-left: 150px;
-    padding-right: 50px;
-    float: right;
-} */
 
 .footer-title {
-   padding-top: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .logo {
