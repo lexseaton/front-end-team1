@@ -1,7 +1,6 @@
 /* Main navbar styling */
 .navbar {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 20px;
     height: 90px;
@@ -53,6 +52,9 @@ body :hover {
 }
 
 footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
@@ -62,11 +64,15 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
-    /* left: 0;
-    right: 0; */
-    text-align: center;
+    left: 0;
+    right: 0;
 }
 
+.contact {
+    padding: 0 20px;
+    text-align: left;
+}
+/* 
 .Belfast-contact,
 .Gdansk-contact,
 .Birmingham-contact,
@@ -95,10 +101,16 @@ footer {
     padding-left: 150px;
     padding-right: 50px;
     float: right;
-}
+} */
 
 .footer-title {
    padding-top: 40px;
+}
+
+.logo {
+    margin-left: left;
+    float: left;
+    width: 100px;
 }
 
 /* Responsive styles */
@@ -116,12 +128,19 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-}
 
-.logo {
-    margin-left: left;
-    float: left;
-    width: 100px;
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact {
+        padding: 10px 0;
+    }
+
+    .footer-title {
+        padding-top: 10px;
+    }
 }
 
 h3 {
