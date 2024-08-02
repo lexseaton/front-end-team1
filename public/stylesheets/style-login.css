@@ -1,7 +1,6 @@
 /* Main navbar styling */
 .navbar {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 20px;
     height: 90px;
@@ -21,42 +20,57 @@
     font-size: 1.5em;
 }
 
-.container-fluid {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 50vw;
-}
-
 .navbar-header {
     display: flex;
-    align-items: center;
+    padding-left: 50vw;
 }
 
 .navbar-header a {
     margin-left: 1rem;
 }
 
+.login-header {
+    text-align: center;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
 body {
     font-family: "Galano Grotesque";
+    height: 100%;
     font-size: 1.6rem;
     letter-spacing: 0;
     line-height: 2.4rem;
     margin: 0;
     color: rgb(80, 93, 164);
-    padding-bottom: 160px;
 }
 
 body :hover {
     text-decoration: none;
 }
 
-footer {
+.login-div {
+    position: relative;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+    z-index: 1;
+}
+
+.background-div form {
+    /* position: relative; */
+    z-index: 1;
+}
+
+
+.footer {
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    padding-top: 10px;
+    margin-top: 50px;
     height: 160px;
     width: 100%;
     position: fixed;
@@ -95,7 +109,7 @@ footer {
 }
 
 .footer-title {
-   padding-top: 40px;
+    padding-top: 40px;
 }
 
 /* Responsive styles */
@@ -129,7 +143,7 @@ h3 {
 a {
     font-family: "Galano Grotesque";
     color: rgb(40, 53, 131);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .table {
@@ -142,11 +156,4 @@ a {
 .table :hover {
     background-color: #ffffff;
     color: rgb(40, 53, 131);
-}
-
-li {
-    display: list-item;
-    background-color: #f2f2f2;
-    padding: 15px 5px;
-    margin: 5px;
 }
