@@ -1,7 +1,6 @@
 /* Main navbar styling */
 .navbar {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 20px;
     height: 90px;
@@ -31,8 +30,9 @@
 .navbar-header {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    position: sticky;
 }
-
 .navbar-header a {
     margin-left: 1rem;
 }
@@ -52,55 +52,42 @@ body :hover {
 }
 
 footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    padding-top: 10px;
+    padding: 1rem;
     height: 160px;
     width: 100%;
     position: fixed;
     bottom: 0;
-    text-align: center;
+    left: 0;
+    right: 0;
 }
 
-.Belfast-contact,
-.Gdansk-contact,
-.Birmingham-contact,
-.Derry-contact {
-    display: inline-block;
-    padding: 0 50px;
-}
-
-.Belfast-contact {
-    padding-left: 50px;
-    padding-right: 150px;
-    float: left;
-}
-
-.Derry-contact {
-    padding-right: 150px;
-    float: left;
-}
-
-.Birmingham-contact {
-    padding-left: 150px;
-    float: right;
-}
-
-.Gdansk-contact {
-    padding-left: 150px;
-    padding-right: 50px;
-    float: right;
+.contact {
+    padding: 0 20px;
+    text-align: left;
 }
 
 .footer-title {
-   padding-top: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.logo {
+    margin-left: left;
+    float: left;
+    width: 100px;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .navbar-header {
+     .navbar-header {
         flex-direction: column;
     }
 
@@ -113,12 +100,19 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-}
 
-.logo {
-    margin-left: left;
-    float: left;
-    width: 100px;
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact {
+        padding: 10px 0;
+    }
+
+    .footer-title {
+        padding-top: 10px;
+    }
 }
 
 h3 {
