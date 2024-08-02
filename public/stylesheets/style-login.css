@@ -59,11 +59,21 @@ body :hover {
     z-index: 1;
 }
 
-.background-div form {
-    /* position: relative; */
-    z-index: 1;
+.login-form{
+    text-align: center;
 }
 
+.background-div {
+    width: 350px;
+    height: 450px;
+    background-image: url(/images/loginFormImg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* position: relative;  */
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
 
 .footer {
     background-color: rgb(40, 53, 131);
