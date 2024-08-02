@@ -9,11 +9,6 @@ import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
 
 const dt = new Date(2024, 11, 29);
 
-const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
-        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
-        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
-        
-
 const jobRoleSpecification: JobRoleSpecification = {
   jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details/Product-Manager_JR_14352",
   jobRoleResponsibilities: "test responsibilities for pm",
@@ -48,6 +43,11 @@ describe('getJobRoles', function () {
 
       mock.onGet(URL).reply(200, data);
 
+      const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
+        
+
       const results = await getJobRoles(JWTTOKEN);
 
       expect(results[0].jobRoleBand).to.deep.equal(openJobRoleResponse.jobRoleBand);
@@ -59,6 +59,9 @@ describe('getJobRoles', function () {
 
   it('should throw exception when 500 error returned from axios', async () => {
       mock.onGet(URL).reply(500);
+      const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
         
       try {
           await getJobRoles(JWTTOKEN);
@@ -73,7 +76,7 @@ describe('getJobRoles', function () {
     it('should return single job role from response', async () => {
         const data = [jobRoleResponse];
         mock.onGet(URL + "1").reply(200, data);
-        const results = await getSingleJobRole("1", JWTTOKEN);
+        const results = await getSingleJobRole("1");
         expect(results[0].jobRoleClosingDate).to.deep.equal(jobRoleResponse.jobRoleClosingDate.toISOString());
         expect(results[0].jobRoleBand).to.deep.equal(jobRoleResponse.jobRoleBand);
         expect(results[0].jobRoleLocation).to.deep.equal(jobRoleResponse.jobRoleLocation);
@@ -86,7 +89,7 @@ describe('getJobRoles', function () {
       mock.onGet(URL + "1").reply(500);
 
       try {
-        await getSingleJobRole("1", JWTTOKEN);
+        await getSingleJobRole("1");
       } catch (e) {
         expect(e.message).to.equal('Failed to get Job Role');
         return;
@@ -97,7 +100,7 @@ describe('getJobRoles', function () {
       mock.onGet(URL + "2000").reply(404);
 
       try {
-        await getSingleJobRole("2000", JWTTOKEN);
+        await getSingleJobRole("2000");
       } catch (e) {
         expect(e.message).to.equal('Job Role Does Not Exist');
         return;

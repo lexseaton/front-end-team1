@@ -2,7 +2,6 @@
 // import sinon from "sinon";
 // import * as AuthMiddleware from "../../../src/middleware/AuthMiddleware";
 // import { UserRole } from "../../../src/models/JwtToken";
-// import { AuthController } from '../../../src/controllers/AuthController';
 
 // const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
 // mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
@@ -13,7 +12,7 @@
     
 //     it('should render login form error message when not logged in error thrown', async () => {
 //     const errorMessage: string = 'Please log in';
-//      // const stubAuthController  = sinon.stub(AuthController, 'getLoginForm').rejects(new Error(errorMessage)
+
 //     const stub = sinon.stub(AuthMiddleware, 'allowRoles').rejects(new Error(errorMessage));
     
 //    // const req = { session: {token: JWTTOKEN}}
