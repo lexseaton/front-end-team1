@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { JobRoleResponse } from "../models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 import { getHeader } from "./AuthUtil";
+import { get } from "http";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
@@ -16,9 +17,9 @@ export const getJobRoles = async (token: string ): Promise<JobRoleResponse[]> =>
     }
 }
 
-export const getSingleJobRole = async function (id: string): Promise<JobRoleDetailResponse[]> {
+export const getSingleJobRole = async (id: string, token: string ): Promise<JobRoleDetailResponse[]> => {
     try {
-        const response: AxiosResponse = await axios.get(URL + id);
+        const response: AxiosResponse = await axios.get(URL + id, getHeader(token));
         return response.data;
     } catch (e) {
             if (e.response.status === 404) {
