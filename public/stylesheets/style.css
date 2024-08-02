@@ -31,8 +31,9 @@
 .navbar-header {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    position: sticky;
 }
-
 .navbar-header a {
     margin-left: 1rem;
 }
@@ -56,11 +57,13 @@ footer {
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    padding-top: 10px;
+    padding: 1rem;
     height: 160px;
     width: 100%;
     position: fixed;
     bottom: 0;
+    /* left: 0;
+    right: 0; */
     text-align: center;
 }
 
@@ -100,7 +103,7 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .navbar-header {
+     .navbar-header {
         flex-direction: column;
     }
 
