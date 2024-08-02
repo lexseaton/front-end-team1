@@ -9,10 +9,10 @@ export class LoginTestPage {
     private usernameField: By = By.id('Username');
     private passwordField: By = By.id('Password');
     private loginButton: By = By.id('login');
-    private logoutButton: By = By.id('logoutButton');
-    private loggedToHomepageSuccessfully: By = By.xpath('/html[1]');
+    private logoutButton: By = By.id('Logout');
+    private loggedToHomepageSuccessfully: By = By.id('homepage');
     private loggedOutSuccessfully: By = By.id("loginFrom");
-    private errorMessage: By = By.id('error-message');
+    private errorMessage: By = By.id('errorMessage');
 
     constructor(driver: WebDriver) {
         this.driver = driver;

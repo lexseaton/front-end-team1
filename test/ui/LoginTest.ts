@@ -13,12 +13,12 @@ describe('Login Test', function () {
     });
 
     it('Should login and logout successfully via admin', async function () {
-        await loginPage.testLoginLogoutFailPass('admin', 'admin', 'Home Page', 'success');
+        await loginPage.testLoginLogoutFailPass('admin', 'admin', 'Welcome', 'success');
         await loginPage.testLoginLogoutFailPass('admin', 'admin', 'Login Page', 'logout');
     });
 
     it('Should login and logout successfully via user', async function () {
-        await loginPage.testLoginLogoutFailPass('user', 'user', 'Home Page', 'success');
+        await loginPage.testLoginLogoutFailPass('user', 'user', 'Welcome', 'success');
         await loginPage.testLoginLogoutFailPass('user', 'user', 'Login Page', 'logout');
     });
 
