@@ -20,74 +20,101 @@
     font-size: 1.5em;
 }
 
-.container-fluid {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: 50vw;
-}
-
 .navbar-header {
     display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    position: sticky;
+    padding-left: 50vw;
 }
+
 .navbar-header a {
     margin-left: 1rem;
 }
 
+.login-header {
+    text-align: center;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
 body {
     font-family: "Galano Grotesque";
+    height: 100%;
     font-size: 1.6rem;
     letter-spacing: 0;
     line-height: 2.4rem;
     margin: 0;
     color: rgb(80, 93, 164);
-    padding-bottom: 160px;
 }
 
 body :hover {
     text-decoration: none;
 }
 
-footer {
+.login-div {
+    position: relative;
+    flex-wrap: nowrap;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+    z-index: 1;
+}
+
+.background-div form {
+    /* position: relative; */
+    z-index: 1;
+}
+
+
+.footer {
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    padding: 1rem;
+    margin-top: 50px;
     height: 160px;
     width: 100%;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    text-align: center;
 }
 
-.contact {
-    padding: 0 20px;
-    text-align: left;
+.Belfast-contact,
+.Gdansk-contact,
+.Birmingham-contact,
+.Derry-contact {
+    display: inline-block;
+    padding: 0 50px;
+}
+
+.Belfast-contact {
+    padding-left: 50px;
+    padding-right: 150px;
+    float: left;
+}
+
+.Derry-contact {
+    padding-right: 150px;
+    float: left;
+}
+
+.Birmingham-contact {
+    padding-left: 150px;
+    float: right;
+}
+
+.Gdansk-contact {
+    padding-left: 150px;
+    padding-right: 50px;
+    float: right;
 }
 
 .footer-title {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.logo {
-    margin-left: left;
-    float: left;
-    width: 100px;
+    padding-top: 40px;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-     .navbar-header {
+    .navbar-header {
         flex-direction: column;
     }
 
@@ -100,19 +127,12 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
+}
 
-    footer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact {
-        padding: 10px 0;
-    }
-
-    .footer-title {
-        padding-top: 10px;
-    }
+.logo {
+    margin-left: left;
+    float: left;
+    width: 100px;
 }
 
 h3 {
@@ -136,19 +156,4 @@ a {
 .table :hover {
     background-color: #ffffff;
     color: rgb(40, 53, 131);
-}
-
-li {
-    display: list-item;
-    background-color: #f2f2f2;
-    padding: 15px 5px;
-    margin: 5px;
-}
-
-image {
-border: 1px solid #ddd;
-border-radius: 4px;
-padding: 5px;
-width: 150px;
-
 }

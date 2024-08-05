@@ -9,7 +9,7 @@
 <body>
     <div id="heading-link-div"> {% include "heading.html" %} </div>
     <h1 id="open-job-roles-header">Open Job Roles</h1>
-    <table class="table">
+    <table id="role-table" class="table">
         <tr id="table-rows">
             <th id="job-role-name">Job Role Name</th>
             <th id="job-role-location">Job Role Location</th>
@@ -18,12 +18,12 @@
             <th id="job-role-closing-date">Job Role Closing Date</th>
         </tr>
         {% for openJobRole in openJobRoles %}
-            <tr id="table-rows-2">
-                <td id="td-role-name">{{ openJobRole.jobRoleName }}</td>
-                <td id="td-role-loction">{{ openJobRole.jobRoleLocation }}</td>
-                <td id="td-role-capability">{{ openJobRole.jobRoleCapability }}</td>
-                <td id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
-                <td id="td-role-closing-date">{{ openJobRole.jobRoleClosingDate | date }}</td>
+            <tr id="table-rows-2" id="table-rows-2">
+                <td id="td-role-name" id="td-role-name"><a href="/openJobRoles/{{openJobRole.jobRoleID}}" target="_blank">{{ openJobRole.jobRoleName }}</a></td>
+                <td id="td-role-loction" id="td-role-loction">{{ openJobRole.jobRoleLocation }}</td>
+                <td id="td-role-capability" id="td-role-capability">{{ openJobRole.jobRoleCapability }}</td>
+                <td id="td-role-band" id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
+                <td id="td-role-closing-date" id="td-role-closing-date">{{ openJobRole.jobRoleClosingDate | date }}</td>
                 {% if openJobRole.numOpenPos > 0 %}
                     <td><a href="/openJobRoles/apply/{{openJobRole.jobRoleName}}"><button id="openApplicationButton" value="{{ openJobRole.jobRoleName }}">Open</button></a></td>
                 {% endif %}

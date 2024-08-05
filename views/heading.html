@@ -1,9 +1,9 @@
-<nav class="navbar">
-    <a href="#home">
-        <img src="../../images/kainosLogo2.png" alt="Logo" class="logo">
-    </a>
-    <ul>
 
+<nav class="navbar">
+    <base href={{URL}}>
+    <a href="#home">
+        <img src="../images/kainosLogo2.png" alt="Logo" class="logo" >
+    </a>
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="div.nav">
@@ -11,15 +11,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost:3000/homepage"><span
-                        class="glyphicon glyphicon-home"></span>Home</a>
-                <a class="navbar-brand" href="http://localhost:3000/LoginForm"><span
-                        class="glyphicon glyphicon-log-in"></span> Login</a>
-                <a class="navbar-brand" href="http://localhost:3000/openJobRoles"><span
-                        class="glyphicon glyphicon-list-alt"></span> Open Job Roles</a>
+            <div class="collapse navbar-collapse" id="div.nav"></div>
+            <a class="navbar-brand" id="home-button" href="{{baseURL}}/homepage"><span 
+                class="glyphicon glyphicon-home"></span>Home</a>
+            <a class="navbar-brand" id="logout-button" href="{{baseURL}}/logout"><span 
+                class="glyphicon glyphicon-log-out"></span> Logout</a>
+            <a class="navbar-brand" id="open-job-roles-button" href="{{baseURL}}/openJobRoles"><span
+                class="glyphicon glyphicon-list-alt"></span> Open Job Roles<a>
             </div>
-        <div class="collapse navbar-collapse" id="div.nav">
-    </ul>
+        
     </div>
     </div>
 </nav>
