@@ -69,23 +69,26 @@ body :hover {
     background-image: url(/images/loginFormImg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    /* position: relative;  */
     padding: 20px;
     box-sizing: border-box;
     border-radius: 20px;
 }
 
-.footer {
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: rgb(40, 53, 131);
     font-family: "Galano Grotesque";
     font-size: 1.3rem;
     color: rgb(255, 255, 255);
-    margin-top: 50px;
+    padding: 1rem;
     height: 160px;
     width: 100%;
     position: fixed;
     bottom: 0;
-    text-align: center;
+    left: 0;
+    right: 0;
 }
 
 .Belfast-contact,
@@ -119,8 +122,10 @@ body :hover {
 }
 
 .footer-title {
-    padding-top: 40px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -136,6 +141,19 @@ body :hover {
     .container-fluid {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact {
+        padding: 10px 0;
+    }
+
+    .footer-title {
+        padding-top: 10px;
     }
 }
 
@@ -153,7 +171,7 @@ h3 {
 a {
     font-family: "Galano Grotesque";
     color: rgb(40, 53, 131);
-    font-size: 1.5rem;
+    font-size: 1.rem;
 }
 
 .table {
