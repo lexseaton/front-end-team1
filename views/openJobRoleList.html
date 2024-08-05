@@ -25,7 +25,7 @@
                 <td id="td-role-band" id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
                 <td id="td-role-closing-date" id="td-role-closing-date">{{ openJobRole.jobRoleClosingDate | date }}</td>
                 {% if openJobRole.numOpenPos > 0 %}
-                    <td><a href="/openJobRoles/apply/{{openJobRole.jobRoleName}}"><button id="openApplicationButton" value="{{ openJobRole.jobRoleName }}">Open</button></a></td>
+                    <td><a href="/openJobRoles/apply/{{openJobRole.jobRoleID}}"><button id="openApplicationButton" value="{{ openJobRole.jobRoleID }}">Open</button></a></td>
                 {% endif %}
             </tr>
         {% endfor %}

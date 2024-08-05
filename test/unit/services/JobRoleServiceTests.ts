@@ -22,6 +22,7 @@ const openJobRoleResponse: JobRoleResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
+  numOpenPos: 0
 }
 
 const jobRoleResponse: JobRoleDetailResponse = {

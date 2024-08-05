@@ -33,7 +33,8 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
-  jobRoleSpecification: jobRoleSpecification
+  jobRoleSpecification: jobRoleSpecification,
+  numOpenPos: 0
 }
 
 describe('JobRoleController', function () {
