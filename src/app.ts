@@ -38,7 +38,7 @@ app.listen(3000, () => {
 
 app.get('/openJobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
 app.get('/homepage', allowRoles([UserRole.Admin, UserRole.User]), getHomepage);
-app.get('/openJobRoles/:id', getJobRoleById);
+app.get('/openJobRoles/:id', allowRoles([UserRole.Admin, UserRole.User]), getJobRoleById);
 
 app.get('/', (req: express.Request, res: express.Response) => {
   res.redirect("/loginForm");

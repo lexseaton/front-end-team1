@@ -7,10 +7,8 @@ import { getLoginForm } from "../controllers/AuthController";
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (!req.session.token) {
-           
-            res.locals.errormessage = "Please log in";
             res.status(401);
-            getLoginForm(req, res);
+            res.redirect('/loginForm');
             return res.status;          
         }
 
