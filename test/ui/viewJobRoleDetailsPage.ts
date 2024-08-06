@@ -40,24 +40,51 @@ export class viewJobRoleDetailsPage {
         return await jrLink;
     }
 
-    async getJobRoleLocation(): Promise<WebElement> {
+    async getJobRoleLocation(): Promise<string> {
         const jrLoc = await this.driver.findElement(By.id('jr-location'));
-        return await jrLoc;
+        return await jrLoc.getText();
     }
 
-    async getJobRoleCapability(): Promise<WebElement> {
+    async getJobRoleCapability(): Promise<string> {
         const jrCap = await this.driver.findElement(By.id('jr-cap'));
-        return await jrCap;
+        return await jrCap.getText();
     }
     
-    async getJobRoleBand(): Promise<WebElement> {
+    async getJobRoleBand(): Promise<string> {
         const jrBand = await this.driver.findElement(By.id('jr-band'));
-        return await jrBand;
+        return await jrBand.getText();
     }
 
-    async getJobRoleClosingDate(): Promise<WebElement> {
+    async getJobRoleClosingDate(): Promise<string> {
         const jrDt = await this.driver.findElement(By.id('jr-dt'));
-        return await jrDt;
+        return await jrDt.getText();
     }
+
+    async getAllHandles(): Promise<string[]> {
+        return await this.driver.getAllWindowHandles();
+    }
+
+    async resetPage(): Promise<void> {
+
+        const handles = await this.driver.getAllWindowHandles();
+    
+        const currentHandle = await this.driver.getWindowHandle();
+        
+        const currentIndex = handles.indexOf(currentHandle);
+        
+        const leftIndex = (currentIndex === 0) ? handles.length - 1 : currentIndex - 1;
+        
+        await this.driver.switchTo().window(handles[leftIndex]);
+
+        await this.driver.switchTo().window(handles[leftIndex]);
+    
+        await this.driver.switchTo().window(currentHandle);
+
+        await this.driver.close();
+        
+        await this.driver.switchTo().window(handles[leftIndex]);
+
+    }
+
 
 }

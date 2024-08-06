@@ -3,7 +3,7 @@ import { By, WebDriver, WebElement } from 'selenium-webdriver';
 export class viewJobRolePage {
     private driver: WebDriver;
     private url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
-
+    
     constructor(driver: WebDriver) {
         this.driver = driver;
     }
@@ -37,29 +37,48 @@ export class viewJobRolePage {
 
     async getCell(row: WebElement, cellIndex: number): Promise<WebElement> {
         const cells = await row.findElements(By.css('td'));
-        console.log(cells.length);
         if (cells.length > cellIndex) {
             return await cells[cellIndex];
         }
 
-    
         return null;
     }
 
-    async getFirstColumnText(): Promise<string> {
+    async getRoleNameText(num: number): Promise<string> {
         const rows = await this.getRows();
-            const firstColumn = await rows[0].findElement(By.xpath('/html[1]/body[1]/table[1]/tbody[1]/tr[2]/td[1]/a[1]')); // i tried every single identifier and only xpath works for this
-
-        const roleName = firstColumn.getText();                                                                     // i think it should work fine because the path just refers to the position of the cell in the table
-            return roleName;                                                                                 
+        const firstCell = await this.getCell(rows[num], 0);
+        const roleName = firstCell.getText(); 
+        return roleName;                                                                                 
+    }
+    async getLocationText(num: number): Promise<string> {
+        const rows = await this.getRows();
+        const firstCell = await this.getCell(rows[num], 1);
+        const location = firstCell.getText(); 
+        return location;                                                                                 
+    }
+    async getCapabilityText(num: number): Promise<string> {
+        const rows = await this.getRows();
+        const firstCell = await this.getCell(rows[num], 2);
+        const location = firstCell.getText(); 
+        return location;                                                                                 
+    }
+    async getBandText(num: number): Promise<string> {
+        const rows = await this.getRows();
+        const firstCell = await this.getCell(rows[num], 3);
+        const location = firstCell.getText(); 
+        return location;                                                                                 
+    }
+    async getClosingDateText(num: number): Promise<string> {
+        const rows = await this.getRows();
+        const firstCell = await this.getCell(rows[num], 4);
+        const location = firstCell.getText(); 
+        return location;                                                                                 
     }
 
-    async clickFirstColumnText(): Promise<void> {
-        const rows = await this.getRows();
-        //for (const row of rows) {
-        const firstColumn = await rows[0].findElement(By.xpath('/html[1]/body[1]/table[1]/tbody[1]/tr[2]/td[1]/a[1]')); // i tried every single identifier and only xpath works for this
-       // }
-        await firstColumn.click();                                                                                  
+    async clickFirstColumnText(num: number): Promise<void> {
+        const table = await this.driver.findElement(By.id("role-table"));
+        const link = await table.findElement(By.id("a-role-name-"+num));
+        await link.click();                                                                        
     }
 
     async switchToNewTab(): Promise<void> {
@@ -67,5 +86,8 @@ export class viewJobRolePage {
         await this.driver.switchTo().window(handles[handles.length - 1]);
     }
 
+    async getAllHandles(): Promise<string[]> {
+        return await this.driver.getAllWindowHandles();
+    }
     
 }
