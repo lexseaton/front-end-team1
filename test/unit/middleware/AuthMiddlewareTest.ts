@@ -2,12 +2,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import express from "express";
 import { allowRoles } from "../../../src/middleware/AuthMiddleware";
-import { UserRole, JwtToken } from "../../../src/models/JwtToken";
+import { UserRole } from "../../../src/models/JwtToken";
 import "core-js/stable/atob";
-
-const JWTTOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3"
-+ "MTQsImV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJ"
-+ "pc3MiOiJ0ZWFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU";
 
 describe('Middleware', function () {
     afterEach(() => {
@@ -20,7 +16,6 @@ describe('Middleware', function () {
             const req = {
                 session: { token: '' }
             };
-            const errorMessage: string = 'Please log in';
 
             const res = {
                 status: sinon.stub().returnsThis(),
