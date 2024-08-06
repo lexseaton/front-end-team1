@@ -2,7 +2,6 @@ import express from "express";
 import { jwtDecode } from "jwt-decode";
 import { JwtToken, UserRole } from "../models/JwtToken";
 import "core-js/stable/atob";
-import { getLoginForm } from "../controllers/AuthController";
 
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
