@@ -9,7 +9,8 @@ export const allowRoles = (allowedRoles: UserRole[]) => {
         if (!req.session.token) {
             res.locals.errormessage = "Please log in";
             res.status(401);
-            getLoginForm(req, res);
+            res.redirect('/loginForm');
+            //getLoginForm(req, res);
             return res.status;          
         }
 
