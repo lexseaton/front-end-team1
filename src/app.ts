@@ -46,6 +46,4 @@ app.get('/', (req: express.Request, res: express.Response) => {
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
-app.get('/openJobRoles', getAllJobRoles);
-app.get('/homepage', getHomepage);
 

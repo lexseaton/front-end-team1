@@ -1,7 +1,9 @@
 {
     "urls": [
             "https://2qr8mnb3c3.eu-west-1.awsapprunner.com/homePage",
-            "https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles"
+            "https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles",
+            "https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles/:id",
+            "https://2qr8mnb3c3.eu-west-1.awsapprunner.com/loginForm"
     ]
 
 }
