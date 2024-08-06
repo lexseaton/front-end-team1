@@ -1,6 +1,5 @@
 import * as JobRoleController from "../../../src/controllers/JobRoleController";
 import * as JobRoleService from "../../../src/services/JobRoleService";
-import * as AuthMiddleware from "../../../src/middleware/AuthMiddleware";
 import { expect } from 'chai';
 import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
@@ -8,8 +7,6 @@ import sinon from 'sinon';
 import { describe, it } from "node:test";
 import { Locations } from "../../../src/models/Locations";
 import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
-import { getLoginForm } from "../../../src/controllers/AuthController";
-
 
 const dt = new Date(2024, 11, 29);
 

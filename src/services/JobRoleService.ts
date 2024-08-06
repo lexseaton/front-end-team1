@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios";
 import { JobRoleResponse } from "../models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 import { getHeader } from "./AuthUtil";
-import { getLoginForm } from "../controllers/AuthController";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
 export const URL: string = "/api/openJobRoles/";

@@ -6,8 +6,6 @@ import { getLoginForm } from "../controllers/AuthController";
 import MockAdapter from "axios-mock-adapter";
 import axios from "axios";
 
-const mock = new MockAdapter(axios);
-
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (!req.session.token) {
