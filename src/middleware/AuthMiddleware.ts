@@ -3,8 +3,6 @@ import { jwtDecode } from "jwt-decode";
 import { JwtToken, UserRole } from "../models/JwtToken";
 import "core-js/stable/atob";
 import { getLoginForm } from "../controllers/AuthController";
-import MockAdapter from "axios-mock-adapter";
-import axios from "axios";
 
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
