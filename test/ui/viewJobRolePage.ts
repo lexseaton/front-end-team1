@@ -2,8 +2,7 @@ import { By, WebDriver, WebElement } from 'selenium-webdriver';
 
 export class viewJobRolePage {
     private driver: WebDriver;
-    private url: string = process.env.UI_TEST_URL || 'http://localhost:3000/openJobRoles';
-    //https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles
+    private url: string = process.env.UI_TEST_URL || 'https://2qr8mnb3c3.eu-west-1.awsapprunner.com/openJobRoles';
     constructor(driver: WebDriver) {
         this.driver = driver;
     }
