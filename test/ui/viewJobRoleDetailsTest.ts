@@ -41,16 +41,12 @@ describe('Job Role Information Test', function () {
             jobClosingDate = await jobRolePage.getClosingDateText(i);
             await jobRolePage.clickFirstColumnText(i);
             await jobRolePage.switchToNewTab();
-            const title = await jobRoleDetailsPage.getTitleText();
-            const loc = await jobRoleDetailsPage.getJobRoleLocation();
-            const cap = await jobRoleDetailsPage.getJobRoleCapability();
-            const jBand = await jobRoleDetailsPage.getJobRoleBand();
-            const cDate = await jobRoleDetailsPage.getJobRoleClosingDate();
-            expect(title).to.equal(roleName);
-            expect(loc).to.equal("Job Location: "+location);
-            expect(cap).to.equal("Job Capability: "+capability);
-            expect(jBand).to.equal("Job Band: "+band);
-            expect(cDate).to.equal("Job Closing Date: "+jobClosingDate);
+            
+            expect(await jobRoleDetailsPage.getTitleText()).to.equal(roleName);
+            expect(await jobRoleDetailsPage.getJobRoleLocation()).to.equal("Job Location: "+location);
+            expect(await jobRoleDetailsPage.getJobRoleCapability()).to.equal("Job Capability: "+capability);
+            expect(await jobRoleDetailsPage.getJobRoleBand()).to.equal("Job Band: "+band);
+            expect(await jobRoleDetailsPage.getJobRoleClosingDate()).to.equal("Job Closing Date: "+jobClosingDate);
             
             await jobRoleDetailsPage.resetPage();
         }
