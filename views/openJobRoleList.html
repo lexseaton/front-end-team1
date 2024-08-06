@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "links.html" %}
     <title>Open Job Role List</title>
+  
 </head>
 <body>
     <div id="heading-link-div"> {% include "heading.html" %} </div>
     <h1 id="open-job-roles-header">Open Job Roles</h1>
     <table id="role-table" class="table">
         <tr id="table-rows">
-            <th id="job-role-name">Job Role Name</th>
+            <th id="job-role-name-column">Job Role Name</th>
             <th id="job-role-location">Job Role Location</th>
             <th id="job-role-capability">Job Role Capability</th>
             <th id="job-role-band">Job Role Band</th>
@@ -30,3 +31,18 @@
     {% include "footer.html" %}
 </body>
 </html>
+<script type="module">
+   // import OrderingModel from "models/"
+    
+    const columnName = document.getElementById('job-role-name-column'); 
+
+    const OM = columnName.addEventListener('click', function() {
+        console.log("button clicked");
+        return {
+            orderByColumnName: 'jobRoleName',
+            ascendingBoolean: true
+        };
+    });
+    console.log(OM.orderByColumnName+ " " + OM.ascendingBoolean)
+</script>
+

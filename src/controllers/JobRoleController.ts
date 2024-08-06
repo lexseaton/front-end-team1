@@ -18,3 +18,4 @@ export const getJobRoleById = async (req: express.Request, res: express.Response
         res.render('openJobRoleDetail.html');
     }
 }
+

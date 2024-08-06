@@ -3,7 +3,6 @@ import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
-
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
