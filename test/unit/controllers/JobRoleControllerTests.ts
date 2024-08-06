@@ -51,7 +51,7 @@ describe('JobRoleController', function () {
     const req = {session: {token: JWTTOKEN}};
     const res = { render: sinon.spy() };
 
-    await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+    await JobRoleController.getAllJobRoles(req as any, res as any); 
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleList.html', { openJobRoles: jobRoleList })).to.be.true;
 
@@ -61,13 +61,12 @@ describe('JobRoleController', function () {
 
   it('should render view with error message when error thrown', async () => {
     const errorMessage: string = 'Failed to get Job Roles';
-
     const stub = sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
     const req = { session: {token: JWTTOKEN} };
     const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
-    await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+    await JobRoleController.getAllJobRoles(req as any, res as any); 
 
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleList.html')).to.be.true;
@@ -88,7 +87,7 @@ describe('getSingleJobRole', function() {
     const req = { params: { id: '1' }, session: { token: JWTTOKEN } };
     const res = { render: sinon.spy(), locals: {} };
 
-    await JobRoleController.getJobRoleById(req as any, res as any);  // eslint-disable-line @typescript-eslint/no-explicit-any
+    await JobRoleController.getJobRoleById(req as any, res as any); 
 
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleDetail.html', {openJobRole: jobRoleDetails})).to.be.true;
@@ -103,7 +102,7 @@ describe('getSingleJobRole', function() {
     const req = { params: { id: '100'}, session: {token: JWTTOKEN} };
     const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
-    await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+    await JobRoleController.getJobRoleById(req as any, res as any);
 
     expect(res.render.calledOnce).to.be.true;
     expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
@@ -120,7 +119,7 @@ describe('getSingleJobRole', function() {
       const req = { params: { id: '100'}, session: {token: JWTTOKEN} };
       const res = { render: sinon.spy(), locals: { errormessage: '' } };
   
-      await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+      await JobRoleController.getJobRoleById(req as any, res as any);
   
       expect(res.render.calledOnce).to.be.true;
       expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;

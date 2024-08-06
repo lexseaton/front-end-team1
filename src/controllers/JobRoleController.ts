@@ -12,7 +12,7 @@ export const getAllJobRoles = async (req: express.Request, res: express.Response
 
 export const getJobRoleById = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
-        res.render('openJobRoleDetail.html', { openJobRole: await getSingleJobRole(req.params.id, req.session.token)});
+        res.render('openJobRoleDetail.html', { openJobRole: await getSingleJobRole(req.params.id, req.session.token) });
     } catch (e) {
         res.locals.errormessage = e.message;
         res.render('openJobRoleDetail.html');

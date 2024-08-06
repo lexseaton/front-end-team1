@@ -16,7 +16,6 @@ export const getJobRoles = async (token: string ): Promise<JobRoleResponse[]> =>
 }
 
 export const getSingleJobRole = async function (id: string, token: string ): Promise<JobRoleDetailResponse[]> {
-    
     try {
         const response: AxiosResponse = await axios.get(URL + id, getHeader(token));
         return response.data;
