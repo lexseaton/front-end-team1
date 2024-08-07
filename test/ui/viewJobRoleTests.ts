@@ -4,15 +4,24 @@ import { expect } from 'chai';
 import 'mocha';
 import { viewJobRolePage } from './viewJobRolePage'; 
 import { driverBuilder } from './driverBuilder';
+import { LoginTestPage } from './LoginTestPage';
 
 describe('Job Roles Test', function () {
     let driver: WebDriver;
     let jobRolePage: viewJobRolePage;
+    let loginPage: LoginTestPage;
     
     before(async function () {
-         driver = await driverBuilder.driverBefore();
-         jobRolePage = new viewJobRolePage(driver);
-         await jobRolePage.navigateTo();
+        driver = await driverBuilder.driverBefore();
+        loginPage = new LoginTestPage(driver);
+        
+        await loginPage.open(LoginTestPage.URL);
+        await loginPage.enterUsername('admin');
+        await loginPage.enterPassword('admin');
+        await loginPage.clickLogin();
+        
+        jobRolePage = new viewJobRolePage(driver);
+        await jobRolePage.navigateTo();
     });
 
     after(async function () {
