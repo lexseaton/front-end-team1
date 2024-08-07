@@ -19,3 +19,10 @@ export const allowRoles = (allowedRoles: UserRole[]) => {
         next();
     }
 }
+
+export function noCache(req: express.Request, res: express.Response, next: express.NextFunction) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+  }

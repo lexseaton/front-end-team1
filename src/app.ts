@@ -5,7 +5,7 @@ import session from "express-session";
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
-import { allowRoles } from "./middleware/AuthMiddleware";
+import { allowRoles, noCache } from "./middleware/AuthMiddleware";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { UserRole } from "./models/JwtToken";
 
@@ -42,5 +42,6 @@ app.get('/openJobRoles/:id', allowRoles([UserRole.Admin, UserRole.User]), getJob
 app.get('/', getLoginForm);
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
+app.use('/logout', noCache);
 app.get('/logout', logout);
 

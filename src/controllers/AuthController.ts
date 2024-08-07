@@ -1,5 +1,6 @@
 import express from "express";
 import { getToken } from "../services/AuthService";
+import { error } from "console";
 
 export class AuthController {
 
@@ -20,6 +21,13 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
 }
 
 export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
-    req.session.token = undefined;
-    res.redirect('/loginForm');
+    req.session.destroy((error) => {
+        if(error) {
+            return res.redirect('/loginForm');
+        }
+    })
+    res.clearCookie('connect.sid');
+    const noCacheUrl = '/loginForm?nocache=' + new Date().getTime();
+    res.redirect(noCacheUrl);
+   // res.redirect('/loginForm');
 }
