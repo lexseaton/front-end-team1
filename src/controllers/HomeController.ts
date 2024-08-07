@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import express from "express";
-import { countFilterCapTotalJobs, countFilterTotalJobs, countTotalJobs } from "../services/JobRoleService";
+import { countFilterCapTotalJobs, countFilterTotalJobs, countTotalJobs, countJobRoleName } from "../services/JobRoleService";
 import { Locations } from "../models/Locations";
 import { Capabilities } from "../models/Capabilities";
 
@@ -13,10 +13,11 @@ export const getHomepage = async (req: express.Request, res: express.Response): 
     const totalJobs = await getTotalNumberOfJobs(req, res);
     const totalFilteredJobs = await getTotalFilteredNumberOfJobs(req, res);
     const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
+    const mostFrequentJRName = await getMostFrequentJobRoleName(req, res);
     if (totalFilteredJobs != null || totalFilteredJobs == 0 || totalFilteredCapJobs != null || totalFilteredCapJobs == 0) {
-        res.render('homepage.html', { baseURL, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs });
+        res.render('homepage.html', { baseURL, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
     }else {
-        res.render('homepage.html', { baseURL, location, totalJobs });
+        res.render('homepage.html', { baseURL, location, totalJobs, mostFrequentJRName });
     }
 }
 
@@ -54,4 +55,14 @@ export const getTotalFilteredCapNumberOfJobs = async (req: express.Request, res:
         res.locals.errormessage = e.message;
     }
 }
+
+export const getMostFrequentJobRoleName = async (req: express.Request, res: express.Response): Promise<string> => {
+    try {
+        const mostFrequentJobRole = await countJobRoleName();
+        return mostFrequentJobRole;
+    } catch (e) {
+        res.locals.errormessage = e.message;
+    }
+}
+
   
