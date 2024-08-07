@@ -67,3 +67,32 @@ export const countFilterCapTotalJobs = async (capability: JobRoleResponse.jobRol
     }
 }
 
+export const getMostFrequentJobRoleName = async function (): Promise<string> {
+    try {
+        const jobRoles = await getJobRoles();
+        const roleCounts: { [key: string]: number } = {};
+
+        jobRoles.forEach(role => {
+            if (role.jobRoleName in roleCounts) {
+                roleCounts[role.jobRoleName]++;
+            } else {
+                roleCounts[role.jobRoleName] = 1;
+            }
+        });
+
+        let mostFrequentRoleName = '';
+        let maxCount = 0;
+
+        for (const roleName in roleCounts) {
+            if (roleCounts[roleName] > maxCount) {
+                mostFrequentRoleName = roleName;
+                maxCount = roleCounts[roleName];
+            }
+        }
+
+        return mostFrequentRoleName;
+    } catch (e) {
+        throw new Error('Failed to determine most in demand job role');
+    }
+}
+
