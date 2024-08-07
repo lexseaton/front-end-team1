@@ -13,7 +13,7 @@
     <h1 id="open-job-roles-header">Open Job Roles</h1>
     <table id="role-table" class="table">
         <tr id="table-rows">
-            <th id="job-role-name-column">Job Role Name</th>
+            <th id="job-role-name-column" onclick= {{ clickName }} > Job Role Name</th>
             <th id="job-role-location">Job Role Location</th>
             <th id="job-role-capability">Job Role Capability</th>
             <th id="job-role-band">Job Role Band</th>
@@ -32,29 +32,27 @@
     {% include "footer.html" %}
 </body>
 </html>
-
-//
-<script type="module">
-    
-    const columnName = document.getElementById('job-role-name-column'); 
-
-    const click = columnName.addEventListener('click', function() {
-        this.isSingleClick = true;
-            setTimeout(() => {
-                if(this.isSingleClick) {
-                    console.log("button clicked");
-                }
-            }, 250)        
+<script> 
+    let numberClicked =  1;
+    const Order = require('../src/models/Order');
+    columnName = document.getElementById('job-role-name-column');
+    columnName.addEventListener('click', function() {
+        switch(numberClicked) {
+                case 1: 
+                     console.log("button clicked");
+                     numberClicked ++; 
+                     break;
+                
+                case 2: 
+                    console.log("button clicked twice");
+                    numberClicked ++;
+                    break;
+                
+                case 3: 
+                    console.log("button clicked three times");  
+                    numberClicked = 1;
+                    break;
+            }
     });
-    const clicksDbl = columnName.addEventListener( 'dblClick', function () {
-        this.isSingleClick = false;
-        console.log("button clicked twice");
-    });
-
-    const clickTriple = columnName.addEventListener ( 'trplClick', function () {
-        console.log("button clicked three times"); 
-    }); 
-
-   
+        
 </script>
-
