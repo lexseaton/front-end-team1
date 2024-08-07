@@ -5,11 +5,13 @@ import 'mocha';
 import { viewJobRolePage } from './viewJobRolePage'; 
 import { driverBuilder } from './driverBuilder';
 import { viewJobRoleDetailsPage } from './viewJobRoleDetailsPage';
+import { LoginTestPage } from './LoginTestPage';
 
 describe('Job Role Information Test', function () {
     let driver: WebDriver;
     let jobRolePage: viewJobRolePage;
     let jobRoleDetailsPage: viewJobRoleDetailsPage;
+    let loginPage: LoginTestPage;
     let roleName: string;
     let location: string;
     let capability: string;
@@ -17,12 +19,17 @@ describe('Job Role Information Test', function () {
     let jobClosingDate: string;
     
     before(async function () {
-         driver = await driverBuilder.driverBefore();
+        driver = await driverBuilder.driverBefore();
+        loginPage = new LoginTestPage(driver);
+        
+        await loginPage.open(LoginTestPage.URL);
+        await loginPage.enterUsername('admin');
+        await loginPage.enterPassword('admin');
+        await loginPage.clickLogin();
+        
         jobRoleDetailsPage = new viewJobRoleDetailsPage(driver, 1);
-
-         jobRolePage = new viewJobRolePage(driver);
-
-         await jobRolePage.navigateTo();
+        jobRolePage = new viewJobRolePage(driver);
+        await jobRolePage.navigateTo();
     });
 
     after(async function () {
@@ -33,7 +40,6 @@ describe('Job Role Information Test', function () {
         const rows = jobRolePage.getRows();
 
         for(let i = 1; i < (await rows).length; i++) {
-
             roleName = await jobRolePage.getRoleNameText(i);
             location = await jobRolePage.getLocationText(i);
             capability = await jobRolePage.getCapabilityText(i);
@@ -50,15 +56,5 @@ describe('Job Role Information Test', function () {
             
             await jobRoleDetailsPage.resetPage();
         }
-
-        
-        
     });
-
-
-
-
-
-
-    
 });
