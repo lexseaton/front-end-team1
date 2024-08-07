@@ -67,7 +67,7 @@ export const countFilterCapTotalJobs = async (capability: Capabilities): Promise
     }
 }
 
-export const getMostFrequentJobRoleName = async function (): Promise<string> {
+export const countJobRoleName = async function (): Promise<string> {
     try {
         const jobRoles = await getJobRoles();
         const roleCounts: { [key: string]: number } = {};
