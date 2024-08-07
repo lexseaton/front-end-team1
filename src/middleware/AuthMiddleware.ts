@@ -6,6 +6,7 @@ import "core-js/stable/atob";
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (!req.session.token) {
+            res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
             res.status(401);
             res.redirect('/loginForm');
             return res.status;          
@@ -19,10 +20,3 @@ export const allowRoles = (allowedRoles: UserRole[]) => {
         next();
     }
 }
-
-export function noCache(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    next();
-  }
