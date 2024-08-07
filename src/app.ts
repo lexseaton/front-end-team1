@@ -6,6 +6,7 @@ import { getLoginForm, logout, postLoginForm } from "./controllers/AuthControlle
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
+import path from "path";
 
 const app = express();
 const env = nunjucks.configure('views', {
@@ -47,4 +48,3 @@ app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
-

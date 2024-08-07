@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "links.html" %}
     <title>Open Job Role List</title>
+    
   
 </head>
 <body>
@@ -31,18 +32,29 @@
     {% include "footer.html" %}
 </body>
 </html>
+
+//
 <script type="module">
-   // import OrderingModel from "models/"
     
     const columnName = document.getElementById('job-role-name-column'); 
 
-    const OM = columnName.addEventListener('click', function() {
-        console.log("button clicked");
-        return {
-            orderByColumnName: 'jobRoleName',
-            ascendingBoolean: true
-        };
+    const click = columnName.addEventListener('click', function() {
+        this.isSingleClick = true;
+            setTimeout(() => {
+                if(this.isSingleClick) {
+                    console.log("button clicked");
+                }
+            }, 250)        
     });
-    console.log(OM.orderByColumnName+ " " + OM.ascendingBoolean)
+    const clicksDbl = columnName.addEventListener( 'dblClick', function () {
+        this.isSingleClick = false;
+        console.log("button clicked twice");
+    });
+
+    const clickTriple = columnName.addEventListener ( 'trplClick', function () {
+        console.log("button clicked three times"); 
+    }); 
+
+   
 </script>
 
