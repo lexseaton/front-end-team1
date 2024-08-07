@@ -2,12 +2,13 @@ import express from "express";
 import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
+import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
-import { getApplicationPage } from "./controllers/ApplicationsController";
+import { getApplicationForm, uploadCV } from "./controllers/ApplicationsController";
+import multer from "multer";
 
 const app = express();
 const env = nunjucks.configure('views', {
@@ -32,6 +33,8 @@ declare module "express-session" {
   }
 }
 
+const upload = multer();
+
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
@@ -49,5 +52,7 @@ app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
-app.get('/openJobRoles/apply/:jobRoleName', getApplicationPage);
+
+app.get('/openJobRoles/apply/:id', getApplicationForm);
+app.post('/upload', upload.single('upload'), uploadCV);
 
