@@ -57,7 +57,8 @@ export const countFilterCapTotalJobs = async (capability: Capabilities): Promise
         const jobRoles = await getJobRoles();
         const filterJobRolesCap = [];
         jobRoles.map((jobRole) => {
-            if (jobRole.jobRoleCapability.toString().match(capability)) {
+            const upperCapability = capability.toUpperCase();
+            if (jobRole.jobRoleCapability.toString().toUpperCase().match(upperCapability)) {
                 filterJobRolesCap.push(jobRole);
             };
         });

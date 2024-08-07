@@ -38,11 +38,11 @@
                         <option value="toronto">Toronto</option>
                     </select>
 
-                    <button class="apply-location" id="apply-location">Apply</button>
+                    <button class="apply" id="apply-location">Apply</button>
                 </form>
 
                 {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %}
-                <div class="result" id="result">
+                <div class="result-location" id="result-location">
                     <p class="total-filtered-open-jobs" id="total-filtered-open-jobs">Total Open Jobs: {{
                         totalFilteredJobs }}</p>
                 </div>
@@ -64,11 +64,11 @@
                         <option value="delivery">Delivery</option>
                     </select>
 
-                    <button class="apply-capability" id="apply-capability">Apply</button>
+                    <button class="apply" id="apply-capability">Apply</button>
                 </form>
 
                 {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
-                <div class="result" id="result">
+                <div class="result-capability" id="result-capability">
                     <p class="total-filtered-cap-open-jobs" id="total-filtered-cap-open-jobs">Total Open Jobs: {{
                         totalFilteredCapJobs }}</p>
                 </div>

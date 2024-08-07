@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import express from "express";
 import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
+
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
@@ -58,4 +60,3 @@ app.get('/homepage', async (req, res) => {
   const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
   res.render('homepage.html', { totalFilteredCapJobs });
 });
-

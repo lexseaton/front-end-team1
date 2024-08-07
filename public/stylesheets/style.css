@@ -100,8 +100,16 @@ body :hover {
     font-size: 1.9rem;
 }
 
+.total-filtered-cap-open-jobs {
+    font-size: 1.9rem;
+}
+
 .location-select {
     font-family: "Galano Grotesque";
+    font-size: 1.9rem;
+}
+
+.capability-select {
     font-size: 1.9rem;
 }
 
