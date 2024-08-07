@@ -21,7 +21,7 @@
             <div class="total-open-jobs-div" id="total-open-jobs-div">
                 <h2 class="TOJ-header" id="TOJ-header">Total Open Jobs</h2>
 
-                <p class="total-open-jobs" id="total-open-jobs">Total Open Jobs: {{ totalJobs }}</p>
+                <p class="total-open-jobs circle circle-blue" id="total-open-jobs">Total Open Jobs: {{ totalJobs }}</p>
             </div>
 
             <div class="total-open-jobs-at-my-location-div" id="total-open-jobs-at-my-location">
@@ -43,14 +43,18 @@
 
                 {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %}
                 <div class="result" id="result">
-                    <p class="total-filtered-open-jobs" id="total-filtered-open-jobs">Total Open Jobs: {{
-                        totalFilteredJobs }}</p>
+                    <p class="total-filtered-open-jobs circle circle-green" id="total-filtered-open-jobs">Total Open Jobs: {{ totalFilteredJobs }}</p>
                 </div>
                 {% endif %}
             </div>
         </div>
 
         <div class="summary-div-right" id="summary-div-right">
+            <div class="most-in-demand-job-div" id="most-in-demand-job-div">
+                <h2 class="MIDJ-header" id="MIDJ-header">Most in demand Job Role</h2>
+                <p class="most-in-demand-job circle circle-lightBlue" id="most-in-demand-job">{{ mostFrequentJRName }}</p>
+            </div>
+            
             <div class="total-jobs-at-capability-div" id="total-jobs-at-capability">
                 <h2 class="TOJAC-header" id="TOJAC-header">Total Jobs in each Capability</h2>
 
@@ -69,15 +73,10 @@
 
                 {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
                 <div class="result" id="result">
-                    <p class="total-filtered-cap-open-jobs" id="total-filtered-cap-open-jobs">Total Open Jobs: {{
+                    <p class="total-filtered-cap-open-jobs circle circle-orange" id="total-filtered-cap-open-jobs">Total Open Jobs: {{
                         totalFilteredCapJobs }}</p>
                 </div>
                 {% endif %}
-            </div>
-
-            <div class="most-in-demand-job-div" id="most-in-demand-job-div">
-                <h2 class="MIDJ-header" id="MIDJ-header">Most in demand Job Role</h2>
-                <p class="most-in-demand-job" id="most-in-demand-job">{{ mostFrequentJRName }}</p>
             </div>
         </div>
     </div>
