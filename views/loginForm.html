@@ -12,7 +12,7 @@
     <h3 id="errorMessage"> {{ errormessage }}</h3>
     {% endif %}
 
-    <h1 id="loginForm">Login Page</h1>
+    <h1 class="login-form" id="loginForm">Login Page</h1>
     <div class="login-div">
         <div class="background-div">
             <form class="form" action="/loginForm" method="post">
@@ -24,7 +24,7 @@
                 <h3 class="passwordHeader"><label for="Password">
                         Password:
                     </label></h3>
-                <input id="Password" name="Password" value="{{Password}}" type="text" required>
+                <input id="Password" name="Password" value="{{Password}}" type="password" required>
 
                 <br><br>
 
@@ -32,7 +32,7 @@
             </form>
         </div>
     </div>
-    {% include "footer.html" %}
+    <div class="footer-div"> {% include "footer.html" %} </div>
 
 </body>
 

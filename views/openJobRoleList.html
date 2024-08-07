@@ -10,7 +10,7 @@
     <div id="heading-link-div"> {% include "heading.html" %} </div>
     <h1 id="open-job-roles-header">Open Job Roles</h1>
     <table id="role-table" class="table">
-        <tr id="table-rows">
+        <tr class="table-rows" id="table-rows">
             <th id="job-role-name">Job Role Name</th>
             <th id="job-role-location">Job Role Location</th>
             <th id="job-role-capability">Job Role Capability</th>
@@ -19,7 +19,7 @@
         </tr>
         {% for openJobRole in openJobRoles %}
             <tr id="table-rows-2">
-                <td id="td-role-name"><a href="/openJobRoles/{{openJobRole.jobRoleID}}" target="_blank">{{ openJobRole.jobRoleName }}</a></td>
+                <td id="td-role-name-{{loop.index}}"><a id="a-role-name-{{loop.index}}" href="/openJobRoles/{{openJobRole.jobRoleID}}" target="_blank">{{ openJobRole.jobRoleName }}</a></td>
                 <td id="td-role-loction">{{ openJobRole.jobRoleLocation }}</td>
                 <td id="td-role-capability">{{ openJobRole.jobRoleCapability }}</td>
                 <td id="td-role-band">{{ openJobRole.jobRoleBand }}</td>
@@ -27,6 +27,6 @@
             </tr>
         {% endfor %}
     </table>
-    {% include "footer.html" %}
+    <div class="footer-div"> {% include "footer.html" %} </div>
 </body>
 </html>

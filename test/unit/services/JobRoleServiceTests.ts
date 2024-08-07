@@ -6,6 +6,7 @@ import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
 import { Locations } from "../../../src/models/Locations";
 import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse";
 import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
+import { Capabilities } from "../../../src/models/Capabilities";
 
 const dt = new Date(2024, 11, 29);
 
@@ -19,7 +20,7 @@ const openJobRoleResponse: JobRoleResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
-  jobRoleCapability: "HR",
+  jobRoleCapability: Capabilities.Hr,
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
 }
@@ -28,7 +29,7 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleID: 1,
   jobRoleName: "testJobName1",
   jobRoleLocation: Locations.Belfast,
-  jobRoleCapability: "HR",
+  jobRoleCapability: Capabilities.Hr,
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
   jobRoleSpecification: jobRoleSpecification
