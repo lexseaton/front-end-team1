@@ -6,7 +6,7 @@ import { Order } from "../models/Order";
 
 export const getAllJobRoles = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
-        res.render('openJobRoleList.html', { openJobRoles: await getJobRoles() });
+        res.render('openJobRoleList.html', { openJobRoles: await getJobRoles(), Order });
         } catch (e) {
         res.locals.errormessage = e.message;
         res.render('openJobRoleList.html');
