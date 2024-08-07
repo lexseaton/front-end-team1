@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { JobRoleResponse } from "../models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 import { Locations } from "../models/Locations";
+import { Capabilities } from "../models/Capabilities";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
 export const URL: string = "/api/openJobRoles/";
@@ -51,13 +52,12 @@ export const countFilterTotalJobs = async (location: Locations): Promise<number>
     }
 }
 
-export const countFilterCapTotalJobs = async (capability: JobRoleResponse.jobRoleCapability): Promise<number> => {
+export const countFilterCapTotalJobs = async (capability: Capabilities): Promise<number> => {
     try {
         const jobRoles = await getJobRoles();
         const filterJobRolesCap = [];
         jobRoles.map((jobRole) => {
-            const upperCapability = capability.toUpperCase();
-            if (jobRole.jobRoleCapability.toString().match(upperCapability)) {
+            if (jobRole.jobRoleCapability.toString().match(capability)) {
                 filterJobRolesCap.push(jobRole);
             };
         });

@@ -1,7 +1,7 @@
 import express from "express";
 import { countFilterCapTotalJobs, countFilterTotalJobs, countTotalJobs } from "../services/JobRoleService";
 import { Locations } from "../models/Locations";
-import { JobRoleResponse } from "../models/JobRoleResponse";
+import { Capabilities } from "../models/Capabilities";
 
 const baseURL = process.env.AWS_URL || 'http://localhost:3000';
 let location = Locations.Belfast;
@@ -41,7 +41,7 @@ export const getTotalFilteredNumberOfJobs = async (req: express.Request, res: ex
 
 export const getTotalFilteredCapNumberOfJobs = async (req: express.Request, res: express.Response): Promise<number> => {
     try {
-        const capability = req.query.capability as JobRoleResponse["jobRoleCapability"];
+        const capability = req.query.capability as Capabilities;
         if (capability == null) {
             return null;
         }
