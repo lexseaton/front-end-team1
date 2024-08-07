@@ -1,19 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% include "links.html" %}
-    </head>
+
+<head>
+    {% include "links.html" %}
+</head>
+
 <body class="body">
     {% include "heading.html" %}
 
     <h1 id="homepage">Welcome</h1>
 
     <div id="container-fluid " class="home-container-fluid">
-        
-        <h3 id= "heading" class="we-write-our-story"> Together we write our story...</h3>
+
+        <h3 id="heading" class="we-write-our-story"> Together we write our story...</h3>
     </div>
-    
+
+    <div class="summary-container-div" id="summary-container-div">
+        <div class="summary-div-left" id="summary-div-left">
+            <div class="total-open-jobs-div" id="total-open-jobs-div">
+                <h2 class="TOJ-header" id="TOJ-header">Total Open Jobs</h2>
+
+                <p class="total-open-jobs" id="total-open-jobs">Total Open Jobs: {{ totalJobs }}</p>
+            </div>
+
+            <div class="total-open-jobs-at-my-location-div" id="total-open-jobs-at-my-location">
+                <h2 class="TOJAML-header" id="TOJAML-header">Total Open Jobs at my Location</h2>
+
+                <form class="filter-location-form" id="filter-location-form" action="/homepage" method="GET">
+                    <label class="location-select" for="location-select">Choose your location:</label>
+                    <select class="location-select" id="location-select" name="location" onchange="updateLocationDiv()">
+                        <option id="locations" value="locations" selected disabled>Location...</option>
+                        <option value="belfast">Belfast</option>
+                        <option value="gdansk">Gdansk</option>
+                        <option value="birmingham">Birmingham</option>
+                        <option value="london">London</option>
+                        <option value="toronto">Toronto</option>
+                    </select>
+
+                    <button class="apply-location" id="apply-location">Apply</button>
+                </form>
+
+                {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %}
+                <div class="result" id="result">
+                    <p class="total-filtered-open-jobs" id="total-filtered-open-jobs">Total Open Jobs: {{
+                        totalFilteredJobs }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="summary-div-right" id="summary-div-right">
+            <div class="total-jobs-at-capability-div" id="total-jobs-at-capability">
+                <h2 class="TOJAC-header" id="TOJAC-header">Total Jobs in each Capability</h2>
+
+                <form class="filter-capability-form" id="filter-capability-form" action="/homepage" method="GET">
+                    <label class="capability-select" for="capability-select">Choose your location:</label>
+                    <select class="capability-select" id="capability-select" name="capability" onchange="updateDiv()">
+                        <option id="capabilities" value="capabilities" selected disabled>Capabilities...</option>
+                        <option value="hr">HR</option>
+                        <option value="sales">Sales</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="delivery">Delivery</option>
+                    </select>
+
+                    <button class="apply-capability" id="apply-capability">Apply</button>
+                </form>
+
+                {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
+                <div class="result" id="result">
+                    <p class="total-filtered-cap-open-jobs" id="total-filtered-cap-open-jobs">Total Open Jobs: {{
+                        totalFilteredCapJobs }}</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="most-in-demand-job-div" id="most-in-demand-job-div">
+                <h2 class="MIDJ-header" id="MIDJ-header">Most in demand Job Role</h2>
+            </div>
+        </div>
+    </div>
+
     {% include "footer.html" %}
 </body>
-</html>
 
+</html>

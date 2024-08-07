@@ -33,6 +33,7 @@
     flex-shrink: 0;
     position: sticky;
 }
+
 .navbar-header a {
     margin-left: 1rem;
 }
@@ -49,6 +50,42 @@ body {
 
 body :hover {
     text-decoration: none;
+}
+
+/* Home page CSS */
+
+.summary-container-div {
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+    padding: 20px;
+}
+
+.summary-div-left,
+.summary-div-right {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.total-open-jobs-div,
+.total-open-jobs-at-my-location-div,
+.total-jobs-at-capability-div,
+.most-in-demand-job-div {
+    margin-bottom: 20px;
+}
+
+.total-open-jobs {
+    font-size: 1.9rem;
+}
+
+.total-filtered-open-jobs {
+    font-size: 1.9rem;
+}
+
+.location-select {
+    font-family: "Galano Grotesque";
+    font-size: 1.9rem;
 }
 
 footer {
@@ -74,9 +111,9 @@ footer {
 }
 
 .footer-title {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
@@ -87,7 +124,7 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-     .navbar-header {
+    .navbar-header {
         flex-direction: column;
     }
 
@@ -146,9 +183,9 @@ li {
 }
 
 image {
-border: 1px solid #ddd;
-border-radius: 4px;
-padding: 5px;
-width: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
 
 }

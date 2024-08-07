@@ -6,7 +6,7 @@ import { getLoginForm, logout, postLoginForm } from "./controllers/AuthControlle
 
 import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
-import { getHomepage } from "./controllers/HomeController";
+import { getHomepage, getTotalFilteredCapNumberOfJobs, getTotalFilteredNumberOfJobs } from "./controllers/HomeController";
 
 const app = express();
 const env = nunjucks.configure('views', {
@@ -48,4 +48,14 @@ app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
 app.get('/openJobRoles', getAllJobRoles);
 app.get('/homepage', getHomepage);
+
+app.get('/homepage', async (req, res) => {
+  const totalFilteredJobs = await getTotalFilteredNumberOfJobs(req, res);
+  res.render('homepage.html', { totalFilteredJobs });
+});
+
+app.get('/homepage', async (req, res) => {
+  const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
+  res.render('homepage.html', { totalFilteredCapJobs });
+});
 
