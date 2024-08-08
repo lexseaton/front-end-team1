@@ -46,7 +46,7 @@ body {
     color: rgb(80, 93, 164);
     display: flex;
     flex-direction: column;
-    padding-bottom: 160px; 
+    padding-bottom: 160px;
 }
 
 body :hover {
@@ -76,7 +76,7 @@ body :hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 500px;
+    height: 700px;
     padding: 20px;
     padding-bottom: 100px;
 }
@@ -87,6 +87,7 @@ body :hover {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    justify-content: center;
 }
 
 .total-open-jobs-div,
@@ -117,6 +118,34 @@ body :hover {
 .location-select {
     font-family: "Galano Grotesque";
     font-size: 1.9rem;
+}
+
+.capability-select {
+    font-size: 1.9rem;
+}
+
+.result-location {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-most-frequent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-capability {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
@@ -162,9 +191,10 @@ footer {
     border-radius: 50%;
     padding: 10px;
     margin: 10px;
-    color: #fff; /* Text color */
+    color: #fff;
+    /* Text color */
     text-align: center;
-    width: 170px; 
+    width: 170px;
     height: 170px;
     line-height: 130px;
 }

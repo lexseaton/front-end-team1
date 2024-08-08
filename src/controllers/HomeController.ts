@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import express from "express";
 import { countFilterCapTotalJobs, countFilterTotalJobs, countTotalJobs, countJobRoleName } from "../services/JobRoleService";
 import { Locations } from "../models/Locations";
@@ -5,8 +6,10 @@ import { Capabilities } from "../models/Capabilities";
 
 const baseURL = process.env.AWS_URL || 'http://localhost:3000';
 let location = Locations.Belfast;
+let capability = Capabilities.Delivery;
 
 export const getHomepage = async (req: express.Request, res: express.Response): Promise<void> => {
+    req.body = { location:location, capability:capability };
     const totalJobs = await getTotalNumberOfJobs(req, res);
     const totalFilteredJobs = await getTotalFilteredNumberOfJobs(req, res);
     const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
@@ -42,7 +45,7 @@ export const getTotalFilteredNumberOfJobs = async (req: express.Request, res: ex
 
 export const getTotalFilteredCapNumberOfJobs = async (req: express.Request, res: express.Response): Promise<number> => {
     try {
-        const capability = req.query.capability as Capabilities;
+        capability = req.query.capability as Capabilities;
         if (capability == null) {
             return null;
         }
@@ -62,21 +65,4 @@ export const getMostFrequentJobRoleName = async (req: express.Request, res: expr
     }
 }
 
-// function updateLocationDiv(): void {
-//     const selectElement = document.getElementById('location-select') as HTMLSelectElement;
-//     const selectedOption = selectElement.value;
-
-//     fetch(`homepage?value=${selectedOption}`)
-//         .then(response => response.text())
-//         .then(data => {
-//             const resultDiv = document.getElementById('result') as HTMLDivElement;
-//             resultDiv.innerHTML = data;
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
-
-// // Attach the event listener to the dropdown
-// document.addEventListener('DOMContentLoaded', () => {
-//     const selectElement = document.getElementById('location-select') as HTMLSelectElement;
-//     selectElement.addEventListener('change', updateLocationDiv);
-// });
+  
