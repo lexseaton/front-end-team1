@@ -66,7 +66,7 @@ body :hover {
 .we-write-our-story {
     font-family: "Galano Grotesque";
     margin-top: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     margin-left: 20px;
 }
 
@@ -98,6 +98,11 @@ body :hover {
     align-items: center;
 }
 
+.total-open-jobs-div,
+.most-in-demand-job-div {
+    margin-bottom: 100px;
+}
+
 .total-open-jobs {
     font-size: 1.9rem;
 }
@@ -124,22 +129,9 @@ body :hover {
     font-size: 1.9rem;
 }
 
-.result-location {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.result-most-frequent {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
+.result-total-jobs,
+.result-location,
+.result-most-frequent,
 .result-capability {
     display: flex;
     flex-direction: column;

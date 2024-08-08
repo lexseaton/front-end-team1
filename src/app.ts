@@ -60,3 +60,4 @@ app.get('/homepage', async (req, res) => {
   const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
   res.render('homepage.html', { totalFilteredCapJobs });
 });
+
