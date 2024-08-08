@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "links.html" %}
+    <title>Job Role Application</title>
+</head>
+<body class="body">
+    {% include "heading.html" %}
+
+    {% if message != "" %}
+        <h3 id="message">{{ message }}</h3>
+    {% endif %}
+
+    <ul id="jr-list" class="li">
+        <li id="jr-name"><b>Job Role Name:</b> {{ openJobRole.jobRoleName }}</li>
+        <li id="jr-desc"><b>Job Description:</b> {{ openJobRole.jobRoleSpecification.jobRoleDescription }}</li>
+        <li id="jr-resp"><b>Job Responsibilities:</b> {{ openJobRole.jobRoleSpecification.jobRoleResponsibilities }}</li>
+        <li id="jr-url"><a href="{{ openJobRole.jobRoleSpecification.jobRoleSpecUrl }}" target="_blank"><b>Job Specification Link</b> </a></li>
+        <li id="jr-location"><b>Job Location:</b> {{ openJobRole.jobRoleLocation }}</li>
+        <li id="jr-cap"><b>Job Capability:</b> {{ openJobRole.jobRoleCapability }}</li>
+        <li id="jr-band"><b>Job Band:</b> {{ openJobRole.jobRoleBand }}</li>
+        <li id="jr-dt"><b>Job Closing Date:</b> {{ openJobRole.jobRoleClosingDate | date }}</li>
+    </ul>
+    <form class="form" method="POST" action="/upload" enctype="multipart/form-data">
+        <label for="upload" style="padding-left: 45px;">Upload CV</label>
+        <input style="padding-left: 45px;" type="file" id="upload" name="upload" accept=".pdf, .doc, .docx"/>
+        <br/>
+        <div style="padding-left: 45px; margin-bottom: 200px;"><button id="apply-button">Apply</button></div>
+    </form>
+
+    {% include "footer.html" %}
+</body>
+</html>

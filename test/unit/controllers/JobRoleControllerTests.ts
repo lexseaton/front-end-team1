@@ -24,7 +24,8 @@ const openJobRoleResponse: JobRoleResponse = {
   jobRoleLocation: Locations.Belfast,
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
-  jobRoleClosingDate: dt
+  jobRoleClosingDate: dt,
+  numOpenPos: 0
 }
 
 const jobRoleResponse: JobRoleDetailResponse = {
@@ -34,7 +35,8 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
-  jobRoleSpecification: jobRoleSpecification
+  jobRoleSpecification: jobRoleSpecification,
+  numOpenPos: 0
 }
 
 describe('JobRoleController', function () {

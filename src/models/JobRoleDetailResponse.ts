@@ -8,5 +8,6 @@ export type JobRoleDetailResponse = {
     jobRoleCapability: string,
     jobRoleBand: string,
     jobRoleClosingDate: Date
-    jobRoleSpecification: JobRoleSpecification
+    jobRoleSpecification: JobRoleSpecification,
+    numOpenPos: number
 }

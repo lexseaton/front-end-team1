@@ -22,6 +22,7 @@ const openJobRoleResponse: JobRoleResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
+  numOpenPos: 0
 }
 
 const jobRoleResponse: JobRoleDetailResponse = {
@@ -31,7 +32,8 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleCapability: "HR",
   jobRoleBand: "trainee",
   jobRoleClosingDate: dt,
-  jobRoleSpecification: jobRoleSpecification
+  jobRoleSpecification: jobRoleSpecification,
+  numOpenPos: 0
 }
 const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
         mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
