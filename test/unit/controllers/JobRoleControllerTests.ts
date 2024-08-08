@@ -10,6 +10,8 @@ import { JobRoleSpecification } from "../../../src/models/JobRoleSpecification";
 
 const dt = new Date(2024, 11, 29);
 
+const JWTTOKEN = `testToken`;
+
 const jobRoleSpecification: JobRoleSpecification = {
   jobRoleSpecUrl: "https://kainos.wd3.myworkdayjobs.com/en-US/Kainos/details/Product-Manager_JR_14352",
   jobRoleResponsibilities: "test responsibilities for pm",
@@ -38,18 +40,17 @@ const jobRoleResponse: JobRoleDetailResponse = {
 }
 
 describe('JobRoleController', function () {
-  afterEach(() => {
-    sinon.restore();
-});
-
-describe('getAllJobRoles', function () {
+    describe('getAllJobRoles', function () {
+      afterEach(() => {
+        sinon.reset();
+    });
   it('should render view with job roles when job roles returned', async () => {
     
     const jobRoleList = [openJobRoleResponse];
 
     const stub = sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
-    const req = {};
+    const req = {session: {token: JWTTOKEN}};
     const res = { render: sinon.spy() };
 
     await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -60,13 +61,11 @@ describe('getAllJobRoles', function () {
 
   });
 
-
   it('should render view with error message when error thrown', async () => {
     const errorMessage: string = 'Failed to get Job Roles';
-
     const stub = sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
-    const req = { };
+    const req = { session: {token: JWTTOKEN} };
     const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
     await JobRoleController.getAllJobRoles(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -79,39 +78,58 @@ describe('getAllJobRoles', function () {
   });
 });
 
-describe('getSingleJobRole', function () {
+describe('getSingleJobRole', function() {
+  afterEach(() => {
+    sinon.reset();
+});
   it('should render view with job role details when job role returned', async () => {
     const jobRoleDetails = [jobRoleResponse];
     const stub = sinon.stub(JobRoleService, 'getSingleJobRole').resolves(jobRoleDetails);
 
-    const req = { params: { id: '1' } };
+    const req = { params: { id: '1' }, session: { token: JWTTOKEN } };
     const res = { render: sinon.spy(), locals: {} };
 
-    await JobRoleController.getJobRoleById(req as any, res as any);  // eslint-disable-line @typescript-eslint/no-explicit-any
+    await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
 
     expect(res.render.calledOnce).to.be.true;
-    expect(res.render.calledWith('openJobRoleDetail.html', { openJobRole: jobRoleDetails })).to.be.true;
-
+    expect(res.render.calledWith('openJobRoleDetail.html', {openJobRole: jobRoleDetails})).to.be.true;
     stub.restore();
   });
 
+  it('should render view with error message when error thrown', async () => {
+    const errorMessage: string = 'Failed to get Job Role';
 
-it('should render view with error message when error thrown', async () => {
-  const errorMessage: string = 'Failed to get Job Role';
+    const stub = sinon.stub(JobRoleService, 'getSingleJobRole').throws(new Error(errorMessage));
 
-  const stub = sinon.stub(JobRoleService, 'getSingleJobRole').rejects(new Error(errorMessage));
+    const req = { params: { id: '100'}, session: {token: JWTTOKEN} };
+    const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
-  const req = { params: { id: '100' } };
-  const res = { render: sinon.spy(), locals: { errormessage: '' } };
+    await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+    expect(res.render.calledOnce).to.be.true;
+    expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
+    expect(res.locals.errormessage).to.equal(errorMessage);
 
-  expect(res.render.calledOnce).to.be.true;
-  expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
-  expect(res.locals.errormessage).to.equal(errorMessage);
+    stub.restore();
+    });
 
-  stub.restore();
+    it('should render LoginForm view with error message when error thrown', async () => {
+      const errorMessage: string = 'Failed to get Job Role';
+  
+      const stub = sinon.stub(JobRoleService, 'getSingleJobRole').throws(new Error(errorMessage));
+  
+      const req = { params: { id: '100'}, session: {token: JWTTOKEN} };
+      const res = { render: sinon.spy(), locals: { errormessage: '' } };
+  
+      await JobRoleController.getJobRoleById(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+  
+      expect(res.render.calledOnce).to.be.true;
+      expect(res.render.calledWith('openJobRoleDetail.html')).to.be.true;
+      expect(res.locals.errormessage).to.equal(errorMessage);
+  
+      stub.restore();
+      });
+
 });
 
-})
 })

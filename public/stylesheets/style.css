@@ -39,16 +39,33 @@
 
 body {
     font-family: "Galano Grotesque";
-    font-size: 1.6rem;
-    letter-spacing: 0;
-    line-height: 2.4rem;
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
     color: rgb(80, 93, 164);
-    padding-bottom: 160px;
+    display: flex;
+    flex-direction: column;
 }
 
 body :hover {
     text-decoration: none;
+}
+
+.home-container-fluid {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-img-top {
+    width: 100%;
+}
+
+.we-write-our-story {
+    font-family: "Galano Grotesque";
+    margin-top: 20px;
+    margin-bottom: 400px;
+    margin-left: 20px;
 }
 
 footer {
@@ -133,9 +150,8 @@ a {
     padding: 20px 10px;
 }
 
-.table :hover {
-    background-color: #ffffff;
-    color: rgb(40, 53, 131);
+tr :hover {
+    background-color: rgb(255, 255, 255);
 }
 
 li {
