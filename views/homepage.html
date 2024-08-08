@@ -34,12 +34,11 @@
                     <form class="filter-location-form" id="filter-location-form">
                         <label class="location-select" for="location-select">Choose your location:</label>
                         <select class="location-select" id="location-select" name="location">
-                            <option id="locations" value="locations" selected disabled>Location...</option>
-                            <option value="belfast">Belfast</option>
-                            <option value="gdansk">Gdansk</option>
-                            <option value="birmingham">Birmingham</option>
-                            <option value="london">London</option>
-                            <option value="toronto">Toronto</option>
+                            <option id="location" value="location" selected disabled>Location...</option>
+
+                            {% for location in locationList %}
+                            <option value="{{ location.value }}" {% if location == location.value %} selected {% endif %}>{{ location.label }}</option>
+                            {% endfor %}
                         </select>
 
                         <button class="apply" id="apply-location">Apply</button>
@@ -72,10 +71,10 @@
                         <label class="capability-select" for="capability-select">Choose your location:</label>
                         <select class="capability-select" id="capability-select" name="capability">
                             <option id="capabilities" value="capabilities" selected disabled>Capabilities...</option>
-                            <option value="hr">HR</option>
-                            <option value="sales">Sales</option>
-                            <option value="marketing">Marketing</option>
-                            <option value="delivery">Delivery</option>
+
+                            {% for capability in capabilitiesList %}
+                            <option value="{{ capability.value }}">{{ capability.label }}</option>
+                            {% endfor %}
                         </select>
 
                         <button class="apply" id="apply-capability">Apply</button>

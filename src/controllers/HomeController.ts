@@ -9,15 +9,14 @@ let location = Locations.Belfast;
 let capability = Capabilities.Delivery;
 
 export const getHomepage = async (req: express.Request, res: express.Response): Promise<void> => {
-    req.body = { location:location, capability:capability };
     const totalJobs = await getTotalNumberOfJobs(req, res);
     const totalFilteredJobs = await getTotalFilteredNumberOfJobs(req, res);
     const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
     const mostFrequentJRName = await getMostFrequentJobRoleName(req, res);
     if (totalFilteredJobs != null || totalFilteredJobs == 0 || totalFilteredCapJobs != null || totalFilteredCapJobs == 0) {
-        res.render('homepage.html', { ...req.body, baseURL, capability, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
-    }else {
-        res.render('homepage.html', { baseURL, location, capability, totalJobs, mostFrequentJRName });
+        res.render('homepage.html', { ...req.body, baseURL, locationList, capabilitiesList, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
+    } else {
+        res.render('homepage.html', { ...req.body, baseURL, locationList, capabilitiesList, totalJobs, mostFrequentJRName });
     }
 }
 
@@ -37,11 +36,10 @@ export const getTotalFilteredNumberOfJobs = async (req: express.Request, res: ex
             return null;
         }
         const totalFilteredOpenJobs = await countFilterTotalJobs(location);
-        console.log(req.body);
+        console.log(req.body.location);
         return totalFilteredOpenJobs;
     } catch (e) {
         res.locals.errormessage = e.message;
-        console.log(req.body);
     }
 }
 
@@ -52,6 +50,7 @@ export const getTotalFilteredCapNumberOfJobs = async (req: express.Request, res:
             return null;
         }
         const totalFilteredCapOpenJobs = await countFilterCapTotalJobs(capability);
+        console.log(req.body);
         return totalFilteredCapOpenJobs;
     } catch (e) {
         res.locals.errormessage = e.message;
@@ -66,4 +65,13 @@ export const getMostFrequentJobRoleName = async (req: express.Request, res: expr
         res.locals.errormessage = e.message;
     }
 }
-  
+
+const capabilitiesList = Object.keys(Capabilities).map(key => ({
+    value: Capabilities[key as keyof typeof Capabilities],
+    label: key
+}));  
+
+const locationList = Object.keys(Locations).map(key => ({
+    value: Locations[key as keyof typeof Locations],
+    label: key
+}));  

@@ -1,5 +1,6 @@
 export enum Capabilities {
     Hr = "HR",
-    Sales = "Marketing",
-    Delivery = "Delivery"
+    Sales = "Sales",
+    Delivery = "Delivery",
+    Marketing = "Marketing"
   }
