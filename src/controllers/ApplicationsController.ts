@@ -15,12 +15,13 @@ const s3 = new AWS.S3();
 
 
 export const getApplicationForm = async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('apply.html', {message: "", openJobRole: await getSingleJobRole(req.params.id)});
+    res.render('apply.html', {message: "", openJobRole: await getSingleJobRole(req.params.id, req.session.token)});
 }
 
 export const uploadCV = async (req: express.Request, res: express.Response): Promise<void> => {
     if (!req.file) {
-        throw new Error("No file uploaded.");
+        res.render("apply.html", {message: "No file provided."});
+        return;
     }
 
     const uploadParams = {
@@ -50,7 +51,7 @@ export const uploadCV = async (req: express.Request, res: express.Response): Pro
 export const postApplicationForm = async (req: express.Request, res: express.Response): Promise<void> => {
 
     try {
-        sendApplication(req.body);
+        sendApplication(req.body, req.session.token);
         res.render("apply.html", {message: "Application Successful"});
     } catch (error) {
         res.render("apply.html", {message: "Application Failed"});

@@ -8,7 +8,6 @@ import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController"
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 import { allowRoles } from "./middleware/AuthMiddleware";
-import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { UserRole } from "./models/JwtToken";
 import { getApplicationForm, uploadCV } from "./controllers/ApplicationsController";
 import multer from "multer";
@@ -50,6 +49,6 @@ app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 app.get('/logout', logout);
 
-app.get('/openJobRoles/apply/:id', getApplicationForm);
-app.post('/upload', upload.single('upload'), uploadCV);
+app.get('/openJobRoles/apply/:id', allowRoles([UserRole.Admin, UserRole.User]), getApplicationForm);
+app.post('/upload', upload.single('upload'), allowRoles([UserRole.Admin, UserRole.User]), uploadCV);
 
