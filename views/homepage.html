@@ -1,21 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% include "links.html" %}
-    </head>
+
+<head>
+    {% include "links.html" %}
+</head>
+
 <body class="body">
     {% include "heading.html" %}
 
     <h1 id="homepage">Welcome</h1>
 
     <div id="container-fluid " class="home-container-fluid">
-
         <img class="card-img-top" src="./images/banner.jpg" alt="Logo">
-        <h3 id= "heading" class="we-write-our-story"> Together we write our story...</h3>
 
+        <h3 id="heading" class="we-write-our-story"> Together we write our story...</h3>
     </div>
+    <form class="mega-form" id="mega-form" action="/homepage">
+        <div class="summary-container-div" id="summary-container-div">
+            <div class="summary-div-left" id="summary-div-left">
+                <div class="total-open-jobs-div" id="total-open-jobs-div">
+                    <h2 class="TOJ-header" id="TOJ-header">Total Open Jobs</h2>
 
-    <div class="footer-div"> {% include "footer.html" %} </div>
+                    <div class="result-total-jobs">
+                        <p class="total-open-jobs circle circle-blue" id="total-open-jobs">Total Open Jobs: {{ totalJobs
+                            }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="total-open-jobs-at-my-location-div" id="total-open-jobs-at-my-location">
+                    <h2 class="TOJAML-header" id="TOJAML-header">Total Open Jobs at my Location</h2>
+
+                    <form class="filter-location-form" id="filter-location-form">
+                        <label class="location-select" for="location-select">Choose your location:</label>
+                        <select class="location-select" id="location-select" name="location">
+                            <option id="location" value="location" selected disabled>Location...</option>
+
+                            {% for location in locationList %}
+                            <option value="{{ location.value }}" {% if location == location.value %} selected {% endif %}>{{ location.label }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <button class="apply" id="apply-location">Apply</button>
+                    </form>
+
+
+                    <div class="result-location" id="result-location">
+                        <p class="total-filtered-open-jobs circle circle-green" id="total-filtered-open-jobs">Total Open
+                            Jobs: {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %} {{ totalFilteredJobs }} {%
+                            endif %}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="summary-div-right" id="summary-div-right">
+                <div class="most-in-demand-job-div" id="most-in-demand-job-div">
+                    <h2 class="MIDJ-header" id="MIDJ-header">Most in demand Job Role</h2>
+                    <div class="result-most-frequent" id="result-most-frequent">
+                        <p class="most-in-demand-job circle circle-lightBlue" id="most-in-demand-job">{{
+                            mostFrequentJRName
+                            }}</p>
+                    </div>
+                </div>
+
+                <div class="total-jobs-at-capability-div" id="total-jobs-at-capability">
+                    <h2 class="TOJAC-header" id="TOJAC-header">Total Jobs in each Capability</h2>
+
+                    <form class="filter-capability-form" id="filter-capability-form">
+                        <label class="capability-select" for="capability-select">Choose your location:</label>
+                        <select class="capability-select" id="capability-select" name="capability">
+                            <option id="capabilities" value="capabilities" selected disabled>Capabilities...</option>
+
+                            {% for capability in capabilitiesList %}
+                            <option value="{{ capability.value }}">{{ capability.label }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <button class="apply" id="apply-capability">Apply</button>
+                    </form>
+
+                    <div class="result-capability" id="result-capability">
+                        <p class="total-filtered-cap-open-jobs circle circle-orange" id="total-filtered-cap-open-jobs">
+                            Total
+                            Open Jobs: {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
+                            {{totalFilteredCapJobs }} {% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% include "footer.html" %}
 </body>
-</html>
 
+</html>
