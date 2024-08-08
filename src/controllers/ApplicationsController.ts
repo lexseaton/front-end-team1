@@ -3,15 +3,7 @@ import { getSingleJobRole } from "../services/JobRoleService";
 import { jwtDecode } from "jwt-decode";
 import { ApplicationRequest } from "../models/ApplicationRequest";
 import { sendApplication } from "../services/ApplicationsService";
-import AWS from "aws-sdk";
-
-AWS.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION
-});
-
-const s3 = new AWS.S3();
+import { upload } from "../utils/AwsUtils";
 
 
 export const getApplicationForm = async (req: express.Request, res: express.Response): Promise<void> => {
@@ -19,24 +11,18 @@ export const getApplicationForm = async (req: express.Request, res: express.Resp
 }
 
 export const uploadCV = async (req: express.Request, res: express.Response): Promise<void> => {
-    if (!req.file) {
-        res.render("apply.html", {message: "No file provided."});
-        return;
-    }
-
-    const uploadParams = {
-        Bucket: process.env.AWS_S3_BUCKET_NAME,
-        Key: Date.now().toString() + '-' + req.file.originalname,
-        Body: req.file.buffer
-    };
-
     try {
-        const data = await s3.upload(uploadParams).promise();
+        if (!req.file) {
+            res.render("apply.html", {message: "No file provided."});
+            return;
+        }
+
+        const location = await upload(req);
 
         const application: ApplicationRequest = {
             username: jwtDecode(req.session.token).sub,
             status: "IN_PROGRESS",
-            applicationURL: data.Location
+            applicationURL: location
         };
     
         req.body = application;
