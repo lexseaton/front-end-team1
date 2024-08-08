@@ -95,45 +95,4 @@ describe('getTotalNumberOfJobs', function () {
     stub.restore();
   });
 });
-
-// describe('getTotalFilteredNumberOfJobs', () => {
-//     it('should return the total number of filtered jobs based on location', async () => {
-//         const req = { params: { location: Locations.Gdansk } };
-//         const res = { render: sinon.spy(), locals: { errormessage: '' } };
-//         const stub = sinon.stub(JobRoleService, 'countFilterTotalJobs').resolves(2);
-
-//         const result = await HomeController.getTotalFilteredNumberOfJobs(req as any, res as any);
-
-//         expect(result).to.equal(2);
-//         expect(stub.calledOnce).to.be.true;
-// stub.restore();
-//     });
-
-//     it('should return error if location is not provided', async () => {
-//         const req = { };
-//         const res = { render: sinon.spy(), locals: { errormessage: '' } };
-//         const stub = sinon.stub(JobRoleService, 'countFilterTotalJobs');
-//         const mockError = new Error('Failed to count total jobs');
-//         stub.rejects(mockError);
-
-//     try{
-//         await HomeController.getTotalNumberOfJobs(req as any, res as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-//     } catch (e) {
-//         expect(res.locals.errormessage).to.equal(mockError);
-//     }
-//         expect(stub.calledOnce).to.be.true;
-//      stub.restore();
-//     });
-
-//     it('should return null if location is not provided', async () => {
-//         const req = { };
-//         const res = { render: sinon.spy(), locals: { errormessage: '' } };
-//         const stub = sinon.stub(JobRoleService, 'countFilterTotalJobs');
-
-//         const result = await HomeController.getTotalFilteredNumberOfJobs(req as any, res as any);
-
-//         expect(result).to.be.null;
-//     });
-
-// })
 })

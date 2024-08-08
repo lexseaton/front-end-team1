@@ -16,7 +16,7 @@ export const getHomepage = async (req: express.Request, res: express.Response): 
     const mostFrequentJRName = await getMostFrequentJobRoleName(req, res);
     if (totalFilteredJobs != null || totalFilteredJobs == 0 || totalFilteredCapJobs != null || totalFilteredCapJobs == 0) {
         res.render('homepage.html', { baseURL, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
-    }else {
+    } else {
         res.render('homepage.html', { baseURL, location, totalJobs, mostFrequentJRName });
     }
 }
