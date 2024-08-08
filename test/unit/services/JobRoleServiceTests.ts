@@ -52,6 +52,9 @@ const jobRoleResponse: JobRoleDetailResponse = {
   jobRoleClosingDate: dt,
   jobRoleSpecification: jobRoleSpecification
 }
+const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
 
 const mock = new MockAdapter(axios);
 
@@ -62,20 +65,23 @@ describe('getJobRoles', function () {
 
       mock.onGet(URL).reply(200, data);
 
-      const results = await getJobRoles();
+      const results = await getJobRoles(JWTTOKEN);
 
       expect(results[0].jobRoleBand).to.deep.equal(openJobRoleResponse.jobRoleBand);
       expect(results[0].jobRoleLocation).to.deep.equal(openJobRoleResponse.jobRoleLocation);
       expect(results[0].jobRoleName).to.deep.equal(openJobRoleResponse.jobRoleName);
       expect(results[0].jobRoleCapability).to.deep.equal(openJobRoleResponse.jobRoleCapability);
-      expect(results[0].jobRoleClosingDate).to.deep.equal(openJobRoleResponse.jobRoleClosingDate.toISOString());
+      expect(results[0].jobRoleClosingDate.toString() == openJobRoleResponse.jobRoleClosingDate.toISOString()).to.be.true;
     })
 
   it('should throw exception when 500 error returned from axios', async () => {
       mock.onGet(URL).reply(500);
-
+      const JWTTOKEN = `eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjE3NjM3MTQsI
+        mV4cCI6MTcyMTc5MjUxNCwiUm9sZSI6MSwic3ViIjoiYWRtaW4iLCJpc3MiOiJ0Z
+        WFtMS1hcGkifQ.13PjVdPseFyBE8AQrjHSSM0Spx-1tkYnwHjR5IVITeU`;
+        
       try {
-          await getJobRoles();
+          await getJobRoles(JWTTOKEN);
       } catch (e) {
         expect(e.message).to.equal('Failed to get Job Roles');
         return;
@@ -87,7 +93,7 @@ describe('getJobRoles', function () {
     it('should return single job role from response', async () => {
         const data = [jobRoleResponse];
         mock.onGet(URL + "1").reply(200, data);
-        const results = await getSingleJobRole("1");
+        const results = await getSingleJobRole("1", JWTTOKEN);
         expect(results[0].jobRoleClosingDate).to.deep.equal(jobRoleResponse.jobRoleClosingDate.toISOString());
         expect(results[0].jobRoleBand).to.deep.equal(jobRoleResponse.jobRoleBand);
         expect(results[0].jobRoleLocation).to.deep.equal(jobRoleResponse.jobRoleLocation);
@@ -100,7 +106,7 @@ describe('getJobRoles', function () {
       mock.onGet(URL + "1").reply(500);
 
       try {
-        await getSingleJobRole("1");
+        await getSingleJobRole("1", JWTTOKEN);
       } catch (e) {
         expect(e.message).to.equal('Failed to get Job Role');
         return;
@@ -111,7 +117,7 @@ describe('getJobRoles', function () {
       mock.onGet(URL + "2000").reply(404);
 
       try {
-        await getSingleJobRole("2000");
+        await getSingleJobRole("2000", JWTTOKEN);
       } catch (e) {
         expect(e.message).to.equal('Job Role Does Not Exist');
         return;

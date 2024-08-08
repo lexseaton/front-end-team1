@@ -75,3 +75,6 @@ const locationList = Object.keys(Locations).map(key => ({
     value: Locations[key as keyof typeof Locations],
     label: key
 }));  
+
+    res.render('homepage.html', { baseURL });
+}
