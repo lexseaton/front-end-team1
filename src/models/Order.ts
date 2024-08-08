@@ -1,4 +1,4 @@
 export class Order {
     ColumnName: String;
-    Ascending: Boolean;
+    Ascending: String;
 }
