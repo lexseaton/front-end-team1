@@ -15,8 +15,8 @@
 
         <h3 id="heading" class="we-write-our-story"> Together we write our story...</h3>
     </div>
-
-    <div class="summary-container-div" id="summary-container-div">
+    
+        <div class="summary-container-div" id="summary-container-div">
         <div class="summary-div-left" id="summary-div-left">
             <div class="total-open-jobs-div" id="total-open-jobs-div">
                 <h2 class="TOJ-header" id="TOJ-header">Total Open Jobs</h2>
@@ -41,8 +41,8 @@
                     <button class="apply-location" id="apply-location">Apply</button>
                 </form>
 
-                {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %}
-                <div class="result" id="result">
+                    {% if (totalFilteredJobs) or (totalFilteredJobs == 0) %}
+                    <div class="result" id="result">
                     <p class="total-filtered-open-jobs circle circle-green" id="total-filtered-open-jobs">Total Open Jobs: {{ totalFilteredJobs }}</p>
                 </div>
                 {% endif %}
@@ -71,8 +71,8 @@
                     <button class="apply-capability" id="apply-capability">Apply</button>
                 </form>
 
-                {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
-                <div class="result" id="result">
+                    {% if (totalFilteredCapJobs) or (totalFilteredCapJobs == 0) %}
+                    <div class="result" id="result">
                     <p class="total-filtered-cap-open-jobs circle circle-orange" id="total-filtered-cap-open-jobs">Total Open Jobs: {{
                         totalFilteredCapJobs }}</p>
                 </div>
