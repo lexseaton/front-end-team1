@@ -2,7 +2,7 @@ import express from "express";
 import nunjucks, { } from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
-import { getAllJobRoles, getJobRoleById } from "./controllers/JobRoleController";
+import { getAllJobRoles, getJobRoleById, getJobRolesOrdered } from "./controllers/JobRoleController";
 import { dateFilter } from "./filters/DateFilter";
 import { getHomepage } from "./controllers/HomeController";
 import { allowRoles } from "./middleware/AuthMiddleware";
