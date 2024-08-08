@@ -1,12 +1,14 @@
 import express from "express";
-import { getSingleJobRole, getJobRoles, getJobRolesByOrder } from "../services/JobRoleService";
-import { Order } from "../models/Order";
-
+import { getSingleJobRole, getJobRoles } from "../services/JobRoleService";
 
 
 export const getAllJobRoles = async (req: express.Request, res: express.Response): Promise<void> => {
+    const order = req.query.order as string;
+    const orderBy = req.query.orderBy as string;
+    console.log("controller query params" + req.query.order+ req.query.orderBy);
     try {
-        res.render('openJobRoleList.html', { openJobRoles: await getJobRoles(req.session.token) });
+        const openJobRoles = await getJobRoles(req.session.token, order, orderBy);
+        res.render('openJobRoleList.html', { openJobRoles, order, orderBy });
     } catch (e) {
         res.locals.errormessage = e.message;
         res.render('openJobRoleList.html');
@@ -22,12 +24,3 @@ export const getJobRoleById = async (req: express.Request, res: express.Response
     }
 }
 
-export const getJobRolesOrdered = async (req: express.Request, res: express.Response): Promise<void> => {
-    try {
-        res.render('openJobRoleList.html', { openJobRoles: await getJobRolesByOrder(req.params.order, req.params.orderBy) });
-        console.log("ordered controller response " +res.json);
-    } catch (e) {
-        res.locals.errormessage = e.message;
-        res.render('openJobRoleList.html');
-    }
-}

@@ -9,11 +9,12 @@
   
 </head>
 <body>
+    
     <div id="heading-link-div"> {% include "heading.html" %} </div>
     <h1 id="open-job-roles-header">Open Job Roles</h1>
     <table id="role-table" class="table">
         <tr id="table-rows">
-            <th id="job-role-name-column" onclick="'click'" > Job Role Name</th>
+            <th id="job-role-name-column" onclick="'click'"> Job Role Name {%if order == 'asc' %} &uarr; {% endif %} </th>
             <th id="job-role-location-column">Job Role Location</th>
             <th id="job-role-capability-column">Job Role Capability</th>
             <th id="job-role-band-column">Job Role Band</th>
@@ -30,170 +31,45 @@
         {% endfor %}
     </table>
     <div class="footer-div"> {% include "footer.html" %} </div>
+    <div id="order" value="{{ order }}">{{ order }} </div>
 </body>
 </html>
 <script> 
-    let numberClicked =  1;
-    
-    columnName = document.getElementById('job-role-name-column');
-    columnName.addEventListener('click', function() {
-        const order = {}  
-        switch(numberClicked) {
-      
-                case 1: 
-                    order.columnName = "name";
-                    order.ascending = "asc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    var url = '/openJobRoles?', 
-                    params = {
-                        columnName: 'name', 
-                        ascending: 'asc',
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        var order = document.getElementById('order');
+        console.log(order.value) 
+        switch(order.value) {
+            case 'asc':
+                columnName = document.getElementById('job-role-name-column');
+                columnName.addEventListener('click', function() {
+                    var url = '/openJobRolesOrdered?'; 
+                    var params = {
+                        order: 'desc',
+                        orderBy: 'name'
                     }
-                    Object.keys(params).forEach(key => url.URLSearchParams.append(key, params[key]))
-                    fetch(url+ new URLSearchParams().toString)
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(response.json)
-                            return response.text()
-                        } else {
-                            console.error('Failed to get orderBy')
-                        }
-                    });
-                    // .then(html => document.documentElement.innerHTML = html);
-                    numberClicked ++; 
-                    break;
-                
-                case 2: 
-                    console.log("button clicked twice");
-                    order.columnName = "name";
-                    order.ascending = "desc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                
-                    numberClicked ++;
-                    break;
-                
-                case 3: 
-                    console.log("button clicked three times");  
-                    numberClicked = 1;
-                    break;
-            }
-    });
-
-    columnName = document.getElementById('job-role-location-column');
-    columnName.addEventListener('click', function() {
-        const order = {}  
-        switch(numberClicked) {
-      
-                case 1: 
-                    order.columnName = "location";
-                    order.ascending = "asc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++; 
-                    break;
-                
-                case 2: 
-                    console.log("button clicked twice");
-                    order.columnName = "location";
-                    order.ascending = "desc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++;
-                    break;
-                
-                case 3: 
-                    console.log("button clicked three times");  
-                    numberClicked = 1;
-                    break;
-            }
-    });
-        
-    columnName = document.getElementById('job-role-capability-column');
-    columnName.addEventListener('click', function() {
-        const order = {}  
-        switch(numberClicked) {
-      
-                case 1: 
-                    order.columnName = "capability";
-                    order.ascending = "asc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++; 
-                    break;
-                
-                case 2: 
-                    console.log("button clicked twice");
-                    order.columnName = "capability";
-                    order.ascending = "desc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++;
-                    break;
-                
-                case 3: 
-                    console.log("button clicked three times");  
-                    numberClicked = 1;
-                    break;
-            }
-    });
-
-    columnName = document.getElementById('job-role-band-column');
-    columnName.addEventListener('click', function() {
-        const order = {}  
-        switch(numberClicked) {
-      
-                case 1: 
-                    order.columnName = "band";
-                    order.ascending = "asc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++; 
-                    break;
-                
-                case 2: 
-                    console.log("button clicked twice");
-                    order.columnName = "band";
-                    order.ascending = "desc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++;
-                    break;
-                
-                case 3: 
-                    console.log("button clicked three times");  
-                    numberClicked = 1;
-                    break;
-            }
-    });
-    columnName = document.getElementById('job-role-closing-date-column');
-    columnName.addEventListener('click', function() {
-        const order = {}  
-        switch(numberClicked) {
-      
-                case 1: 
-                    order.columnName = "closingDate";
-                    order.ascending = "asc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++; 
-                    break;
-                
-                case 2: 
-                    console.log("button clicked twice");
-                    order.columnName = "closingDate";
-                    order.ascending = "desc";
-                    console.log("button clicked");
-                    console.log("orderBy: " + order.columnName + "asc?: "+ order.ascending);
-                    numberClicked ++;
-                    break;
-                
-                case 3: 
-                    console.log("button clicked three times");  
-                    numberClicked = 1;
-                    break;
-            }
+                    window.location.href = url+'order='+params.order+'&orderBy='+params.orderBy;                        
+                });
+                break;
+            case 'desc':
+                columnName = document.getElementById('job-role-name-column');
+                columnName.addEventListener('click', function() {
+                    var url = '/openJobRoles'; 
+                    window.location.href = url;                        
+                });
+                break;
+            default:
+                columnName = document.getElementById('job-role-name-column');
+                columnName.addEventListener('click', function() {
+                    var url = '/openJobRolesOrdered?'; 
+                    var params = {
+                        order: 'asc',
+                        orderBy: 'name'
+                    }
+                    window.location.href = url+'order='+params.order+'&orderBy='+params.orderBy;                        
+                });
+                break;
+        }
     });
 
 </script>
