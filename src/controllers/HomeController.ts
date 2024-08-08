@@ -15,9 +15,9 @@ export const getHomepage = async (req: express.Request, res: express.Response): 
     const totalFilteredCapJobs = await getTotalFilteredCapNumberOfJobs(req, res);
     const mostFrequentJRName = await getMostFrequentJobRoleName(req, res);
     if (totalFilteredJobs != null || totalFilteredJobs == 0 || totalFilteredCapJobs != null || totalFilteredCapJobs == 0) {
-        res.render('homepage.html', { baseURL, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
+        res.render('homepage.html', { ...req.body, baseURL, capability, location, totalJobs, totalFilteredJobs, totalFilteredCapJobs, mostFrequentJRName });
     }else {
-        res.render('homepage.html', { baseURL, location, totalJobs, mostFrequentJRName });
+        res.render('homepage.html', { baseURL, location, capability, totalJobs, mostFrequentJRName });
     }
 }
 
@@ -37,9 +37,11 @@ export const getTotalFilteredNumberOfJobs = async (req: express.Request, res: ex
             return null;
         }
         const totalFilteredOpenJobs = await countFilterTotalJobs(location);
+        console.log(req.body);
         return totalFilteredOpenJobs;
     } catch (e) {
         res.locals.errormessage = e.message;
+        console.log(req.body);
     }
 }
 
@@ -64,5 +66,4 @@ export const getMostFrequentJobRoleName = async (req: express.Request, res: expr
         res.locals.errormessage = e.message;
     }
 }
-
   

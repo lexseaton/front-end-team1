@@ -53,6 +53,7 @@ app.get('/homepage', getHomepage);
 
 app.get('/homepage', async (req, res) => {
   const totalFilteredJobs = await getTotalFilteredNumberOfJobs(req, res);
+  console.log(req.body);
   res.render('homepage.html', { totalFilteredJobs });
 });
 
